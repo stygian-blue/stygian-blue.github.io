@@ -1,7 +1,306 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
+<!doctype html>
+<html lang="pt-br">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, inicial-scale=1.0">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Isabelle's Portfolio</title>
+
+  <link rel="icon" type="image/png" href="https://raw.githubusercontent.com/stygian-blue/portifolio-images/8e77d563b44b13eb0861e645fbf455b5eeb1656f/logo.svg"/>
+
+  <style>
+    :root {
+      --accent: #2564A4; /* sua cor de marca */
+      --bg: #f7f7f7;
+      --text: #0f172a; /* slate-900 */
+      --muted: #475569; /* slate-600 */
+      --ring: rgba(37, 100, 164, .4);
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #0b1220;
+        --text: #f7f7f7; /* gray-200 */
+        --muted: #94a3b8; /* slate-400 */
+      }
+    }
+
+    * { box-sizing: border-box; }
+    html, body { height: 100%; }
+    body {
+      margin: 0;
+      font: 500 16px/1.4 system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+      color: var(--text);
+      background: var(--bg);
+    }
+
+    /* ===== Header ===== */
+    header.site-header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: linear-gradient(180deg, rgba(0,0,0,0.02), rgba(0,0,0,0)) , var(--bg);
+      backdrop-filter: saturate(150%) blur(6px);
+      border-bottom: 0px solid rgba(15, 23, 42, 0.08);
+    }
+
+    .container { max-width: 1100px; margin: 0 auto; padding: 14px 20px; }
+
+    .header-grid { 
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .brand {
+      display: grid;
+      grid-template-columns: 56px 1fr;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .logo {
+      width: 56px; height: 56px; border-radius: 0px; overflow: hidden; display: grid; place-items: center;
+      border: 0px solid rgba(37, 100, 164, 0.15);
+      background: radial-gradient(120% 120% at 0% 0%, rgba(37,100,164,.15), transparent), #f8fafc;
+    }
+    .logo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .fallback-logo { width: 28px; height: 28px; fill: var(--accent); opacity: .9; }
+
+    .identity { display: flex; flex-direction: column; }
+    .name { font-weight: 700; font-size: 1.125rem; letter-spacing: .2px; }
+    .role { color: var(--muted); font-size: .95rem; }
+
+    /* ===== Social ===== */
+    nav.social { display: flex; gap: 10px; align-items: center; }
+    .social a {
+      --size: 40px; width: var(--size); height: var(--size);
+      display: inline-flex; align-items: center; justify-content: center;
+      text-decoration: none;
+      border: 0cap solid rgba(15, 23, 42, 0.08);
+      background: #ffffff10;
+      transition: transform .15s ease, box-shadow .15s ease, border-color .15s ease;
+    }
+    .social a:focus-visible { outline: none; box-shadow: 0 0 0 4px var(--ring); }
+    .social a:hover { transform: translateY(-1px); border-color: rgba(37,100,164,.45); }
+    .social svg { width: 20px; height: 20px; fill: currentColor; color: var(--text); opacity: .9; }
+    .social a[aria-label*="LinkedIn"] { color: #0a66c2; }
+    .social a[aria-label*="Instagram"] { color: #d62976; }
+    .social a[aria-label*="GitHub"] { color: #111827; }
+    .social a[aria-label*="Behance"] { color: #1769ff; }
+    .social a[aria-label*="WhatsApp"] { color: #25d366; }
+
+    /* ===== Responsivo ===== */
+    @media (max-width: 720px) {
+      .header-grid { grid-template-columns: 1fr; gap: 12px; }
+      nav.social { justify-content: flex-start; }
+    }
+
+    /* Motion preferência */
+    @media (prefers-reduced-motion: reduce) {
+      .social a { transition: none; }
+    }
+
+ .divider {
+  border: none;
+  height: 30px;
+  background: #2D355E; /* sua cor de marca */
+  margin: 0px auto;
+  width: 100%; /* ajusta o tamanho */
+  border-radius: 0px;
+}
+
+    /*  portifolio */
+    body { font-family: sans-serif; background: #f8fafc; margin:0; padding:0; color:#0f172a; }
+  h2 { text-align:center; margin: 20px 0; }
+
+  /* Grid de imagens */
+  .portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 16px;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+
+  .portfolio-item {
+    position: relative;
+    cursor: pointer;
+    overflow: hidden;
+    border-radius: 12px;
+  }
+
+  .portfolio-item img {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: filter 0.3s ease, transform 0.3s ease;
+  }
+
+  /* Hover efeito */
+  .portfolio-item:hover img {
+    filter: blur(3px) brightness(0.6);
+    transform: scale(1.05);
+  }
+
+  .portfolio-item .overlay {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    color: white;
+    padding: 10px 0;
+    font-weight: bold;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .portfolio-item:hover .overlay {
+    opacity: 1;
+  }
+
+  /* Lightbox */
+  .lightbox {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    top:0; left:0; width:100%; height:100%;
+    background: rgba(0,0,0,0.8);
+    justify-content: center;
+    align-items: center;
+  }
+
+  .lightbox-content {
+    background: #fff;
+    max-width: 90%;
+    max-height: 90%;
+    padding: 20px;
+    border-radius: 12px;
+    overflow-y: auto;
+    text-align: center;
+    position: relative;
+  }
+
+  .lightbox-content img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+  }
+
+  .lightbox-content h3 { margin-top: 12px; }
+  .lightbox-content p { color: #475569; }
+
+  .lightbox-close {
+    position: absolute;
+    top:10px;
+    right:15px;
+    font-size: 24px;
+    font-weight: bold;
+    color: #2564A4;
+    cursor: pointer;
+  }
+  </style>
 </head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <div class="header-grid" role="navigation" aria-label="Cabeçalho principal">
+        <!-- Lado esquerdo: Logo + Nome + Profissão -->
+        <div class="brand">
+          <div class="logo" aria-label="Logo">
+            <img src="https://raw.githubusercontent.com/stygian-blue/stygian-blue.github.io/198bec471deb5bd4f5ed4e95cea2334deff48478/images/logo.svg" alt="Logo de Isabelle" />
+        </div>
+          <div class="identity">
+            <div class="name">Isabelle Santos de Jesus</div>
+            <div class="role">Designer Gráfica | Operadora de Impressão Digital e Pré-impressão | Ilustradora</div>
+          </div>
+        </div>
+
+        <!-- Lado direito: Ícones Sociais -->
+        <nav class="social" aria-label="Redes sociais">
+          <a href="https://www.linkedin.com/in/isabelle-santos-de-jesus-557446207/" target="_blank" rel="noopener" aria-label="LinkedIn">
+            <img src="https://raw.githubusercontent.com/stygian-blue/stygian-blue.github.io/198bec471deb5bd4f5ed4e95cea2334deff48478/images/linkedin-logo.svg"/>
+          </a>
+          <a href="https://www.instagram.com/_stygian.blue_/" target="_blank" rel="noopener" aria-label="Instagram">
+            <img src="https://raw.githubusercontent.com/stygian-blue/stygian-blue.github.io/198bec471deb5bd4f5ed4e95cea2334deff48478/images/instagram-logo.svg"/>
+          </a>
+          <a href="https://github.com/stygian-blue" target="_blank" rel="noopener" aria-label="GitHub">
+          <img src="https://raw.githubusercontent.com/stygian-blue/stygian-blue.github.io/d219d0edc385f6824fad987131f159dff897d9c6/images/github-icon.svg"/>
+          </a>
+          <a href="https://www.behance.net/bellsie" target="_blank" rel="noopener" aria-label="Behance">
+            <img src="https://raw.githubusercontent.com/stygian-blue/stygian-blue.github.io/d219d0edc385f6824fad987131f159dff897d9c6/images/behance-logo.svg"/>
+          </a>
+          <a href="mailto:isabellejesus2010@gmail.com" target="_blank" rel="noopener" aria-label="Gmail">
+            <img src="https://raw.githubusercontent.com/stygian-blue/stygian-blue.github.io/2fd2b1f3e9ff15a1caad8fd1bad03aed40b35218/images/mail-icon.svg">
+          </a>
+        </nav>
+      </div>
+    </div>
+  </header>
+ <hr class="divider">
+  <!-- Conteúdo de exemplo para visualizar o header -->
+  <main class="container" style="padding: 28px 20px 80px; max-width: 900px;">
+    <h1 style="margin: 18px 0 8px; font-size: 2rem;">Sobre Mim</h1>
+    <p style="color: var(--muted); max-width: 65ch;">Atuar nas áreas de design gráfico, impressão digital ou pré-impressão, contribuindo com minha experiência técnica e criatividade no desenvolvimento de materiais impressos e digitais. <strong style="color: var(--accent)">#2564A4</strong> Formada em Artes Visuais, com experiência em gravação de chapas offset, operação de impressoras digitais e criação de peças gráficas. Experiência em gestão de conteúdo visual para redes sociais.Habilidades técnicas, senso estético apurado e facilidade para trabalho em equipe.</p>
+  </main>
+
+<h2>Meu Portfólio</h2>
+
+<div class="portfolio-grid">
+  <div class="portfolio-item" data-title="Projeto 1" data-desc="Descrição do trabalho e programas usados: Photoshop, Illustrator">
+    <img src="https://via.placeholder.com/400x300.png?text=Projeto+1" alt="Projeto 1">
+    <div class="overlay">Projeto 1</div>
+  </div>
+
+  <div class="portfolio-item" data-title="Projeto 2" data-desc="Descrição do trabalho e programas usados: Figma, Photoshop">
+    <img src="https://via.placeholder.com/400x300.png?text=Projeto+2" alt="Projeto 2">
+    <div class="overlay">Projeto 2</div>
+  </div>
+
+  <div class="portfolio-item" data-title="Projeto 3" data-desc="Descrição do trabalho e programas usados: Illustrator, After Effects">
+    <img src="https://via.placeholder.com/400x300.png?text=Projeto+3" alt="Projeto 3">
+    <div class="overlay">Projeto 3</div>
+  </div>
+  <!-- Adicione mais itens aqui -->
+</div>
+
+<!-- Lightbox -->
+<div class="lightbox" id="lightbox">
+  <div class="lightbox-content">
+    <span class="lightbox-close" id="lightbox-close">&times;</span>
+    <img src="" alt="" id="lightbox-img">
+    <h3 id="lightbox-title"></h3>
+    <p id="lightbox-desc"></p>
+  </div>
+</div>
+
+<script>
+  const items = document.querySelectorAll('.portfolio-item');
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImg = document.getElementById('lightbox-img');
+  const lightboxTitle = document.getElementById('lightbox-title');
+  const lightboxDesc = document.getElementById('lightbox-desc');
+  const lightboxClose = document.getElementById('lightbox-close');
+
+  items.forEach(item => {
+    item.addEventListener('click', () => {
+      lightboxImg.src = item.querySelector('img').src;
+      lightboxImg.alt = item.querySelector('img').alt;
+      lightboxTitle.textContent = item.dataset.title;
+      lightboxDesc.textContent = item.dataset.desc;
+      lightbox.style.display = 'flex';
+    });
+  });
+
+  lightboxClose.addEventListener('click', () => {
+    lightbox.style.display = 'none';
+  });
+
+  lightbox.addEventListener('click', (e) => {
+    if(e.target === lightbox) lightbox.style.display = 'none';
+  });
+</script>
+
+</body>
+</html>
