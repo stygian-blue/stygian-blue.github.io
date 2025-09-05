@@ -117,20 +117,23 @@
 
     /* Seção Experiência Profissional */
 #experiencia-profissional {
-  padding: 40px 20px;
+  padding: 28px 20px 80px; /* mesmo padding do Sobre Mim */
   background-color: var(--bg);
   font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, sans-serif;
   color: var(--text);
-  text-align: left;
+  text-align: justify; /* ou center, se preferir */
+  max-width: 65ch;
+  margin: 0 auto;
 }
 
 #experiencia-profissional h2 {
-  font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, sans-serif;
   color: var(--muted);
-  font-size: 30px;
+  font-size: 2rem; /* para ficar próximo do h1 de Sobre Mim */
   text-align: center;
-  margin-bottom: 20px;
+  margin: 18px 0 8px; /* igual ao h1 de Sobre Mim */
 }
+
 
 .exp-grid {
   display: flex;
@@ -343,6 +346,64 @@
   </div>
 </section>
 
+</section>
+
+<section id="competencias-tecnicas" style="padding:40px 20px; background-color:#F7F7F7; font-family: Arial, sans-serif;">
+  <h2 style="font-family: 'Avenir', sans-serif; color:#475F7E; font-size:30px; text-align:center; margin-bottom:30px;">Competências Técnicas</h2>
+
+  <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(120px, 1fr)); gap:30px; justify-items:center; align-items:start;">
+    
+    <!-- Competência 1 -->
+    <div style="display:flex; flex-direction:column; align-items:center;">
+      <img src="https://raw.githubusercontent.com/stygian-blue/portifolio-images/effc02f4f2aabe7129938ed340b1239dc9883243/coreldraw%20icon.svg" alt="CorelDRAW" style="width:50px; height:50px; margin-bottom:10px;">
+      <span style="font-family: Arial, sans-serif; color:#475F7E; font-size:18px; margin-bottom:5px;">CorelDRAW</span>
+      <div style="color:#2564A4; font-size:18px;">★★★★★</div>
+    </div>
+
+    <!-- Competência 2 -->
+    <div style="display:flex; flex-direction:column; align-items:center;">
+      <img src="https://raw.githubusercontent.com/stygian-blue/portifolio-images/effc02f4f2aabe7129938ed340b1239dc9883243/illustrator%20icon.svg" alt="Illustrator" style="width:50px; height:50px; margin-bottom:10px;">
+      <span style="font-family: Arial, sans-serif; color:#475F7E; font-size:18px; margin-bottom:5px;">Illustrator</span>
+      <div style="color:#2564A4; font-size:18px;">★★★★☆</div>
+    </div>
+
+    <!-- Competência 3 -->
+    <div style="display:flex; flex-direction:column; align-items:center;">
+      <img src="https://raw.githubusercontent.com/stygian-blue/portifolio-images/effc02f4f2aabe7129938ed340b1239dc9883243/photoshop%20icon.svg" alt="Photoshop" style="width:50px; height:50px; margin-bottom:10px;">
+      <span style="font-family: Arial, sans-serif; color:#475F7E; font-size:18px; margin-bottom:5px;">Photoshop</span>
+      <div style="color:#2564A4; font-size:18px;">★★★★☆</div>
+    </div>
+
+    <!-- Competência 4 -->
+    <div style="display:flex; flex-direction:column; align-items:center;">
+      <img src="https://raw.githubusercontent.com/stygian-blue/portifolio-images/effc02f4f2aabe7129938ed340b1239dc9883243/indesign%20icon.svg" alt="InDesign" style="width:50px; height:50px; margin-bottom:10px;">
+      <span style="font-family: Arial, sans-serif; color:#475F7E; font-size:18px; margin-bottom:5px;">InDesign</span>
+      <div style="color:#2564A4; font-size:18px;">★★★★☆</div>
+    </div>
+
+    <!-- Competência 5 -->
+    <div style="display:flex; flex-direction:column; align-items:center;">
+      <img src="https://raw.githubusercontent.com/stygian-blue/portifolio-images/effc02f4f2aabe7129938ed340b1239dc9883243/capcut%20desktop%20icon.svg" alt="CapCut Desktop" style="width:50px; height:50px; margin-bottom:10px;">
+      <span style="font-family: Arial, sans-serif; color:#475F7E; font-size:18px; margin-bottom:5px;">CapCut Desktop</span>
+      <div style="color:#2564A4; font-size:18px;">★★★☆☆</div>
+    </div>
+
+    <!-- Competência 6 -->
+    <div style="display:flex; flex-direction:column; align-items:center;">
+      <img src="https://raw.githubusercontent.com/stygian-blue/portifolio-images/91a638249b2ce74fb138cd4812e303e2c8f84bc0/figma%20icon.svg" alt="Figma" style="width:50px; height:50px; margin-bottom:10px;">
+      <span style="font-family: Arial, sans-serif; color:#475F7E; font-size:18px; margin-bottom:5px;">Figma</span>
+      <div style="color:#2564A4; font-size:18px;">★★★☆☆</div>
+    </div>
+
+    <!-- Competência 9 -->
+    <div style="display:flex; flex-direction:column; align-items:center;">
+      <img src="https://raw.githubusercontent.com/stygian-blue/portifolio-images/effc02f4f2aabe7129938ed340b1239dc9883243/pacote%20office%20icon.svg" alt="Pacote Office" style="width:50px; height:50px; margin-bottom:10px;">
+      <span style="font-family: Arial, sans-serif; color:#475F7E; font-size:18px; margin-bottom:5px;">Pacote Office</span>
+      <div style="color:#2564A4; font-size:18px;">★★★☆☆</div>
+    </div>
+
+  </div>
+</section>
 
 <h2>Meu Portfólio</h2>
 
