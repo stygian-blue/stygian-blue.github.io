@@ -114,6 +114,64 @@
   height: 32px;
   fill: currentColor; /* pega a cor do texto ou da classe */
 }
+
+    /* Seção Experiência Profissional */
+#experiencia-profissional {
+  padding: 60px 20px;
+  background-color: var(--bg);
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, sans-serif;
+  color: var(--text);
+}
+
+#experiencia-profissional h2 {
+  font-family: 'Avenir', sans-serif;
+  color: var(--muted);
+  font-size: 30px;
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.exp-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+.exp-card {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 20px;
+  width: 300px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.exp-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 16px rgba(0,0,0,0.12);
+}
+
+.exp-card h3 {
+  margin: 0 0 10px 0;
+  font-family: 'Avenir', sans-serif;
+  font-size: 22px;
+  color: var(--text);
+}
+
+.exp-card p {
+  margin: 0 0 10px 0;
+  font-weight: bold;
+  color: var(--muted);
+}
+
+.exp-card ul {
+  margin: 0;
+  padding-left: 20px;
+  list-style-type: disc;
+  color: var(--muted);
+  font-size: 16px;
+}
     
     /*  portifolio */
  h2 { text-align:center; margin: 20px 0; }
@@ -242,26 +300,14 @@
       </div>
     </div>
   </header>
- <hr class="divider">
-  <!-- Conteúdo de exemplo para visualizar o header -->
-  <main class="container" style="padding: 28px 20px 80px; max-width: 900px;">
-    <h1 style="margin: 18px 0 8px; font-size: 2rem;">Sobre Mim</h1>
-    <p style="color: var(--muted); max-width: 65ch;">Atuar nas áreas de design gráfico, impressão digital ou pré-impressão, contribuindo com minha experiência técnica e criatividade no desenvolvimento de materiais impressos e digitais. Formada em Artes Visuais, com experiência em gravação de chapas offset, operação de impressoras digitais e criação de peças gráficas. Experiência em gestão de conteúdo visual para redes sociais.Habilidades técnicas, senso estético apurado e facilidade para trabalho em equipe.</p>
-  </main>
-
-<section id="experiencia-profissional" style="padding: 0px 5px; background-color:#F7F7F7; font-family: Avenir, sans-serif;">
-  <h2 style="font-family: 'Avenir', sans-serif; color:#475F7E; font-size:30px; text-align:center; margin-bottom:30px;">Experiência Profissional</h2>
-
-  <div style="display:flex; flex-wrap:wrap; gap:20px; justify-content:center;">
-    
+<section id="experiencia-profissional">
+  <h2>Experiência Profissional</h2>
+  <div class="exp-grid">
     <!-- Card 1 -->
-    <div style="background:#ffffff; border-radius:10px; padding:20px; width:300px; box-shadow:0 4px 8px rgba(0,0,0,0.1); font-family: Arial, sans-serif; color:#475F7E; font-size:18px;">
-      <div style="display:flex; align-items:center; margin-bottom:15px;">
-        <span style="font-size:24px; margin-right:10px;">📂</span>
-        <h3 style="margin:0; font-family:'Avenir', sans-serif; font-size:22px; color:#475F7E;">Gravadora de Chapas Júnior / Designer Gráfica</h3>
-      </div>
-      <p style="margin:0 0 5px; font-weight:bold;">Impress Gráfica e Editora | 2024 – Atual</p>
-      <ul style="margin:10px 0 0; padding-left:20px;">
+    <div class="exp-card">
+      <h3>Gravadora de Chapas Júnior / Designer Gráfica 📂</h3>
+      <p>Impress Gráfica e Editora | 2024 – Atual</p>
+      <ul>
         <li>Gravação de chapas offset conforme padrões técnicos</li>
         <li>Preparação e finalização de arquivos para impressão</li>
         <li>Criação de posts para redes sociais e peças gráficas</li>
@@ -269,90 +315,27 @@
     </div>
 
     <!-- Card 2 -->
-    <div style="background:#ffffff; border-radius:10px; padding:20px; width:300px; box-shadow:0 4px 8px rgba(0,0,0,0.1); font-family: Arial, sans-serif; color:#475F7E; font-size:18px;">
-      <div style="display:flex; align-items:center; margin-bottom:15px;">
-        <span style="font-size:24px; margin-right:10px;">📂</span>
-        <h3 style="margin:0; font-family:'Avenir', sans-serif; font-size:22px; color:#475F7E;">Assistente Administrativo / Designer</h3>
-      </div>
-      <p style="margin:0 0 5px; font-weight:bold;">Lebazi Indústria e Comércio | 2022 – 2024</p>
-      <ul style="margin:10px 0 0; padding-left:20px;">
+    <div class="exp-card">
+      <h3>Assistente Administrativo / Designer 📂</h3>
+      <p>Lebazi Indústria e Comércio | 2022 – 2024</p>
+      <ul>
         <li>Organização do escritório e rotina administrativa</li>
         <li>Design de produtos e criação de peças promocionais</li>
       </ul>
     </div>
 
     <!-- Card 3 -->
-    <div style="background:#ffffff; border-radius:10px; padding:20px; width:300px; box-shadow:0 4px 8px rgba(0,0,0,0.1); font-family: Arial, sans-serif; color:#475F7E; font-size:18px;">
-      <div style="display:flex; align-items:center; margin-bottom:15px;">
-        <span style="font-size:24px; margin-right:10px;">📂</span>
-        <h3 style="margin:0; font-family:'Avenir', sans-serif; font-size:22px; color:#475F7E;">Professora de Desenho</h3>
-      </div>
-      <p style="margin:0 0 5px; font-weight:bold;">EBAC – Escola de Desenho e Arte Digital | 2020 – 2021</p>
-      <ul style="margin:10px 0 0; padding-left:20px;">
+    <div class="exp-card">
+      <h3>Professora de Desenho 📂</h3>
+      <p>EBAC – Escola de Desenho e Arte Digital | 2020 – 2021</p>
+      <ul>
         <li>Comunicação com alunos e aplicação de atividades individuais</li>
         <li>Organização do espaço de aula e condução de turmas de desenho</li>
       </ul>
     </div>
-
   </div>
 </section>
 
-<section id="competencias-tecnicas" style="padding:40px 20px; background-color:#F7F7F7; font-family: Arial, sans-serif;">
-  <h2 style="font-family: 'Avenir', sans-serif; color:#475F7E; font-size:30px; text-align:center; margin-bottom:30px;">Competências Técnicas</h2>
-
-  <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(120px, 1fr)); gap:30px; justify-items:center; align-items:start;">
-    
-    <!-- Competência 1 -->
-    <div style="display:flex; flex-direction:column; align-items:center;">
-      <img src="https://raw.githubusercontent.com/stygian-blue/portifolio-images/effc02f4f2aabe7129938ed340b1239dc9883243/coreldraw%20icon.svg" alt="CorelDRAW" style="width:50px; height:50px; margin-bottom:10px;">
-      <span style="font-family: Arial, sans-serif; color:#475F7E; font-size:18px; margin-bottom:5px;">CorelDRAW</span>
-      <div style="color:#2564A4; font-size:18px;">★★★★★</div>
-    </div>
-
-    <!-- Competência 2 -->
-    <div style="display:flex; flex-direction:column; align-items:center;">
-      <img src="https://raw.githubusercontent.com/stygian-blue/portifolio-images/effc02f4f2aabe7129938ed340b1239dc9883243/illustrator%20icon.svg" alt="Illustrator" style="width:50px; height:50px; margin-bottom:10px;">
-      <span style="font-family: Arial, sans-serif; color:#475F7E; font-size:18px; margin-bottom:5px;">Illustrator</span>
-      <div style="color:#2564A4; font-size:18px;">★★★★☆</div>
-    </div>
-
-    <!-- Competência 3 -->
-    <div style="display:flex; flex-direction:column; align-items:center;">
-      <img src="https://raw.githubusercontent.com/stygian-blue/portifolio-images/effc02f4f2aabe7129938ed340b1239dc9883243/photoshop%20icon.svg" alt="Photoshop" style="width:50px; height:50px; margin-bottom:10px;">
-      <span style="font-family: Arial, sans-serif; color:#475F7E; font-size:18px; margin-bottom:5px;">Photoshop</span>
-      <div style="color:#2564A4; font-size:18px;">★★★★☆</div>
-    </div>
-
-    <!-- Competência 4 -->
-    <div style="display:flex; flex-direction:column; align-items:center;">
-      <img src="https://raw.githubusercontent.com/stygian-blue/portifolio-images/effc02f4f2aabe7129938ed340b1239dc9883243/indesign%20icon.svg" alt="InDesign" style="width:50px; height:50px; margin-bottom:10px;">
-      <span style="font-family: Arial, sans-serif; color:#475F7E; font-size:18px; margin-bottom:5px;">InDesign</span>
-      <div style="color:#2564A4; font-size:18px;">★★★★☆</div>
-    </div>
-
-    <!-- Competência 5 -->
-    <div style="display:flex; flex-direction:column; align-items:center;">
-      <img src="https://raw.githubusercontent.com/stygian-blue/portifolio-images/effc02f4f2aabe7129938ed340b1239dc9883243/capcut%20desktop%20icon.svg" alt="CapCut Desktop" style="width:50px; height:50px; margin-bottom:10px;">
-      <span style="font-family: Arial, sans-serif; color:#475F7E; font-size:18px; margin-bottom:5px;">CapCut Desktop</span>
-      <div style="color:#2564A4; font-size:18px;">★★★☆☆</div>
-    </div>
-
-    <!-- Competência 6 -->
-    <div style="display:flex; flex-direction:column; align-items:center;">
-      <img src="https://raw.githubusercontent.com/stygian-blue/portifolio-images/91a638249b2ce74fb138cd4812e303e2c8f84bc0/figma%20icon.svg" alt="Figma" style="width:50px; height:50px; margin-bottom:10px;">
-      <span style="font-family: Arial, sans-serif; color:#475F7E; font-size:18px; margin-bottom:5px;">Figma</span>
-      <div style="color:#2564A4; font-size:18px;">★★★☆☆</div>
-    </div>
-
-    <!-- Competência 9 -->
-    <div style="display:flex; flex-direction:column; align-items:center;">
-      <img src="https://raw.githubusercontent.com/stygian-blue/portifolio-images/effc02f4f2aabe7129938ed340b1239dc9883243/pacote%20office%20icon.svg" alt="Pacote Office" style="width:50px; height:50px; margin-bottom:10px;">
-      <span style="font-family: Arial, sans-serif; color:#475F7E; font-size:18px; margin-bottom:5px;">Pacote Office</span>
-      <div style="color:#2564A4; font-size:18px;">★★★☆☆</div>
-    </div>
-
-  </div>
-</section>
 
 <h2>Meu Portfólio</h2>
 
