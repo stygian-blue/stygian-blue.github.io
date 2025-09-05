@@ -23,7 +23,10 @@
         --muted: #94a3b8; /* slate-400 */
       }
     }
-
+nav.social a {
+    color: #fff; /* muda para claro no dark mode */
+  }
+}
     * { box-sizing: border-box; }
     html, body { height: 100%; }
     body {
@@ -109,7 +112,13 @@
   width: 100%; /* ajusta o tamanho */
   border-radius: 0px;
 }
-
+    
+.icon svg {
+  width: 24px;
+  height: 24px;
+  fill: currentColor; /* pega a cor do texto ou da classe */
+}
+    
     /*  portifolio */
  h2 { text-align:center; margin: 20px 0; }
 
