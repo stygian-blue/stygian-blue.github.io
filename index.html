@@ -22,10 +22,11 @@
         --text: #f7f7f7; /* gray-200 */
         --muted: #94a3b8; /* slate-400 */
       }
-nav.social a {
+      nav.social a {
     color: #fff; /* muda para claro no dark mode */
   }
     }   
+    
     * { box-sizing: border-box; }
     html, body { height: 100%; }
     body {
@@ -91,6 +92,12 @@ nav.social a {
     .social a[aria-label*="GitHub"] { color: #111827; }
     .social a[aria-label*="Behance"] { color: #1769ff; }
     .social a[aria-label*="WhatsApp"] { color: #25d366; }
+    .social svg {
+  width: 20px;
+  height: 20px;
+  fill: currentColor; /* herda a cor */
+}
+
 
     /* ===== Responsivo ===== */
     @media (max-width: 720px) {
