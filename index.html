@@ -1,501 +1,247 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="pt-br">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Isabelle's Portfolio</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Isabelle Santos de Jesus | Portfólio</title>
 
-  <link rel="icon" type="image/svg+xml" href="https://raw.githubusercontent.com/stygian-blue/stygian-blue.github.io/762f84cb667a4f71ee2f1eada6659d53bd5fc5ed/images/logo.svg"/>
+ <link rel="icon" href="logo.svg" type="image/svg+xml">
 
   <style>
     :root {
-      --accent: #2564A4; /* sua cor de marca */
+      --accent: #2564A4;
       --bg: #f7f7f7;
-      --text: #0f172a; /* slate-900 */
-      --muted: #475569; /* slate-600 */
-      --ring: rgba(37, 100, 164, .4);
+      --text: #0f172a;
+      --muted: #475569;
+      --ring: rgba(37, 100, 164, 0.4);
+      --card-bg: #ffffff;
     }
 
     @media (prefers-color-scheme: dark) {
       :root {
         --bg: #0b1220;
-        --text: #f7f7f7; /* gray-200 */
-        --muted: #94a3b8; /* slate-400 */
+        --text: #f7f7f7;
+        --muted: #94a3b8;
+        --card-bg: #1c2536;
       }
-      nav.social a {
-    color: #fff; /* muda para claro no dark mode */
-  }
-    }   
-    
+      nav.social a { color: #fff; }
+    }
+
     * { box-sizing: border-box; }
-    html, body { height: 100%; }
-    body {
-      margin: 0;
-      font: 500 16px/1.4 system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
-      color: var(--text);
-      background: var(--bg);
-    }
+    html, body { margin:0; padding:0; font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Helvetica, Arial; background: var(--bg); color: var(--text); }
 
-    /* ===== Header ===== */
-    header.site-header {
+    /* Header */
+    header {
       position: sticky;
-      top: 0;
-      z-index: 50;
-      background: linear-gradient(180deg, rgba(0,0,0,0.02), rgba(0,0,0,0)) , var(--bg);
+      top:0;
+      background: var(--bg);
       backdrop-filter: saturate(150%) blur(6px);
-      border-bottom: 0px solid rgba(15, 23, 42, 0.08);
+      border-bottom: 1px solid rgba(15,23,42,.08);
+      z-index: 50;
     }
+    .container { max-width:1100px; margin:0 auto; padding:14px 20px; }
 
-    .container { max-width: 1100px; margin: 0 auto; padding: 14px 20px; }
+    .header-grid { display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:15px; }
 
-    .header-grid { 
-      display: grid;
-      grid-template-columns: 1fr auto;
-      align-items: center;
-      gap: 20px;
-    }
+    .brand { display:flex; align-items:center; gap:14px; }
+    .logo svg { width:56px; height:56px; fill: var(--accent); }
+    .identity .name { font-weight:700; font-size:1.125rem; }
+    .identity .role { color: var(--muted); font-size:.95rem; }
 
-    .brand {
-      display: grid;
-      grid-template-columns: 56px 1fr;
-      align-items: center;
-      gap: 14px;
-    }
+    nav.social { display:flex; gap:10px; }
+    nav.social a { width:40px; height:40px; display:flex; align-items:center; justify-content:center; text-decoration:none; transition: transform .15s ease, box-shadow .15s ease; }
+    nav.social a:hover { transform: translateY(-2px); }
+    nav.social img, nav.social svg { width:32px; height:32px; }
 
-    .logo svg {width: 100%; height: 100% }
-    
-    .fallback-logo { width: 28px; height: 28px; fill: var(--accent); opacity: .9; }
+    hr.divider { border:none; height:4px; background: var(--accent); margin:0 auto; width:100%; }
 
-    .identity { display: flex; flex-direction: column; }
-    .name { font-weight: 700; font-size: 1.125rem; letter-spacing: .2px; }
-    .role { color: var(--muted); font-size: .95rem; }
+    /* Sobre Mim */
+    #sobre-mim { display:flex; flex-wrap:wrap; gap:30px; padding:60px 20px; align-items:center; }
+    .about-photo { flex:1 1 250px; max-width:250px; border-radius:12px; overflow:hidden; box-shadow:0 4px 12px rgba(0,0,0,0.15); }
+    .about-photo img { width:100%; display:block; }
+    .about-text { flex:2 1 400px; line-height:1.6; color: var(--muted); }
 
-    /* ===== Social ===== */
-    nav.social { display: flex; gap: 10px; align-items: center; }
-    .social a {
-      --size: 40px; width: var(--size); height: var(--size);
-      display: inline-flex; align-items: center; justify-content: center;
-      text-decoration: none;
-      border: 0cap solid rgba(15, 23, 42, 0.08);
-      background: #ffffff10;
-      transition: transform .15s ease, box-shadow .15s ease, border-color .15s ease;
-    }
-    .social a:focus-visible { outline: none; box-shadow: 0 0 0 4px var(--ring); }
-    .social a:hover { transform: translateY(-1px); border-color: rgba(37,100,164,.45); }
-    .social svg { width: 32px; height: 32px; fill: currentColor; color: var(--text); opacity: .9; }
-    .social a[aria-label*="LinkedIn"] { color: #0a66c2; }
-    .social a[aria-label*="Instagram"] { color: #d62976; }
-    .social a[aria-label*="GitHub"] { color: #111827; }
-    .social a[aria-label*="Behance"] { color: #1769ff; }
-    .social a[aria-label*="Email"] { color: #25d366; }
- 
-    /* ===== Responsivo ===== */
-    @media (max-width: 720px) {
-      .header-grid { grid-template-columns: 1fr; gap: 12px; }
-      nav.social { justify-content: flex-start; }
-    }
+    /* Seções gerais */
+    h2 { font-family:'Avenir',sans-serif; font-size:32px; text-align:center; margin-bottom:40px; color: var(--accent); }
 
-    /* Motion preferência */
-    @media (prefers-reduced-motion: reduce) {
-      .social a { transition: none; }
-    }
+    /* Cards Material Design */
+    .card, .skill-card { background: var(--card-bg); border-radius:12px; padding:20px; box-shadow:0 2px 6px rgba(0,0,0,0.15); transition: transform .2s, box-shadow .2s; color: var(--muted); }
+    .card:hover, .skill-card:hover { transform: translateY(-4px); box-shadow:0 6px 18px rgba(0,0,0,0.25); }
 
- .divider {
-  border: none;
-  height: 40px;
-  background: var(--accent); /* sua cor de marca */
-  margin: 0px auto;
-  width: 100%; /* ajusta o tamanho */
-  border-radius: 0px;
-}
-    
-.icon svg {
-  width: 32px;
-  height: 32px;
-  fill: currentColor; /* pega a cor do texto ou da classe */
-}
+    /* Experiência Profissional */
+    .experience-grid { display:flex; flex-wrap:wrap; gap:20px; justify-content:center; }
 
-    /*  portifolio */
- h2 { text-align:center; margin: 20px 0; }
+    /* Competências Técnicas */
+    .skills-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(120px,1fr)); gap:30px; justify-items:center; align-items:start; }
 
-  /* Grid de imagens */
-  .portfolio-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 16px;
-    max-width: 1100px;
-    margin: 0 auto;
-    padding: 20px;
-  }
+    /* Portfólio */
+    .portfolio-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(220px,1fr)); gap:16px; max-width:1100px; margin:0 auto; padding:20px; }
+    .portfolio-item { position:relative; cursor:pointer; overflow:hidden; border-radius:12px; }
+    .portfolio-item img { width:100%; height:auto; display:block; transition: filter 0.3s ease, transform 0.3s ease; }
+    .portfolio-item:hover img { filter: blur(3px) brightness(0.6); transform: scale(1.05); }
+    .portfolio-item .overlay { position:absolute; bottom:0; width:100%; text-align:center; color:#fff; padding:10px 0; font-weight:bold; opacity:0; transition: opacity 0.3s ease; }
+    .portfolio-item:hover .overlay { opacity:1; }
 
-  .portfolio-item {
-    position: relative;
-    cursor: pointer;
-    overflow: hidden;
-    border-radius: 12px;
-  }
+    /* Lightbox */
+    .lightbox { display:none; position:fixed; z-index:1000; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.8); justify-content:center; align-items:center; }
+    .lightbox-content { background: var(--card-bg); max-width:90%; max-height:90%; padding:20px; border-radius:12px; overflow-y:auto; text-align:center; position:relative; }
+    .lightbox-content img { max-width:100%; border-radius:8px; }
+    .lightbox-content h3 { margin-top:12px; color:var(--accent); }
+    .lightbox-content p { color: var(--muted); }
+    .lightbox-close { position:absolute; top:10px; right:15px; font-size:24px; font-weight:bold; color: var(--accent); cursor:pointer; }
 
-  .portfolio-item img {
-    width: 100%;
-    height: auto;
-    display: block;
-    transition: filter 0.3s ease, transform 0.3s ease;
-  }
-
-  /* Hover efeito */
-  .portfolio-item:hover img {
-    filter: blur(3px) brightness(0.6);
-    transform: scale(1.05);
-  }
-
-  .portfolio-item .overlay {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    text-align: center;
-    color: white;
-    padding: 10px 0;
-    font-weight: bold;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-  }
-
-  .portfolio-item:hover .overlay {
-    opacity: 1;
-  }
-
-  /* Lightbox */
-  .lightbox {
-    display: none;
-    position: fixed;
-    z-index: 1000;
-    top:0; left:0; width:100%; height:100%;
-    background: var;
-    justify-content: center;
-    align-items: center;
-  }
-
-  .lightbox-content {
-    background: var;
-    max-width: 90%;
-    max-height: 90%;
-    padding: 20px;
-    border-radius: 12px;
-    overflow-y: auto;
-    text-align: center;
-    position: relative;
-  }
-
-  .lightbox-content img {
-    max-width: 100%;
-    height: auto;
-    border-radius: 8px;
-  }
-
-  .lightbox-content h3 { margin-top: 12px; }
-  .lightbox-content p { color: var; }
-
-  .lightbox-close {
-    position: absolute;
-    top:10px;
-    right:15px;
-    font-size: 24px;
-    font-weight: bold;
-    color: var;
-    cursor: pointer;
-  }
-    /* ===== Material Design Cards ===== */
-.card {
-  background: #fff;
-  border-radius: 12px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
-  padding: 20px;
-  transition: transform 0.2s, box-shadow 0.2s;
-  color: #475F7E;
-}
-
-.card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 6px 18px rgba(0,0,0,0.25);
-}
-
-/* Título das seções */
-h2 {
-  font-family: 'Avenir', sans-serif;
-  color: #2564A4;
-  font-size: 32px;
-  text-align: center;
-  margin-bottom: 40px;
-}
-
-/* Competências técnicas */
-.skill-card {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background: #fff;
-  border-radius: 12px;
-  padding: 20px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
-  transition: transform 0.2s, box-shadow 0.2s;
-}
-
-.skill-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 6px 18px rgba(0,0,0,0.25);
-}
-
-/* Sobre Mim - layout Material */
-.about-grid {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 30px;
-  align-items: center;
-}
-
-.about-photo {
-  flex: 1 1 250px;
-  max-width: 250px;
-  border-radius: 12px;
-  overflow: hidden;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-}
-
-.about-photo img {
-  width: 100%;
-  display: block;
-}
-
-.about-text {
-  flex: 2 1 400px;
-  color: var(--muted);
-  line-height: 1.6;
-}
-
+    /* Responsividade */
+    @media(max-width:720px){ #sobre-mim { flex-direction:column; } .header-grid{ flex-direction:column; } }
   </style>
 </head>
 <body>
-  <header class="site-header">
+
+  <!-- Header -->
+  <header>
     <div class="container">
-      <div class="header-grid" role="navigation" aria-label="Cabeçalho principal">
-        <!-- Lado esquerdo: Logo + Nome + Profissão -->
+      <div class="header-grid">
         <div class="brand">
           <div class="logo" aria-label="Logo">
-            <svg id="logo" xmlns="http://www.w3.org/2000/svg" width="56" height="56" viewBox="0 0 32 32"><path d="m30.12,0H1.88C.84,0,0,.84,0,1.88v28.24c0,1.04.84,1.88,1.88,1.88h28.24c1.04,0,1.88-.84,1.88-1.88V1.88c0-1.04-.84-1.88-1.88-1.88ZM3.2,3.2h6.4v11.73H3.2V3.2Zm12.8,25.6H3.2v-10.67h12.8v10.67Zm0-15.29v1.42h-3.2v-2.13h3.2v.71Zm0-4.98v2.14h-3.27v-3.2h3.27v1.06Zm0-4.62v1.42h-3.2v-2.13h3.2v.71Zm6.4,24.89h-3.2V3.2h3.2v25.6Zm6.4,0h-3.2V3.2h3.2v25.6Z" fill="currentcolor" fill-rule="evenodd"/></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="m30.12,0H1.88C.84,0,0,.84,0,1.88v28.24c0,1.04.84,1.88,1.88,1.88h28.24c1.04,0,1.88-.84,1.88-1.88V1.88c0-1.04-.84-1.88-1.88-1.88ZM3.2,3.2h6.4v11.73H3.2V3.2Zm12.8,25.6H3.2v-10.67h12.8v10.67Zm0-15.29v1.42h-3.2v-2.13h3.2v.71Zm0-4.98v2.14h-3.27v-3.2h3.27v1.06Zm0-4.62v1.42h-3.2v-2.13h3.2v.71Zm6.4,24.89h-3.2V3.2h3.2v25.6Zm6.4,0h-3.2V3.2h3.2v25.6Z" fill="currentcolor"/></svg>
           </div>
           <div class="identity">
             <div class="name">Isabelle Santos de Jesus</div>
-            <div class="role">Designer Gráfica | Operadora de Impressão Digital e Pré-impressão | Ilustradora</div>
+            <div class="role">Designer Gráfica | Impressão Digital & Pré-impressão | Ilustradora</div>
           </div>
         </div>
-
-        <!-- Lado direito: Ícones Sociais -->
-        <nav class="social" aria-label="Redes sociais">
-          <a href="https://www.linkedin.com/in/isabelle-santos-de-jesus-557446207/" target="_blank" rel="noopener" aria-label="LinkedIn">
-            <img src="https://raw.githubusercontent.com/stygian-blue/stygian-blue.github.io/198bec471deb5bd4f5ed4e95cea2334deff48478/images/linkedin-logo.svg"/>
-          </a>
-          <a href="https://www.instagram.com/_stygian.blue_/" target="_blank" rel="noopener" aria-label="Instagram">
-            <img src="https://raw.githubusercontent.com/stygian-blue/stygian-blue.github.io/198bec471deb5bd4f5ed4e95cea2334deff48478/images/instagram-logo.svg"/>
-          </a>
-          <a href="https://github.com/stygian-blue" target="_blank" rel="noopener" aria-label="GitHub">
-          <img src="https://raw.githubusercontent.com/stygian-blue/stygian-blue.github.io/d219d0edc385f6824fad987131f159dff897d9c6/images/github-icon.svg"/>
-          </a>
-          <a href="https://www.behance.net/bellsie" target="_blank" rel="noopener" aria-label="Behance">
-           <svg id="Behance" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32"><path d="m5.6,0h20.8c3.08,0,5.6,2.58,5.6,5.74v20.52c0,3.16-2.52,5.74-5.6,5.74H5.6C2.52,32,0,29.42,0,26.26V5.74C0,2.58,2.52,0,5.6,0Zm13.16,11.3h5.78v-1.35h-5.78v1.35Zm1.53,3.77c.36-.37.87-.56,1.53-.56.61,0,1.11.18,1.52.53.41.35.64.87.69,1.55h-4.43c.09-.64.32-1.15.69-1.52Zm-1.84,6.53c1,.81,2.15,1.21,3.46,1.21,1.59,0,2.82-.48,3.7-1.43.56-.61.88-1.2.95-1.78h-2.62c-.16.29-.33.51-.53.68-.37.3-.84.45-1.43.45-.55,0-1.02-.13-1.41-.37-.65-.4-.99-1.09-1.03-2.08h7.15c.01-.84-.01-1.49-.08-1.95-.12-.77-.38-1.44-.78-2.03-.45-.66-1.02-1.14-1.7-1.45-.69-.31-1.46-.46-2.31-.46-1.44,0-2.61.46-3.52,1.36-.9.91-1.35,2.22-1.35,3.92,0,1.81.5,3.12,1.5,3.93Zm-10.49-1.43v-3.54h3.26c.58,0,1.02.08,1.33.22.57.26.85.73.85,1.42,0,.82-.29,1.38-.87,1.66-.33.16-.78.24-1.35.24h-3.22Zm0-8.67h2.89c.63,0,1.15.07,1.57.21.47.19.71.6.71,1.22,0,.56-.18.95-.54,1.17s-.83.33-1.41.33h-3.22v-2.93Zm5.21,10.8c.57-.13,1.07-.35,1.5-.67.38-.28.69-.63.94-1.05.39-.62.59-1.33.59-2.12s-.17-1.41-.52-1.94c-.34-.54-.85-.93-1.53-1.17.45-.23.78-.48,1.01-.76.41-.49.62-1.15.62-1.96s-.21-1.46-.61-2.02c-.68-.92-1.83-1.39-3.44-1.42h-6.43v13.28h5.99c.68,0,1.3-.05,1.88-.17Z" fill="currentcolor" fill-rule="evenodd"/></svg>
-          </a>
-          <a href="mailto:isabellejesus2010@gmail.com" target="_blank" rel="noopener" aria-label="Gmail">
-            <img src="https://raw.githubusercontent.com/stygian-blue/stygian-blue.github.io/2fd2b1f3e9ff15a1caad8fd1bad03aed40b35218/images/mail-icon.svg">
-          </a>
+        <nav class="social">
+          <a href="https://www.linkedin.com/in/isabelle-santos-de-jesus-557446207/" target="_blank"><img src="https://raw.githubusercontent.com/stygian-blue/stygian-blue.github.io/198bec471deb5bd4f5ed4e95cea2334deff48478/images/linkedin-logo.svg" alt="LinkedIn"></a>
+          <a href="https://www.instagram.com/_stygian.blue_/" target="_blank"><img src="https://raw.githubusercontent.com/stygian-blue/stygian-blue.github.io/198bec471deb5bd4f5ed4e95cea2334deff48478/images/instagram-logo.svg" alt="Instagram"></a>
+          <a href="https://github.com/stygian-blue" target="_blank"><img src="https://raw.githubusercontent.com/stygian-blue/stygian-blue.github.io/d219d0edc385f6824fad987131f159dff897d9c6/images/github-icon.svg" alt="GitHub"></a>
+          <a href="mailto:isabellejesus2010@gmail.com"><img src="https://raw.githubusercontent.com/stygian-blue/stygian-blue.github.io/2fd2b1f3e9ff15a1caad8fd1bad03aed40b35218/images/mail-icon.svg" alt="Email"></a>
         </nav>
       </div>
     </div>
   </header>
 
-<hr class="divider">
-  <main class="container" style="padding: 28px 20px 20px; max-width: 900px;">
-  <h1 style="margin: 18px 0 8px; font-size: 2rem;">Sobre Mim</h1> 
+  <hr class="divider">
 
-  <div class="about-grid" style="display: flex; flex-wrap: wrap; gap: 20px; align-items: center;">
-    <!-- Foto -->
-    <div class="about-photo" style="flex: 1 1 250px; max-width: 250px;">
-      <img src="https://via.placeholder.com/250" alt="Isabelle Santos de Jesus" style="width:100%; border-radius:12px;">
+  <!-- Sobre Mim -->
+  <section id="sobre-mim">
+    <div class="about-photo">
+      <img src="https://via.placeholder.com/250x250.png?text=Foto" alt="Isabelle">
     </div>
-
-    <!-- Texto -->
-    <div class="about-text" style="flex: 2 1 400px;">
-      <p style="color: var(--muted); max-width: 65ch;">
-        Atuar nas áreas de design gráfico, impressão digital ou pré-impressão, contribuindo com minha experiência técnica e criatividade no desenvolvimento de materiais impressos e digitais. Formada em Artes Visuais, com experiência em gravação de chapas offset, operação de impressoras digitais e criação de peças gráficas. Experiência em gestão de conteúdo visual para redes sociais. Habilidades técnicas, senso estético apurado e facilidade para trabalho em equipe.
-      </p>
+    <div class="about-text">
+      <h2>Sobre Mim</h2>
+      <p>Atuar nas áreas de design gráfico, impressão digital ou pré-impressão, contribuindo com minha experiência técnica e criatividade no desenvolvimento de materiais impressos e digitais. Formada em Artes Visuais, com experiência em gravação de chapas offset, operação de impressoras digitais e criação de peças gráficas. Experiência em gestão de conteúdo visual para redes sociais. Habilidades técnicas, senso estético apurado e facilidade para trabalho em equipe.</p>
     </div>
-  </div>
-</main>
+  </section>
 
-<section id="experiencia-profissional" style="padding: 60px 20px; font-family: Arial, sans-serif; background-color: #F7F7F7;">
-  <h2>Experiência Profissional</h2>
-  <div style="display:flex; flex-wrap:wrap; gap:20px; justify-content:center;">
-    
-    <!-- Card 1 -->
-    <div class="card" style="width:300px;">
-      <div style="display:flex; align-items:center; margin-bottom:15px;">
-        <span style="font-size:24px; margin-right:10px;">📂</span>
-        <h3 style="margin:0; font-family:'Avenir', sans-serif; font-size:20px;">Gravadora de Chapas Júnior / Designer Gráfica</h3>
+  <!-- Experiência Profissional -->
+  <section id="experiencia-profissional" style="padding:60px 20px; background-color:#F7F7F7;">
+    <h2>Experiência Profissional</h2>
+    <div class="experience-grid">
+      <!-- Card 1 -->
+      <div class="card" style="width:300px;">
+        <h3>Gravadora de Chapas Júnior / Designer Gráfica</h3>
+        <p><strong>Impress Gráfica e Editora | 2024 – Atual</strong></p>
+        <ul>
+          <li>Gravação de chapas offset conforme padrões técnicos</li>
+          <li>Preparação e finalização de arquivos para impressão</li>
+          <li>Criação de posts para redes sociais e peças gráficas</li>
+        </ul>
       </div>
-      <p style="margin:0 0 10px; font-weight:bold;">Impress Gráfica e Editora | 2024 – Atual</p>
-      <ul style="margin:0; padding-left:20px;">
-        <li>Gravação de chapas offset conforme padrões técnicos</li>
-        <li>Preparação e finalização de arquivos para impressão</li>
-        <li>Criação de posts para redes sociais e peças gráficas</li>
-      </ul>
-    </div>
-
-    <!-- Card 2 -->
-    <div class="card" style="width:300px;">
-      <div style="display:flex; align-items:center; margin-bottom:15px;">
-        <span style="font-size:24px; margin-right:10px;">📂</span>
-        <h3 style="margin:0; font-family:'Avenir', sans-serif; font-size:20px;">Assistente Administrativo / Designer</h3>
+      <!-- Card 2 -->
+      <div class="card" style="width:300px;">
+        <h3>Assistente Administrativo / Designer</h3>
+        <p><strong>Lebazi Indústria e Comércio | 2022 – 2024</strong></p>
+        <ul>
+          <li>Organização do escritório e rotina administrativa</li>
+          <li>Design de produtos e criação de peças promocionais</li>
+        </ul>
       </div>
-      <p style="margin:0 0 10px; font-weight:bold;">Lebazi Indústria e Comércio | 2022 – 2024</p>
-      <ul style="margin:0; padding-left:20px;">
-        <li>Organização do escritório e rotina administrativa</li>
-        <li>Design de produtos e criação de peças promocionais</li>
-      </ul>
-    </div>
-
-    <!-- Card 3 -->
-    <div class="card" style="width:300px;">
-      <div style="display:flex; align-items:center; margin-bottom:15px;">
-        <span style="font-size:24px; margin-right:10px;">📂</span>
-        <h3 style="margin:0; font-family:'Avenir', sans-serif; font-size:20px;">Professora de Desenho</h3>
+      <!-- Card 3 -->
+      <div class="card" style="width:300px;">
+        <h3>Professora de Desenho</h3>
+        <p><strong>EBAC – Escola de Desenho e Arte Digital | 2020 – 2021</strong></p>
+        <ul>
+          <li>Comunicação com alunos e aplicação de atividades individuais</li>
+          <li>Organização do espaço de aula e condução de turmas de desenho</li>
+        </ul>
       </div>
-      <p style="margin:0 0 10px; font-weight:bold;">EBAC – Escola de Desenho e Arte Digital | 2020 – 2021</p>
-      <ul style="margin:0; padding-left:20px;">
-        <li>Comunicação com alunos e aplicação de atividades individuais</li>
-        <li>Organização do espaço de aula e condução de turmas de desenho</li>
-      </ul>
     </div>
+  </section>
 
-  </div>
-</section>
-
-</section>
-  
-<section id="competencias-tecnicas" style="padding: 60px 20px; background-color:#F7F7F7;">
-  <h2>Competências Técnicas</h2>
-  <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(120px, 1fr)); gap:30px; justify-items:center; align-items:start;">
-
-    <!-- Competência 1 -->
-    <div class="skill-card">
-      <img src="https://raw.githubusercontent.com/stygian-blue/portifolio-images/effc02f4f2aabe7129938ed340b1239dc9883243/coreldraw%20icon.svg" alt="CorelDRAW" style="width:50px; height:50px; margin-bottom:10px;">
-      <span style="font-size:18px; margin-bottom:5px;">CorelDRAW</span>
-      <div style="color:#2564A4; font-size:18px;">★★★★★</div>
+  <!-- Competências Técnicas -->
+  <section id="competencias-tecnicas" style="padding:60px 20px; background-color:#F7F7F7;">
+    <h2>Competências Técnicas</h2>
+    <div class="skills-grid">
+      <div class="skill-card">
+        <img src="https://raw.githubusercontent.com/stygian-blue/portifolio-images/effc02f4f2aabe7129938ed340b1239dc9883243/coreldraw%20icon.svg" alt="CorelDRAW" style="width:50px; height:50px; margin-bottom:10px;">
+        <span>CorelDRAW</span>
+        <div style="color:var(--accent)">★★★★★</div>
+      </div>
+      <div class="skill-card">
+        <img src="https://raw.githubusercontent.com/stygian-blue/portifolio-images/main/photoshop.svg" alt="Photoshop" style="width:50px; height:50px; margin-bottom:10px;">
+        <span>Photoshop</span>
+        <div style="color:var(--accent)">★★★★☆</div>
+      </div>
+      <div class="skill-card">
+        <img src="https://raw.githubusercontent.com/stygian-blue/portifolio-images/main/illustrator.svg" alt="Illustrator" style="width:50px; height:50px; margin-bottom:10px;">
+        <span>Illustrator</span>
+        <div style="color:var(--accent)">★★★★☆</div>
+      </div>
     </div>
+  </section>
 
-    <!-- Repetir para as outras competências -->
-  </div>
-</section>
-
-
-    <!-- Competência 2 -->
-    <div style="display:flex; flex-direction:column; align-items:center;">
-      <img src="https://raw.githubusercontent.com/stygian-blue/portifolio-images/effc02f4f2aabe7129938ed340b1239dc9883243/illustrator%20icon.svg" alt="Illustrator" style="width:50px; height:50px; margin-bottom:10px;">
-      <span style="font-family: Arial, sans-serif; color:#475F7E; font-size:18px; margin-bottom:5px;">Illustrator</span>
-      <div style="color:#2564A4; font-size:18px;">★★★★☆</div>
+  <!-- Portfólio -->
+  <section id="portfolio" style="padding:60px 20px;">
+    <h2>Portfólio</h2>
+    <div class="portfolio-grid">
+      <div class="portfolio-item" data-title="Projeto 1" data-desc="Descrição do Projeto 1">
+        <img src="https://via.placeholder.com/400x300.png?text=Projeto+1" alt="Projeto 1">
+        <div class="overlay">Projeto 1</div>
+      </div>
+      <div class="portfolio-item" data-title="Projeto 2" data-desc="Descrição do Projeto 2">
+        <img src="https://via.placeholder.com/400x300.png?text=Projeto+2" alt="Projeto 2">
+        <div class="overlay">Projeto 2</div>
+      </div>
+      <div class="portfolio-item" data-title="Projeto 3" data-desc="Descrição do Projeto 3">
+        <img src="https://via.placeholder.com/400x300.png?text=Projeto+3" alt="Projeto 3">
+        <div class="overlay">Projeto 3</div>
+      </div>
     </div>
+  </section>
 
-    <!-- Competência 3 -->
-    <div style="display:flex; flex-direction:column; align-items:center;">
-      <img src="https://raw.githubusercontent.com/stygian-blue/portifolio-images/effc02f4f2aabe7129938ed340b1239dc9883243/photoshop%20icon.svg" alt="Photoshop" style="width:50px; height:50px; margin-bottom:10px;">
-      <span style="font-family: Arial, sans-serif; color:#475F7E; font-size:18px; margin-bottom:5px;">Photoshop</span>
-      <div style="color:#2564A4; font-size:18px;">★★★★☆</div>
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox">
+    <div class="lightbox-content">
+      <span class="lightbox-close" id="lightbox-close">&times;</span>
+      <img src="" alt="" id="lightbox-img">
+      <h3 id="lightbox-title"></h3>
+      <p id="lightbox-desc"></p>
     </div>
-
-    <!-- Competência 4 -->
-    <div style="display:flex; flex-direction:column; align-items:center;">
-      <img src="https://raw.githubusercontent.com/stygian-blue/portifolio-images/effc02f4f2aabe7129938ed340b1239dc9883243/indesign%20icon.svg" alt="InDesign" style="width:50px; height:50px; margin-bottom:10px;">
-      <span style="font-family: Arial, sans-serif; color:#475F7E; font-size:18px; margin-bottom:5px;">InDesign</span>
-      <div style="color:#2564A4; font-size:18px;">★★★★☆</div>
-    </div>
-
-    <!-- Competência 5 -->
-    <div style="display:flex; flex-direction:column; align-items:center;">
-      <img src="https://raw.githubusercontent.com/stygian-blue/portifolio-images/effc02f4f2aabe7129938ed340b1239dc9883243/capcut%20desktop%20icon.svg" alt="CapCut Desktop" style="width:50px; height:50px; margin-bottom:10px;">
-      <span style="font-family: Arial, sans-serif; color:#475F7E; font-size:18px; margin-bottom:5px;">CapCut Desktop</span>
-      <div style="color:#2564A4; font-size:18px;">★★★☆☆</div>
-    </div>
-
-    <!-- Competência 6 -->
-    <div style="display:flex; flex-direction:column; align-items:center;">
-      <img src="https://raw.githubusercontent.com/stygian-blue/portifolio-images/91a638249b2ce74fb138cd4812e303e2c8f84bc0/figma%20icon.svg" alt="Figma" style="width:50px; height:50px; margin-bottom:10px;">
-      <span style="font-family: Arial, sans-serif; color:#475F7E; font-size:18px; margin-bottom:5px;">Figma</span>
-      <div style="color:#2564A4; font-size:18px;">★★★☆☆</div>
-    </div>
-
-    <!-- Competência 9 -->
-    <div style="display:flex; flex-direction:column; align-items:center;">
-      <img src="https://raw.githubusercontent.com/stygian-blue/portifolio-images/effc02f4f2aabe7129938ed340b1239dc9883243/pacote%20office%20icon.svg" alt="Pacote Office" style="width:50px; height:50px; margin-bottom:10px;">
-      <span style="font-family: Arial, sans-serif; color:#475F7E; font-size:18px; margin-bottom:5px;">Pacote Office</span>
-      <div style="color:#2564A4; font-size:18px;">★★★☆☆</div>
-    </div>
-
-  </div>
-</section>
-
-<h2>Meu Portfólio</h2>
-
-<div class="portfolio-grid">
-  <div class="portfolio-item" data-title="Projeto 1" data-desc="Descrição do trabalho e programas usados: Photoshop, Illustrator">
-    <img src="https://via.placeholder.com/400x300.png?text=Projeto+1" alt="Projeto 1">
-    <div class="overlay">Projeto 1</div>
   </div>
 
-  <div class="portfolio-item" data-title="Projeto 2" data-desc="Descrição do trabalho e programas usados: Figma, Photoshop">
-    <img src="https://via.placeholder.com/400x300.png?text=Projeto+2" alt="Projeto 2">
-    <div class="overlay">Projeto 2</div>
-  </div>
+  <script>
+    const portfolioItems = document.querySelectorAll('.portfolio-item');
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+    const lightboxTitle = document.getElementById('lightbox-title');
+    const lightboxDesc = document.getElementById('lightbox-desc');
+    const lightboxClose = document.getElementById('lightbox-close');
 
-  <div class="portfolio-item" data-title="Projeto 3" data-desc="Descrição do trabalho e programas usados: Illustrator, After Effects">
-    <img src="https://via.placeholder.com/400x300.png?text=Projeto+3" alt="Projeto 3">
-    <div class="overlay">Projeto 3</div>
-  </div>
-  <!-- Adicione mais itens aqui -->
-</div>
-
-<!-- Lightbox -->
-<div class="lightbox" id="lightbox">
-  <div class="lightbox-content">
-    <span class="lightbox-close" id="lightbox-close">&times;</span>
-    <img src="" alt="" id="lightbox-img">
-    <h3 id="lightbox-title"></h3>
-    <p id="lightbox-desc"></p>
-  </div>
-</div>
-
-<script>
-  const items = document.querySelectorAll('.portfolio-item');
-  const lightbox = document.getElementById('lightbox');
-  const lightboxImg = document.getElementById('lightbox-img');
-  const lightboxTitle = document.getElementById('lightbox-title');
-  const lightboxDesc = document.getElementById('lightbox-desc');
-  const lightboxClose = document.getElementById('lightbox-close');
-
-  items.forEach(item => {
-    item.addEventListener('click', () => {
-      lightboxImg.src = item.querySelector('img').src;
-      lightboxImg.alt = item.querySelector('img').alt;
-      lightboxTitle.textContent = item.dataset.title;
-      lightboxDesc.textContent = item.dataset.desc;
-      lightbox.style.display = 'flex';
+    portfolioItems.forEach(item => {
+      item.addEventListener('click', () => {
+        lightbox.style.display = 'flex';
+        lightboxImg.src = item.querySelector('img').src;
+        lightboxTitle.textContent = item.dataset.title;
+        lightboxDesc.textContent = item.dataset.desc;
+      });
     });
-  });
 
-  lightboxClose.addEventListener('click', () => {
-    lightbox.style.display = 'none';
-  });
+    lightboxClose.addEventListener('click', () => {
+      lightbox.style.display = 'none';
+    });
 
-  lightbox.addEventListener('click', (e) => {
-    if(e.target === lightbox) lightbox.style.display = 'none';
-  });
-</script>
-
+    lightbox.addEventListener('click', (e) => {
+      if(e.target === lightbox) lightbox.style.display = 'none';
+    });
+  </script>
 </body>
 </html>
