@@ -13,22 +13,25 @@ body, h1, h2, h3, h4, h5, h6, p, ul, li, a, div, span {
   font-family: Arial, sans-serif;
 }
 
-    :root {
-      --accent: #2564A4;
-      --bg: #fafafa;
-      --text: #F7F7F7;
-      --muted: #1c354e;
-      --ring: rgba(37, 100, 164, 0.4);
-      --card-bg: #7dbac8;
-    }
+   :root {
+  --accent: #556B2F; /* Verde musgo */
+  --bg: #E3DCC3; /* Bege claro */
+  --card-bg: #A8B88F; /* Verde suave */
+  --text: #1C1C1C; /* Preto quase puro */
+  --muted: #475F7E; /* Cinza esverdeado */
+  --ring: rgba(85,107,47,0.4); /* Verde musgo translúcido */
+}
+
 
     @media (prefers-color-scheme: dark) {
       :root {
-        --bg: #2d355e;
-        --text: #f7f7f7;
-        --muted: #7dbac8;
-        --card-bg: #f7f7f7;
-      }
+  --accent: #D4A017; /* Amarelo queimado */
+  --bg: #2B3A2B; /* Verde musgo profundo */
+  --card-bg: #3C2F2F; /* Marrom escuro */
+  --text: #F1F1F1; /* Branco suave */
+  --muted: #A0AFA0; /* Cinza esverdeado */
+  --ring: rgba(212, 160, 23, 0.4); /* Amarelo queimado translúcido */
+}
       nav.social a { color: #fff; }
     }
 
