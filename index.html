@@ -1,44 +1,47 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Isabelle Santos de Jesus | Portfólio</title>
 
- <link rel="icon" href="https://raw.githubusercontent.com/stygian-blue/stygian-blue.github.io/3c2712fc6595f15ed1375ef3a76e0d8927c23271/images/logo.svg" type="image/svg+xml">
+  <link rel="icon" href="https://raw.githubusercontent.com/stygian-blue/stygian-blue.github.io/3c2712fc6595f15ed1375ef3a76e0d8927c23271/images/logo.svg" type="image/svg+xml">
 
   <style>
     /* Fonte global */
-body, h1, h2, h3, h4, h5, h6, p, ul, li, a, div, span {
-  font-family: Arial, sans-serif;
-}
+    body, h1, h2, h3, h4, h5, h6, p, ul, li, a, div, span {
+      font-family: Arial, sans-serif;
+    }
 
-   :root {
-  --accent: #2D355E;
-  --bg: #F7F7F7;
-  --card-bg: #7DBAC8;
-  --text: #373435; 
-  --muted: #606062; 
-  --ring: rgba(85,107,47,0.4); 
-}
+    :root {
+      --accent: #2D355E;
+      --bg: #F7F7F7;
+      --card-bg: #7DBAC8;
+      --text: #373435;
+      --muted: #606062;
+      --ring: rgba(85,107,47,0.4);
+    }
 
-
+    /* Dark mode vars */
     @media (prefers-color-scheme: dark) {
       :root {
-  --accent: #2D355E; 
-  --bg: #1C354E; 
-  --card-bg: #3C2F2F; 
-  --text: #F1F1F1; 
-  --muted: #7DBAC8; 
-  --ring: rgba(212, 160, 23, 0.4); 
-}
-     nav.social a {
-  color: var(--text); /* muda no light mode */
-}
-}
+        --accent: #2D355E;
+        --bg: #1C354E;
+        --card-bg: #3C2F2F;
+        --text: #F1F1F1;
+        --muted: #7DBAC8;
+        --ring: rgba(212, 160, 23, 0.4);
+      }
 
+      /* ícones nas redes no dark mode */
+      nav.social a {
+        color: var(--text);
+      }
+    } /* <-- FECHA O @media AQUI */
+
+    /* GLOBALS (fora do media) */
     * { box-sizing: border-box; }
-    html, body { margin:0; padding:0; font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Helvetica, Arial; background: var(--bg); color: var(--text); }
+    html, body { margin:0; padding:0; font-family: system-ui, -apple-system, "Segoe UI", Roboto, Ubuntu, Cantarell, "Noto Sans", Helvetica, Arial; background: var(--bg); color: var(--text); }
 
     /* Header */
     header {
@@ -58,10 +61,14 @@ body, h1, h2, h3, h4, h5, h6, p, ul, li, a, div, span {
     .identity .name { font-weight:700; font-size:1.125rem; }
     .identity .role { color: var(--muted); font-size:.95rem; }
 
+    /* Social icons: padrão (light mode) */
     nav.social { display:flex; gap:10px; }
-    nav.social a { width:40px; height:40px; display:flex; align-items:center; justify-content:center; text-decoration:none; transition: transform .15s ease, box-shadow .15s ease; }
+    nav.social a { width:40px; height:40px; display:flex; align-items:center; justify-content:center; text-decoration:none; transition: transform .15s ease, box-shadow .15s ease; color: var(--accent); }
     nav.social a:hover { transform: translateY(-2px); }
     nav.social img, nav.social svg { width:32px; height:32px; }
+
+    /* força os SVGs a usar a cor herdada (currentColor) */
+    nav.social a svg { fill: currentColor; }
 
     hr.divider { border:none; height:4px; background: var(--accent); margin:0 auto; width:100%; }
 
@@ -103,9 +110,6 @@ body, h1, h2, h3, h4, h5, h6, p, ul, li, a, div, span {
     /* Responsividade */
     @media(max-width:720px){ #sobre-mim { flex-direction:column; } .header-grid{ flex-direction:column; } }
   </style>
-</head>
-<body>
-
   <!-- Header -->
   <header>
     <div class="container">
