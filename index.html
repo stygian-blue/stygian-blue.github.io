@@ -204,6 +204,74 @@
     color: var;
     cursor: pointer;
   }
+    /* ===== Material Design Cards ===== */
+.card {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+  padding: 20px;
+  transition: transform 0.2s, box-shadow 0.2s;
+  color: #475F7E;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.25);
+}
+
+/* Título das seções */
+h2 {
+  font-family: 'Avenir', sans-serif;
+  color: #2564A4;
+  font-size: 32px;
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+/* Competências técnicas */
+.skill-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: #fff;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.skill-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.25);
+}
+
+/* Sobre Mim - layout Material */
+.about-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  align-items: center;
+}
+
+.about-photo {
+  flex: 1 1 250px;
+  max-width: 250px;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.about-photo img {
+  width: 100%;
+  display: block;
+}
+
+.about-text {
+  flex: 2 1 400px;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
   </style>
 </head>
 <body>
@@ -262,19 +330,18 @@
   </div>
 </main>
 
-<section id="experiencia-profissional" style="padding: 0px 5px; font-family: Arial, sans-serif;">
-  <h2 style="font-family: 'Avenir', sans-serif; color:#475F7E; font-size:30px; text-align:center; margin-bottom:30px;">Experiência Profissional</h2>
-
+<section id="experiencia-profissional" style="padding: 60px 20px; font-family: Arial, sans-serif; background-color: #F7F7F7;">
+  <h2>Experiência Profissional</h2>
   <div style="display:flex; flex-wrap:wrap; gap:20px; justify-content:center;">
     
     <!-- Card 1 -->
-    <div style="background:#ffffff; border-radius:10px; padding:20px; width:300px; box-shadow:0 4px 8px rgba(0,0,0,0.1); font-family: Arial, sans-serif; color:#475F7E; font-size:18px;">
+    <div class="card" style="width:300px;">
       <div style="display:flex; align-items:center; margin-bottom:15px;">
         <span style="font-size:24px; margin-right:10px;">📂</span>
-        <h3 style="margin:0; font-family:'Avenir', sans-serif; font-size:22px; color:#475F7E;">Gravadora de Chapas Júnior / Designer Gráfica</h3>
+        <h3 style="margin:0; font-family:'Avenir', sans-serif; font-size:20px;">Gravadora de Chapas Júnior / Designer Gráfica</h3>
       </div>
-      <p style="margin:0 0 5px; font-weight:bold;">Impress Gráfica e Editora | 2024 – Atual</p>
-      <ul style="margin:10px 0 0; padding-left:20px;">
+      <p style="margin:0 0 10px; font-weight:bold;">Impress Gráfica e Editora | 2024 – Atual</p>
+      <ul style="margin:0; padding-left:20px;">
         <li>Gravação de chapas offset conforme padrões técnicos</li>
         <li>Preparação e finalização de arquivos para impressão</li>
         <li>Criação de posts para redes sociais e peças gráficas</li>
@@ -282,26 +349,26 @@
     </div>
 
     <!-- Card 2 -->
-    <div style="background:#ffffff; border-radius:10px; padding:20px; width:300px; box-shadow:0 4px 8px rgba(0,0,0,0.1); font-family: Arial, sans-serif; color:#475F7E; font-size:18px;">
+    <div class="card" style="width:300px;">
       <div style="display:flex; align-items:center; margin-bottom:15px;">
         <span style="font-size:24px; margin-right:10px;">📂</span>
-        <h3 style="margin:0; font-family:'Avenir', sans-serif; font-size:22px; color:#475F7E;">Assistente Administrativo / Designer</h3>
+        <h3 style="margin:0; font-family:'Avenir', sans-serif; font-size:20px;">Assistente Administrativo / Designer</h3>
       </div>
-      <p style="margin:0 0 5px; font-weight:bold;">Lebazi Indústria e Comércio | 2022 – 2024</p>
-      <ul style="margin:10px 0 0; padding-left:20px;">
+      <p style="margin:0 0 10px; font-weight:bold;">Lebazi Indústria e Comércio | 2022 – 2024</p>
+      <ul style="margin:0; padding-left:20px;">
         <li>Organização do escritório e rotina administrativa</li>
         <li>Design de produtos e criação de peças promocionais</li>
       </ul>
     </div>
 
     <!-- Card 3 -->
-    <div style="background:#ffffff; border-radius:10px; padding:20px; width:300px; box-shadow:0 4px 8px rgba(0,0,0,0.1); font-family: Arial, sans-serif; color:#475F7E; font-size:18px;">
+    <div class="card" style="width:300px;">
       <div style="display:flex; align-items:center; margin-bottom:15px;">
         <span style="font-size:24px; margin-right:10px;">📂</span>
-        <h3 style="margin:0; font-family:'Avenir', sans-serif; font-size:22px; color:#475F7E;">Professora de Desenho</h3>
+        <h3 style="margin:0; font-family:'Avenir', sans-serif; font-size:20px;">Professora de Desenho</h3>
       </div>
-      <p style="margin:0 0 5px; font-weight:bold;">EBAC – Escola de Desenho e Arte Digital | 2020 – 2021</p>
-      <ul style="margin:10px 0 0; padding-left:20px;">
+      <p style="margin:0 0 10px; font-weight:bold;">EBAC – Escola de Desenho e Arte Digital | 2020 – 2021</p>
+      <ul style="margin:0; padding-left:20px;">
         <li>Comunicação com alunos e aplicação de atividades individuais</li>
         <li>Organização do espaço de aula e condução de turmas de desenho</li>
       </ul>
@@ -309,18 +376,24 @@
 
   </div>
 </section>
-  
-<section id="competencias-tecnicas" style="padding:40px 20px; background-color:#F7F7F7; font-family: Arial, sans-serif;">
-  <h2 style="font-family: 'Avenir', sans-serif; color:#475F7E; font-size:30px; text-align:center; margin-bottom:30px;">Competências Técnicas</h2>
 
+</section>
+  
+<section id="competencias-tecnicas" style="padding: 60px 20px; background-color:#F7F7F7;">
+  <h2>Competências Técnicas</h2>
   <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(120px, 1fr)); gap:30px; justify-items:center; align-items:start;">
-    
+
     <!-- Competência 1 -->
-    <div style="display:flex; flex-direction:column; align-items:center;">
+    <div class="skill-card">
       <img src="https://raw.githubusercontent.com/stygian-blue/portifolio-images/effc02f4f2aabe7129938ed340b1239dc9883243/coreldraw%20icon.svg" alt="CorelDRAW" style="width:50px; height:50px; margin-bottom:10px;">
-      <span style="font-family: Arial, sans-serif; color:#475F7E; font-size:18px; margin-bottom:5px;">CorelDRAW</span>
+      <span style="font-size:18px; margin-bottom:5px;">CorelDRAW</span>
       <div style="color:#2564A4; font-size:18px;">★★★★★</div>
     </div>
+
+    <!-- Repetir para as outras competências -->
+  </div>
+</section>
+
 
     <!-- Competência 2 -->
     <div style="display:flex; flex-direction:column; align-items:center;">
