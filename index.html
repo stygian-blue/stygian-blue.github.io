@@ -95,21 +95,23 @@
     .skills-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(120px,1fr)); gap:30px; justify-items:center; align-items:start; }
 
     /* Noise filter */
-    .noise-bg{
-position: relative;
-overflow: hidden;
+    .noise-bg {
+  position: relative;
+  overflow: hidden;
 }
 
-
-    .noise-bg::after{
-content: "";
-position: absolute;
-top:0;left:0;right:0;bottom:0;
-background-image: url("https://github.com/stygian-blue/stygian-blue.github.io/blob/main/images/grey-paper-texture.jpg?raw=true");
-opacity:0.05;
-backgroud-repeat: repeat;
-pointer-events:none;
+.noise-bg::after {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-image: url("https://github.com/stygian-blue/stygian-blue.github.io/blob/main/images/grey-paper-texture.jpg?raw=true");
+  background-repeat: repeat;
+  background-size: auto;
+  opacity: 0.05;
+  pointer-events: none;
+  z-index: 10; 
 }
+
     /* Portfólio */
     .portfolio-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(220px,1fr)); gap:16px; max-width:1100px; margin:0 auto; padding:20px; }
     .portfolio-item { position:relative; cursor:pointer; overflow:hidden; border-radius:12px; }
