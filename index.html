@@ -43,16 +43,14 @@
     }
     .header-grid { display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:15px; max-width:1100px; margin:0 auto; }
     .brand { display:flex; align-items:center; gap:14px; }
-    .logo svg { width:56px; height:56px; fill: var(--accent); }
+    .brand .logo { width:56px; height:56px; fill: var(--accent); }
     .identity .name { font-weight:700; font-size:1.125rem; }
     .identity .role { color: var(--muted); font-size:.95rem; }
     nav.social { display:flex; gap:10px; }
     nav.social a { width:40px; height:40px; display:flex; align-items:center; justify-content:center; text-decoration:none; color: var(--accent); transition: transform .15s ease; }
     nav.social a:hover { transform: translateY(-2px); }
 
-    hr.divider { border:none; height:4px; background: var(--accent); width:100%; margin:0 auto; }
-
-    /* Noise background */
+        /* Noise background */
     body::after {
       content:"";
       position:fixed;
@@ -111,7 +109,7 @@
   <header>
     <div class="header-grid">
       <div class="brand">
-        <div class="logo svg" aria-label="logo">
+        <div class="logo" aria-label="logo">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="m30.12,0H1.88C.84,0,0,.84,0,1.88v28.24c0,1.04.84,1.88,1.88,1.88h28.24c1.04,0,1.88-.84,1.88-1.88V1.88c0-1.04-.84-1.88-1.88-1.88ZM3.2,3.2h6.4v11.73H3.2V3.2Zm12.8,25.6H3.2v-10.67h12.8v10.67Zm0-15.29v1.42h-3.2v-2.13h3.2v.71Zm0-4.98v2.14h-3.27v-3.2h3.27v1.06Zm0-4.62v1.42h-3.2v-2.13h3.2v.71Zm6.4,24.89h-3.2V3.2h3.2v25.6Zm6.4,0h-3.2V3.2h3.2v25.6Z" fill="CurrentColor"/></svg>
         </div>
         <div class="identity">
