@@ -4,7 +4,6 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Isabelle Santos de Jesus | Portfólio</title>
-
   <link rel="icon" href="https://raw.githubusercontent.com/stygian-blue/stygian-blue.github.io/3c2712fc6595f15ed1375ef3a76e0d8927c23271/images/logo.svg" type="image/svg+xml">
 
   <style>
@@ -39,6 +38,22 @@
     * { box-sizing: border-box; }
     html, body { margin:0; padding:0; font-family: system-ui, -apple-system, "Segoe UI", Roboto, Ubuntu, Cantarell, "Noto Sans", Helvetica, Arial; background: var(--bg); color: var(--text); }
 
+    /* Noise filter global para seções com background sólido */
+    section {
+      position: relative;
+      overflow: hidden;
+    }
+    section::after {
+      content: "";
+      position: absolute;
+      top:0; left:0; right:0; bottom:0;
+      pointer-events: none;
+      z-index: 10;
+      background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="4" height="4"><rect width="1" height="1" fill="rgba(0,0,0,0.02)"/><rect x="3" y="3" width="1" height="1" fill="rgba(0,0,0,0.02)"/></svg>');
+      background-repeat: repeat;
+      opacity: 0.08;
+    }
+
     /* Header */
     header {
       position: sticky;
@@ -49,65 +64,38 @@
       z-index: 50;
     }
     .container { max-width:1100px; margin:0 auto; padding:14px 20px; }
-
     .header-grid { display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:15px; }
-
     .brand { display:flex; align-items:center; gap:14px; }
     .logo svg { width:56px; height:56px; fill: var(--accent); }
     .identity .name { font-weight:700; font-size:1.125rem; }
     .identity .role { color: var(--muted); font-size:.95rem; }
-
-    /* Social icons */
     nav.social { display:flex; gap:10px; }
     nav.social a { width:40px; height:40px; display:flex; align-items:center; justify-content:center; text-decoration:none; transition: transform .15s ease, box-shadow .15s ease; color: var(--accent); }
     nav.social a:hover { transform: translateY(-2px); }
     nav.social img, nav.social svg { width:32px; height:32px; }
     nav.social a svg { fill: currentColor; }
-
     hr.divider { border:none; height:4px; background: var(--accent); margin:0 auto; width:100%; }
 
-    /* Seções principais com Noise */
-    .noise-bg {
-      position: relative;
-      overflow: hidden;
-      background: var(--bg);
-    }
-
-    .noise-bg::after {
-      content: "";
-      position: absolute;
-      top: 0; left: 0; right: 0; bottom: 0;
-      background-image: url("https://github.com/stygian-blue/stygian-blue.github.io/blob/main/images/grey-paper-texture.jpg?raw=true");
-      background-repeat: repeat;
-      background-size: auto;
-      opacity: 0.05;
-      pointer-events: none;
-      z-index: 10;
-    }
-
-    @media (prefers-color-scheme: dark) {
-      .noise-bg::after {
-        opacity: 0.03;
-      }
-    }
-
     /* Sobre Mim */
-    #sobre-mim { display:flex; flex-wrap:wrap; gap:30px; padding:60px 20px; align-items:center; }
+    #sobre-mim { display:flex; flex-wrap:wrap; gap:30px; padding:60px 20px; align-items:center; z-index: 0; }
     .about-photo { flex:1 1 250px; max-width:250px; border-radius:12px; overflow:hidden; box-shadow:0 4px 12px rgba(0,0,0,0.15); }
     .about-photo img { width:100%; display:block; }
     .about-text { flex:2 1 400px; line-height:1.6; color: var(--muted); }
     h2 { font-size:32px; text-align:center; margin-bottom:40px; color: var(--accent); }
 
     /* Cards Material Design */
-    .card, .skill-card { background: var(--card-bg); border-radius:12px; padding:20px; box-shadow:0 2px 6px rgba(0,0,0,0.15); transition: transform .2s, box-shadow .2s; color: var(--muted); }
+    .card, .skill-card { background: var(--card-bg); border-radius:12px; padding:20px; box-shadow:0 2px 6px rgba(0,0,0,0.15); transition: transform .2s, box-shadow .2s; color: var(--muted); position: relative; z-index: 1; }
     .card:hover, .skill-card:hover { transform: translateY(-4px); box-shadow:0 6px 18px rgba(0,0,0,0.25); }
 
+    /* Experiência Profissional */
     .experience-grid { display:flex; flex-wrap:wrap; gap:20px; justify-content:center; }
+
+    /* Competências Técnicas */
     .skills-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(120px,1fr)); gap:30px; justify-items:center; align-items:start; }
 
     /* Portfólio */
     .portfolio-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(220px,1fr)); gap:16px; max-width:1100px; margin:0 auto; padding:20px; }
-    .portfolio-item { position:relative; cursor:pointer; overflow:hidden; border-radius:12px; }
+    .portfolio-item { position:relative; cursor:pointer; overflow:hidden; border-radius:12px; z-index: 1; }
     .portfolio-item img { width:100%; height:auto; display:block; transition: filter 0.3s ease, transform 0.3s ease; }
     .portfolio-item:hover img { filter: blur(3px) brightness(0.6); transform: scale(1.05); }
     .portfolio-item .overlay { position:absolute; bottom:0; width:100%; text-align:center; color:#fff; padding:10px 0; font-weight:bold; opacity:0; transition: opacity 0.3s ease; }
@@ -123,10 +111,10 @@
 
     /* Responsividade */
     @media(max-width:720px){ #sobre-mim { flex-direction:column; } .header-grid{ flex-direction:column; } }
+
   </style>
 </head>
 <body>
-
   <!-- Header -->
   <header>
     <div class="container">
@@ -141,10 +129,7 @@
           </div>
         </div>
         <nav class="social">
-          <a href="https://www.linkedin.com/in/isabelle-santos-de-jesus-557446207/" target="_blank"><svg ...></svg></a>
-          <a href="https://www.instagram.com/_stygian.blue_/" target="_blank"><svg ...></svg></a>
-          <a href="https://github.com/stygian-blue" target="_blank"><svg ...></svg></a>
-          <a href="mailto:isabellejesus2010@gmail.com"><svg ...></svg></a>
+          <!-- Seus links de redes sociais aqui -->
         </nav>
       </div>
     </div>
@@ -152,35 +137,38 @@
 
   <hr class="divider">
 
-  <!-- Seções com Noise -->
-  <section id="sobre-mim" class="noise-bg">
+  <!-- Sobre Mim -->
+  <section id="sobre-mim">
     <div class="about-photo">
       <img src="https://via.placeholder.com/250x250.png?text=Foto" alt="Isabelle">
     </div>
     <div class="about-text">
       <h2>Sobre Mim</h2>
-      <p>Atuar nas áreas de design gráfico, impressão digital ou pré-impressão, contribuindo com minha experiência técnica e criatividade no desenvolvimento de materiais impressos e digitais...</p>
+      <p>Atuar nas áreas de design gráfico, impressão digital ou pré-impressão, contribuindo com minha experiência técnica e criatividade no desenvolvimento de materiais impressos e digitais. Formada em Artes Visuais, com experiência em gravação de chapas offset, operação de impressoras digitais e criação de peças gráficas. Experiência em gestão de conteúdo visual para redes sociais. Habilidades técnicas, senso estético apurado e facilidade para trabalho em equipe.</p>
     </div>
   </section>
 
-  <section id="experiencia-profissional" class="noise-bg" style="padding:60px 20px;">
+  <!-- Experiência Profissional -->
+  <section id="experiencia-profissional" style="padding:60px 20px; background-color: var(--bg);">
     <h2>Experiência Profissional</h2>
     <div class="experience-grid">
-      <!-- cards aqui -->
+      <!-- Cards aqui -->
     </div>
   </section>
 
-  <section id="competencias-tecnicas" class="noise-bg" style="padding:60px 20px;">
+  <!-- Competências Técnicas -->
+  <section id="competencias-tecnicas" style="padding:60px 20px; background-color: var(--bg);">
     <h2>Competências Técnicas</h2>
     <div class="skills-grid">
-      <!-- skills aqui -->
+      <!-- Cards de skills -->
     </div>
   </section>
 
-  <section id="portfolio" class="noise-bg" style="padding:60px 20px;">
+  <!-- Portfólio -->
+  <section id="portfolio" style="padding:60px 20px;">
     <h2>Portfólio</h2>
     <div class="portfolio-grid">
-      <!-- portfólio aqui -->
+      <!-- Itens do portfólio -->
     </div>
   </section>
 
