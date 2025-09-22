@@ -1,58 +1,34 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Isabelle Santos de Jesus | Portfólio</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Isabelle Santos | Portfólio</title>
   <link rel="icon" href="https://raw.githubusercontent.com/stygian-blue/stygian-blue.github.io/3c2712fc6595f15ed1375ef3a76e0d8927c23271/images/logo.svg" type="image/svg+xml">
-
   <style>
-    /* Fonte global */
-    body, h1, h2, h3, h4, h5, h6, p, ul, li, a, div, span {
-      font-family: Arial, sans-serif;
-    }
-
+    /* Variáveis globais */
     :root {
-      --accent: #93C5FD;
+      --accent: #2564A4;
       --bg: #FFFFFF;
-      --card-bg: #f7f7f7;
+      --card-bg: #F7F7F7;
       --text: #0F172A;
       --muted: #6B7280;
-      --ring: rgba(85,107,47,0.4);
     }
 
-    /* Dark mode vars */
     @media (prefers-color-scheme: dark) {
       :root {
-        --accent: #93C5FD;
         --bg: #0F172A;
-        --card-bg: #3C2F2F;
+        --card-bg: #1F2937;
         --text: #FFFFFF;
         --muted: #E5E7EB;
-        --ring: rgba(212, 160, 23, 0.4);
       }
-      nav.social a { color: var(--text); }
     }
 
-    /* GLOBALS */
-    * { box-sizing: border-box; }
-    html, body { margin:0; padding:0; font-family: system-ui, -apple-system, "Segoe UI", Roboto, Ubuntu, Cantarell, "Noto Sans", Helvetica, Arial; background: var(--bg); color: var(--text); }
-
-    /* Noise filter global para seções com background sólido */
-    section {
-      position: relative;
-      overflow: hidden;
-    }
-    section::after {
-      content: "";
-      position: absolute;
-      top:0; left:0; right:0; bottom:0;
-      pointer-events: none;
-      z-index: 10;
-      background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="4" height="4"><rect width="1" height="1" fill="rgba(0,0,0,0.02)"/><rect x="3" y="3" width="1" height="1" fill="rgba(0,0,0,0.02)"/></svg>');
-      background-repeat: repeat;
-      opacity: 0.08;
-    }
+    /* Reset e global */
+    * { box-sizing: border-box; margin:0; padding:0; font-family: system-ui, -apple-system, "Segoe UI", Roboto, Ubuntu, Cantarell, "Noto Sans", Helvetica, Arial; }
+    body { background: var(--bg); color: var(--text); line-height: 1.6; }
+    img { max-width: 100%; display: block; }
+    h1,h2,h3,h4 { color: var(--accent); }
 
     /* Header */
     header {
@@ -62,40 +38,48 @@
       backdrop-filter: saturate(150%) blur(6px);
       border-bottom: 1px solid rgba(15,23,42,.08);
       z-index: 50;
+      padding: 14px 20px;
     }
-    .container { max-width:1100px; margin:0 auto; padding:14px 20px; }
-    .header-grid { display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:15px; }
+    .header-grid { display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:15px; max-width:1100px; margin:0 auto; }
     .brand { display:flex; align-items:center; gap:14px; }
-    .logo svg { width:56px; height:56px; fill: var(--accent); }
+    .brand .logo svg { width:56px; height:56px; fill: var(--accent); }
     .identity .name { font-weight:700; font-size:1.125rem; }
     .identity .role { color: var(--muted); font-size:.95rem; }
     nav.social { display:flex; gap:10px; }
-    nav.social a { width:40px; height:40px; display:flex; align-items:center; justify-content:center; text-decoration:none; transition: transform .15s ease, box-shadow .15s ease; color: var(--accent); }
+    nav.social a { width:40px; height:40px; display:flex; align-items:center; justify-content:center; text-decoration:none; color: var(--accent); transition: transform .15s ease; }
     nav.social a:hover { transform: translateY(-2px); }
-    nav.social img, nav.social svg { width:32px; height:32px; }
-    nav.social a svg { fill: currentColor; }
-    hr.divider { border:none; height:4px; background: var(--accent); margin:0 auto; width:100%; }
+
+    hr.divider { border:none; height:4px; background: var(--accent); width:100%; margin:0 auto; }
+
+    /* Noise background */
+    body::after {
+      content:"";
+      position:fixed;
+      top:0; left:0; width:100%; height:100%;
+      background-image: url("https://raw.githubusercontent.com/stygian-blue/stygian-blue.github.io/main/images/grey-paper-texture.jpg");
+      opacity: 0.03;
+      pointer-events:none;
+      z-index:-1;
+    }
+
+    /* Seções */
+    section { padding:60px 20px; max-width:1100px; margin:0 auto; }
 
     /* Sobre Mim */
-    #sobre-mim { display:flex; flex-wrap:wrap; gap:30px; padding:60px 20px; align-items:center; z-index: 0; }
+    #sobre-mim { display:flex; flex-wrap:wrap; gap:30px; align-items:center; }
     .about-photo { flex:1 1 250px; max-width:250px; border-radius:12px; overflow:hidden; box-shadow:0 4px 12px rgba(0,0,0,0.15); }
-    .about-photo img { width:100%; display:block; }
-    .about-text { flex:2 1 400px; line-height:1.6; color: var(--muted); }
-    h2 { font-size:32px; text-align:center; margin-bottom:40px; color: var(--accent); }
+    .about-text { flex:2 1 400px; color: var(--muted); line-height:1.6; }
 
-    /* Cards Material Design */
-    .card, .skill-card { background: var(--card-bg); border-radius:12px; padding:20px; box-shadow:0 2px 6px rgba(0,0,0,0.15); transition: transform .2s, box-shadow .2s; color: var(--muted); position: relative; z-index: 1; }
+    /* Cards */
+    .card, .skill-card { background: var(--card-bg); border-radius:12px; padding:20px; box-shadow:0 2px 6px rgba(0,0,0,0.15); transition: transform .2s, box-shadow .2s; color: var(--muted); }
     .card:hover, .skill-card:hover { transform: translateY(-4px); box-shadow:0 6px 18px rgba(0,0,0,0.25); }
 
-    /* Experiência Profissional */
     .experience-grid { display:flex; flex-wrap:wrap; gap:20px; justify-content:center; }
-
-    /* Competências Técnicas */
     .skills-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(120px,1fr)); gap:30px; justify-items:center; align-items:start; }
 
     /* Portfólio */
-    .portfolio-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(220px,1fr)); gap:16px; max-width:1100px; margin:0 auto; padding:20px; }
-    .portfolio-item { position:relative; cursor:pointer; overflow:hidden; border-radius:12px; z-index: 1; }
+    .portfolio-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(220px,1fr)); gap:16px; }
+    .portfolio-item { position:relative; cursor:pointer; overflow:hidden; border-radius:12px; }
     .portfolio-item img { width:100%; height:auto; display:block; transition: filter 0.3s ease, transform 0.3s ease; }
     .portfolio-item:hover img { filter: blur(3px) brightness(0.6); transform: scale(1.05); }
     .portfolio-item .overlay { position:absolute; bottom:0; width:100%; text-align:center; color:#fff; padding:10px 0; font-weight:bold; opacity:0; transition: opacity 0.3s ease; }
@@ -109,29 +93,36 @@
     .lightbox-content p { color: var(--muted); }
     .lightbox-close { position:absolute; top:10px; right:15px; font-size:24px; font-weight:bold; color: var(--accent); cursor:pointer; }
 
-    /* Responsividade */
-    @media(max-width:720px){ #sobre-mim { flex-direction:column; } .header-grid{ flex-direction:column; } }
+    /* Formulário */
+    form { display:flex; flex-direction:column; gap:12px; max-width:500px; }
+    input, textarea { padding:10px; border-radius:6px; border:1px solid #ccc; }
+    button { background-color: var(--accent); color:white; border:none; padding:10px 20px; border-radius:6px; cursor:pointer; }
 
+    /* Rodapé */
+    footer { text-align:center; padding:20px; background: var(--card-bg); border-top:1px solid rgba(0,0,0,0.1); margin-top:40px; }
+
+    /* Responsividade */
+    @media(max-width:720px) { #sobre-mim { flex-direction:column; } .header-grid { flex-direction:column; } }
   </style>
 </head>
 <body>
   <!-- Header -->
   <header>
-    <div class="container">
-      <div class="header-grid">
-        <div class="brand">
-          <div class="logo" aria-label="Logo">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="m30.12,0H1.88C.84,0,0,.84,0,1.88v28.24c0,1.04.84,1.88,1.88,1.88h28.24c1.04,0,1.88-.84,1.88-1.88V1.88c0-1.04-.84-1.88-1.88-1.88ZM3.2,3.2h6.4v11.73H3.2V3.2Zm12.8,25.6H3.2v-10.67h12.8v10.67Zm0-15.29v1.42h-3.2v-2.13h3.2v.71Zm0-4.98v2.14h-3.27v-3.2h3.27v1.06Zm0-4.62v1.42h-3.2v-2.13h3.2v.71Zm6.4,24.89h-3.2V3.2h3.2v25.6Zm6.4,0h-3.2V3.2h3.2v25.6Z" fill="currentColor"/></svg>
-          </div>
-          <div class="identity">
-            <div class="name">Isabelle Santos de Jesus</div>
-            <div class="role">Designer Gráfica | Impressão Digital & Pré-impressão | Ilustradora</div>
-          </div>
+    <div class="header-grid">
+      <div class="brand">
+        <div class="logo" aria-label="Logo">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="m30.12,0H1.88C.84,0,0,.84,0,1.88v28.24c0,1.04.84,1.88,1.88,1.88h28.24c1.04,0,1.88-.84,1.88-1.88V1.88c0-1.04-.84-1.88-1.88-1.88ZM3.2,3.2h6.4v11.73H3.2V3.2Zm12.8,25.6H3.2v-10.67h12.8v10.67Zm0-15.29v1.42h-3.2v-2.13h3.2v.71Zm0-4.98v2.14h-3.27v-3.2h3.27v1.06Zm0-4.62v1.42h-3.2v-2.13h3.2v.71Zm6.4,24.89h-3.2V3.2h3.2v25.6Zm6.4,0h-3.2V3.2h3.2v25.6Z" fill="currentColor"/></svg>
         </div>
-        <nav class="social">
-          <!-- Seus links de redes sociais aqui -->
-        </nav>
+        <div class="identity">
+          <div class="name">Isabelle Santos</div>
+          <div class="role">Designer Gráfica | Impressão Digital & Pré-impressão</div>
+        </div>
       </div>
+      <nav class="social">
+        <a href="https://www.linkedin.com/" target="_blank">LinkedIn</a>
+        <a href="https://www.instagram.com/" target="_blank">Instagram</a>
+        <a href="https://github.com/" target="_blank">GitHub</a>
+      </nav>
     </div>
   </header>
 
@@ -139,68 +130,117 @@
 
   <!-- Sobre Mim -->
   <section id="sobre-mim">
-    <div class="about-photo">
-      <img src="https://via.placeholder.com/250x250.png?text=Foto" alt="Isabelle">
-    </div>
+    <div class="about-photo"><img src="https://via.placeholder.com/250" alt="Foto Isabelle"></div>
     <div class="about-text">
       <h2>Sobre Mim</h2>
-      <p>Atuar nas áreas de design gráfico, impressão digital ou pré-impressão, contribuindo com minha experiência técnica e criatividade no desenvolvimento de materiais impressos e digitais. Formada em Artes Visuais, com experiência em gravação de chapas offset, operação de impressoras digitais e criação de peças gráficas. Experiência em gestão de conteúdo visual para redes sociais. Habilidades técnicas, senso estético apurado e facilidade para trabalho em equipe.</p>
+      <p>Designer gráfica com experiência em impressão digital, pré-impressão e criação de peças gráficas. Formada em Artes Visuais e apaixonada por design funcional e estético.</p>
     </div>
   </section>
 
-  <!-- Experiência Profissional -->
-  <section id="experiencia-profissional" style="padding:60px 20px; background-color: var(--bg);">
+  <!-- Experiência -->
+  <section id="experiencia-profissional">
     <h2>Experiência Profissional</h2>
     <div class="experience-grid">
-      <!-- Cards aqui -->
+      <div class="card">
+        <h3>Gravadora de Chapas Júnior</h3>
+        <p><strong>Impress Gráfica | 2024 – Atual</strong></p>
+        <ul>
+          <li>Gravação de chapas offset</li>
+          <li>Preparação e finalização de arquivos</li>
+          <li>Criação de posts e peças gráficas</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Assistente Administrativo / Designer</h3>
+        <p><strong>Lebazi Indústria | 2022 – 2024</strong></p>
+        <ul>
+          <li>Organização administrativa</li>
+          <li>Design de produtos e peças promocionais</li>
+        </ul>
+      </div>
     </div>
   </section>
 
-  <!-- Competências Técnicas -->
-  <section id="competencias-tecnicas" style="padding:60px 20px; background-color: var(--bg);">
+  <!-- Competências -->
+  <section id="competencias-tecnicas">
     <h2>Competências Técnicas</h2>
     <div class="skills-grid">
-      <!-- Cards de skills -->
+      <div class="skill-card"><img src="https://raw.githubusercontent.com/stygian-blue/portifolio-images/effc02f4f2aabe7129938ed340b1239dc9883243/coreldraw%20icon.svg" alt="CorelDRAW"><span>CorelDRAW</span><div style="color:var(--accent)">★★★★★</div></div>
+      <div class="skill-card"><img src="https://raw.githubusercontent.com/stygian-blue/portifolio-images/main/photoshop.svg" alt="Photoshop"><span>Photoshop</span><div style="color:var(--accent)">★★★★☆</div></div>
+      <div class="skill-card"><img src="https://raw.githubusercontent.com/stygian-blue/portifolio-images/main/indesign.svg" alt="InDesign"><span>InDesign</span><div style="color:var(--accent)">★★★★★</div></div>
     </div>
   </section>
 
   <!-- Portfólio -->
-  <section id="portfolio" style="padding:60px 20px;">
+  <section id="portfolio">
     <h2>Portfólio</h2>
     <div class="portfolio-grid">
-      <!-- Itens do portfólio -->
+      <div class="portfolio-item" data-title="Projeto 1" data-desc="Design de folheto promocional">
+        <img src="https://via.placeholder.com/400x300" alt="Projeto 1">
+        <span class="overlay">Projeto 1</span>
+      </div>
+      <div class="portfolio-item" data-title="Projeto 2" data-desc="Criação de post para Instagram">
+        <img src="https://via.placeholder.com/400x300" alt="Projeto 2">
+        <span class="overlay">Projeto 2</span>
+      </div>
+      <div class="portfolio-item" data-title="Projeto 3" data-desc="Layout de revista">
+        <img src="https://via.placeholder.com/400x300" alt="Projeto 3">
+        <span class="overlay">Projeto 3</span>
+      </div>
     </div>
   </section>
 
   <!-- Lightbox -->
   <div class="lightbox" id="lightbox">
     <div class="lightbox-content">
-      <span class="lightbox-close" id="lightbox-close">&times;</span>
+      <span class="lightbox-close">&times;</span>
       <img src="" alt="" id="lightbox-img">
       <h3 id="lightbox-title"></h3>
       <p id="lightbox-desc"></p>
     </div>
   </div>
 
-  <script>
-    const portfolioItems = document.querySelectorAll('.portfolio-item');
-    const lightbox = document.getElementById('lightbox');
-    const lightboxImg = document.getElementById('lightbox-img');
-    const lightboxTitle = document.getElementById('lightbox-title');
-    const lightboxDesc = document.getElementById('lightbox-desc');
-    const lightboxClose = document.getElementById('lightbox-close');
+  <!-- Contato -->
+  <section id="contato">
+    <h2>Contato</h2>
+    <form action="#" method="post">
+      <label for="nome">Nome:</label>
+      <input type="text" id="nome" name="nome" placeholder="Seu nome">
 
-    portfolioItems.forEach(item => {
-      item.addEventListener('click', () => {
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" placeholder="Seu email">
+
+      <label for="mensagem">Mensagem:</label>
+      <textarea id="mensagem" name="mensagem" placeholder="Sua mensagem"></textarea>
+
+      <button type="submit">Enviar</button>
+    </form>
+  </section>
+
+  <!-- Rodapé -->
+  <footer>
+    <p>© 2025 Isabelle Santos de Jesus | Todos os direitos reservados</p>
+  </footer>
+
+  <script>
+    // Lightbox funcional
+    const lightbox = document.getElementById('lightbox');
+    const lbImg = document.getElementById('lightbox-img');
+    const lbTitle = document.getElementById('lightbox-title');
+    const lbDesc = document.getElementById('lightbox-desc');
+    const lbClose = document.querySelector('.lightbox-close');
+
+    document.querySelectorAll('.portfolio-item').forEach(item=>{
+      item.addEventListener('click', ()=>{
+        lbImg.src = item.querySelector('img').src;
+        lbTitle.textContent = item.dataset.title;
+        lbDesc.textContent = item.dataset.desc;
         lightbox.style.display = 'flex';
-        lightboxImg.src = item.querySelector('img').src;
-        lightboxTitle.textContent = item.dataset.title;
-        lightboxDesc.textContent = item.dataset.desc;
       });
     });
 
-    lightboxClose.addEventListener('click', () => { lightbox.style.display = 'none'; });
-    lightbox.addEventListener('click', (e) => { if(e.target === lightbox) lightbox.style.display = 'none'; });
+    lbClose.addEventListener('click', ()=>{ lightbox.style.display='none'; });
+    lightbox.addEventListener('click', e=>{ if(e.target===lightbox) lightbox.style.display='none'; });
   </script>
 </body>
 </html>
