@@ -1,2 +1,2 @@
 # stygian-blue.github.io
-portifolio
+portfolio
