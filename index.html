@@ -5,241 +5,553 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Isabelle Santos de Jesus | Portfólio</title>
   <link rel="icon" href="https://raw.githubusercontent.com/stygian-blue/stygian-blue.github.io/refs/heads/main/images/favicon.svg" type="image/svg+xml">
-  <link rel="icon" href="https://raw.githubusercontent.com/stygian-blue/stygian-blue.github.io/refs/heads/main/images/favicon-dark.svg" type="image/svg+xml" media= "(prefers-color-scheme: dark)">
   <style>
-    /* Variáveis globais */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    }
+
     :root {
-      --accent: #93C5FD;
-      --bg: #FFFFFF;
-      --card-bg: #F7F7F7;
-      --text: #0F172A;
-      --muted: #6B7280;
+      --base-color: #9ec9ff;
+      --secondary-color: #A0CFAC;
+      --paragraph-color: #363636;
+      --off-white: #f7f7f7;
     }
 
-    @media (prefers-color-scheme: dark) {
-      :root {
-        --bg: #0F172A;
-        --card-bg: #1F2937;
-        --text: #FFFFFF;
-        --muted: #E5E7EB;
-      }
+    body {
+      line-height: 1.6;
+      color: #9ec9ff;
+      background-color: var(--off-white);
     }
 
-    /* Reset e global */
-    * { box-sizing: border-box; margin:0; padding:0; font-family: system-ui, -apple-system, "Segoe UI", Roboto, Ubuntu, Cantarell, "Noto Sans", Helvetica, Arial; }
-    body { background: var(--bg); color: var(--text); line-height: 1.6; }
-    img { max-width: 100%; display: block; }
-    h1,h2,h3,h4 { color: var(--accent); }
+    body.locked {
+      overflow: hidden;
+    }
+
+    /* Tiny noise texture (base64 PNG) */
+    :root {
+      --noise: url("https://github.com/stygian-blue/stygian-blue.github.io/blob/main/images/grey-paper-texture.jpg?raw=true");
+    }
+
+    section, header, footer {
+      position: relative;
+      overflow: hidden;
+    }
+
+   section::before,
+header::before,
+footer::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("https://github.com/stygian-blue/stygian-blue.github.io/blob/main/images/grey-paper-texture.jpg?raw=true");
+  opacity: 0.2; /* much lighter */
+  mix-blend-mode: overlay; /* makes it matte instead of grainy */
+  pointer-events: none;
+  z-index: 0;
+}
+
 
     /* Header */
     header {
-      position: sticky;
-      top:0;
-      background: var(--bg);
-      backdrop-filter: saturate(150%) blur(6px);
-      border-bottom: 1px solid rgba(15,23,42,.08);
-      z-index: 50;
-      padding: 14px 20px;
-    }
-    .header-grid { display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:15px; max-width:1100px; margin:0 auto; }
-    .brand { display:flex; align-items:center; gap:14px; }
-    .brand .logo { width:56px; height:56px; fill: var(--accent); }
-    .identity .name { font-weight:700; font-size:1.125rem; color: var(--accent); }
-    .identity .role { color: var(--muted); font-size:.95rem; }
-    nav.social { display:flex; gap:10px; }
-    nav.social a { width:40px; height:40px; display:flex; align-items:center; justify-content:center; text-decoration:none; color: var(--accent); transition: transform .15s ease; }
-    nav.social a:hover { transform: translateY(-2px); }
-
-        /* Noise background */
-    body::after {
-      content:"";
-      position:fixed;
-      top:0; left:0; width:100%; height:100%;
-      background-image: url("https://raw.githubusercontent.com/stygian-blue/stygian-blue.github.io/main/images/grey-paper-texture.jpg");
-      opacity: 0.10;
-      pointer-events:none;
-      z-index:-1;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 40px;
+      background: rgba(247, 247, 247, 0.1); 
+      backdrop-filter: blur(40px);
+      -webkit-backdrop-filter: blur(40px);
+      border-bottom: 1px solid rgba(255,255,255,0.3);
+      z-index: 1000;
     }
 
-    /* Seções */
-    section { padding:60px 20px; max-width:1100px; margin:0 auto; }
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
 
-    /* Sobre Mim */
-    #sobre-mim { display:flex; flex-wrap:wrap; gap:30px; align-items:center; }
-    .about-photo { flex:1 1 250px; max-width:250px; border-radius:12px; overflow:hidden; box-shadow:0 4px 12px rgba(0,0,0,0.15); }
-    .about-text { flex:2 1 400px; color: var(--muted); line-height:1.6; }
+    .logo-box {
+      width: 40px;
+      height: 40px;
+      background: var(--base-color);
+      border-radius: 6px;
+      transition: transform 0.3s;
+    }
 
-    /* Cards */
-    .card, .skill-card { background: var(--card-bg); border-radius:12px; padding:20px; box-shadow:0 2px 6px rgba(0,0,0,0.15); transition: transform .2s, box-shadow .2s; color: var(--muted); }
-    .card:hover, .skill-card:hover { transform: translateY(-4px); box-shadow:0 6px 18px rgba(0,0,0,0.25); }
+    .logo-text {
+      display: flex;
+      flex-direction: column;
+      font-size: 14px;
+    }
 
-    .experience-grid { display:flex; flex-wrap:wrap; gap:20px; justify-content:center; }
-    .skills-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(120px,1fr)); gap:30px; justify-items:center; align-items:start; }
+    .logo-text .name {
+      font-weight: bold;
+      font-size: 20px;
+      color: var(--base-color);
+    }
 
-    /* Portfólio */
-    .portfolio-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(220px,1fr)); gap:16px; }
-    .portfolio-item { position:relative; cursor:pointer; overflow:hidden; border-radius:12px; }
-    .portfolio-item img { width:100%; height:auto; display:block; transition: filter 0.3s ease, transform 0.3s ease; }
-    .portfolio-item:hover img { filter: blur(3px) brightness(0.6); transform: scale(1.05); }
-    .portfolio-item .overlay { position:absolute; bottom:0; width:100%; text-align:center; color:#fff; padding:10px 0; font-weight:bold; opacity:0; transition: opacity 0.3s ease; }
-    .portfolio-item:hover .overlay { opacity:1; }
+    .logo-text .desc {
+      font-size: 12px;
+      color: var(--paragraph-color);
+    }
 
-    /* Lightbox */
-    .lightbox { display:none; position:fixed; z-index:1000; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.8); justify-content:center; align-items:center; }
-    .lightbox-content { background: var(--card-bg); max-width:90%; max-height:90%; padding:20px; border-radius:12px; overflow-y:auto; text-align:center; position:relative; }
-    .lightbox-content img { max-width:100%; border-radius:8px; }
-    .lightbox-content h3 { margin-top:12px; color:var(--accent); }
-    .lightbox-content p { color: var(--muted); }
-    .lightbox-close { position:absolute; top:10px; right:15px; font-size:24px; font-weight:bold; color: var(--accent); cursor:pointer; }
+    .socials {
+      display: flex;
+      align-items: center;
+      color: var(--base-color);
+      height: 40px;
+      transition: tranform .15s ease;
+      gap: 15px;
+    }
 
-    /* Formulário */
-    form { display:flex; flex-direction:column; gap:12px; max-width:500px; }
-    input, textarea { padding:10px; border-radius:6px; border:1px solid #ccc; }
-    button { background-color: var(--accent); color:white; border:none; padding:10px 20px; border-radius:6px; cursor:pointer; }
+    .socials a {
+      color: var(--base-color);
+    }
 
-    /* Rodapé */
-    footer { text-align:center; padding:20px; background: var(--card-bg); border-top:1px solid rgba(0,0,0,0.1); margin-top:40px; }
+    nav {
+      display: flex;
+      gap: 15px;
+      align-items: center;
+    }
 
-    /* Responsividade */
-    @media(max-width:720px) { #sobre-mim { flex-direction:column; } .header-grid { flex-direction:column; } }
+    nav a {
+      text-decoration: none;
+      color: var(--base-color);
+      font-size: 14px;
+      position: relative;
+      transition: color 0.3s;
+    }
+
+    nav a::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0%;
+      height: 2px;
+      background: #A0CFAC;
+      transition: width 0.3s;
+    }
+
+    nav a:hover {
+      color: #A0CFAC;
+    }
+
+    nav a:hover::after {
+      width: 100%;
+    }
+
+    /* Push body down because header is fixed */
+    main {
+      margin-top: 90px; 
+    }
+
+    /* Hero Section */
+    .hero {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 30px;
+      padding: 60px 40px;
+    }
+
+    .hero img {
+      width: 300px;
+      height: 300px;
+      object-fit: cover;
+      transition: transform 0.6s ease;
+    }
+
+    .hero img:hover {
+      transform: scale(1.3);
+    }
+
+    .hero-text {
+      max-width: 600px;
+    }
+
+    .hero-text h1 {
+      color: var(--base-color);
+      font-size: 2rem;
+      margin-bottom: 15px;
+    }
+
+    .hero-text p {
+      color: var(--paragraph-color);
+      text-align: justify;
+    }
+
+    /* Green Section */
+    .experiencia-profissional {
+      background: #A0CFAC;
+      padding: 60px 40px;
+      text-align: center;
+    }
+
+    .experiencia-profissional h2 {
+      color: var(--off-white);
+      margin-bottom: 40px;
+      font-size: 2rem;
+    }
+
+    .cards {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .card {
+      background:var(--off-white);
+      color: var(--paragraph-color);
+      padding: 20px;
+      border-radius: 10px;
+      width: 300px;
+      text-align: center;
+      transition: transform 0.3s, box-shadow 0.3s;
+      position: relative;
+      z-index: 1;
+    }
+    .card h3 {
+      color: var(--base-color);
+    }
+
+    .card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0px 6px 18px rgba(0,0,0,0.15);
+    }
+
+    /* Competências */
+    .competencias-tecnicas {
+      padding: 60px 40px;
+      text-align: center;
+    }
+
+    .competencias-tecnicas h2 {
+      margin-bottom: 30px;
+      font-size: 2rem;
+    }
+
+    .lista-competencias {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    .programa {
+      text-align: center;
+      transition: transform 0.3s;
+    }
+
+    .programa:hover {
+      transform: scale(1.1);
+    }
+
+    .box-programa {
+      width: 80px;
+      height: 80px;
+      color: #9ec9ff;
+      margin: auto;
+      transition: background 0.3s;
+    }
+
+.programa > p {
+  margin: auto;
+max-width: 80%;
+}    
+    .stars {
+      color: #909CAA;
+      font-size: 12px;
+    }
+
+    section.gallery {
+      background-color: #9ec9ff;
+      padding: 60px 40px;
+      text-align: center;
+    }
+
+    section.gallery > h2 {
+      margin-bottom: 30px;
+      font-size: 2rem;
+    }
+
+    /* Galeria */
+    div.gallery {
+      display: flex;
+      flex-flow: row;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    div.gallery img {
+      width: 20vw;
+      cursor: pointer;
+      border-radius: 8px;
+      transition: transform 0.3s;
+    }
+
+    .gallery img:hover {
+      transform: scale(1.05);
+    }
+
+#lightbox {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(5px); /* deixa o fundo borrado */
+  align-items: center;
+  justify-content: center;
+  overflow-y: auto;
+  z-index: 1000;
+}
+
+#lightbox.hidden {
+  display: none;
+}
+
+.lightbox-content {
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  max-width: 80%;
+  margin: 2em auto;
+  text-align: center;
+  box-shadow: 0 5px 25px rgba(0,0,0,0.3);
+}
+
+.lightbox-content img {
+  max-width: 100%;
+  border-radius: 8px;
+}
+
+.lightbox-content #lightbox-title {
+  margin: 1em auto;
+}
+
+.close {
+  position: absolute;
+  top: 20px;
+  right: 40px;
+  font-size: 40px;
+  cursor: pointer;
+  color: white;
+}
+
+
+    /* Footer */
+    footer {
+      background: #eee;
+      padding: 15px 40px;
+      text-align: left;
+      font-size: 14px;
+      color: #444;
+    }
+
+    /* Responsive */
+    @media(max-width: 768px) {
+      .hero {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .hero img {
+        width: 100%;
+        max-width: 400px;
+      }
+    }
   </style>
 </head>
 <body>
+
   <!-- Header -->
   <header>
-    <div class="header-grid">
+    <div>
       <div class="brand">
-        <div class="logo" aria-label="logo">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="m30.12,0H1.88C.84,0,0,.84,0,1.88v28.24c0,1.04.84,1.88,1.88,1.88h28.24c1.04,0,1.88-.84,1.88-1.88V1.88c0-1.04-.84-1.88-1.88-1.88ZM3.2,3.2h6.4v11.73H3.2V3.2Zm12.8,25.6H3.2v-10.67h12.8v10.67Zm0-15.29v1.42h-3.2v-2.13h3.2v.71Zm0-4.98v2.14h-3.27v-3.2h3.27v1.06Zm0-4.62v1.42h-3.2v-2.13h3.2v.71Zm6.4,24.89h-3.2V3.2h3.2v25.6Zm6.4,0h-3.2V3.2h3.2v25.6Z" fill="#93C5FD"/></svg>
-        </div>
-        <div class="identity">
-          <div class="name">Isabelle Santos de Jesus</div>
-          <div class="role">Designer Gráfica | Impressão Digital & Pré-impressão | Ilustração </div>
-        </div>
+        <div class="logo">
+          <svg id="logo" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32"><path d="m30.12,0H1.88C.84,0,0,.84,0,1.88v28.24c0,1.04.84,1.88,1.88,1.88h28.24c1.04,0,1.88-.84,1.88-1.88V1.88c0-1.04-.84-1.88-1.88-1.88ZM3.2,3.2h6.4v11.73H3.2V3.2Zm12.8,25.6H3.2v-10.67h12.8v10.67Zm0-15.29v1.42h-3.2v-2.13h3.2v.71Zm0-4.98v2.14h-3.27v-3.2h3.27v1.06Zm0-4.62v1.42h-3.2v-2.13h3.2v.71Zm6.4,24.89h-3.2V3.2h3.2v25.6Zm6.4,0h-3.2V3.2h3.2v25.6Z" fill="CurrentColor" fill-rule="evenodd"/></svg>
+          <div class="logo-text">
+            <span class="name">Isabelle Santos de Jesus</span>
+            <span class="desc">Designer Gráfica | Impressão Digital e Pré-Impressão | Ilustração</span>
+          </div>
+        </div>       
       </div>
-      <nav class="social">
-        <a href="https://www.linkedin.com/in/isabelle-santos-de-jesus-557446207/" target="_blank"><svg id="linkedin" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32"><g id="linkedin"><path d="m5.6,0h20.8c3.08,0,5.6,2.58,5.6,5.74v20.52c0,3.16-2.52,5.74-5.6,5.74H5.6c-3.08,0-5.6-2.58-5.6-5.74V5.74C0,2.58,2.52,0,5.6,0Zm12.02,18.23c0-1.95.9-3.11,2.62-3.11,1.58,0,2.34,1.12,2.34,3.11v7.29h4.27v-8.79c0-3.72-2.1-5.51-5.05-5.51s-4.18,2.29-4.18,2.29v-1.87h-4.12v13.88h4.12s0-5.15,0-7.29Zm-11.17,7.29h4.3v-13.88h-4.3v13.88Zm2.13-15.7c1.41,0,2.54-1.15,2.54-2.56s-1.13-2.56-2.54-2.56-2.54,1.15-2.54,2.56,1.14,2.56,2.54,2.56Z" fill="currentColor" fill-rule="evenodd"/></g></svg></a>
-        <a href="https://www.instagram.com/" target="_blank">Instagram</a>
-        <a href="https://github.com/" target="_blank">GitHub</a>
-      </nav>
     </div>
+     <div class="socials">
+        <a href="https://www.linkedin.com/in/isabelle-santos-de-jesus-557446207/" target="_blank"><svg id="linkedin" xmlns="http://www.w3.org11/2000/svg" width="32" height="32" viewBox="0 0 32 32"><g id="linkedin"><path d="m5.6,0h20.8c3.08,0,5.6,2.58,5.6,5.74v20.52c0,3.16-2.52,5.74-5.6,5.74H5.6c-3.08,0-5.6-2.58-5.6-5.74V5.74C0,2.58,2.52,0,5.6,0Zm12.02,18.23c0-1.95.9-3.11,2.62-3.11,1.58,0,2.34,1.12,2.34,3.11v7.29h4.27v-8.79c0-3.72-2.1-5.51-5.05-5.51s-4.18,2.29-4.18,2.29v-1.87h-4.12v13.88h4.12s0-5.15,0-7.29Zm-11.17,7.29h4.3v-13.88h-4.3v13.88Zm2.13-15.7c1.41,0,2.54-1.15,2.54-2.56s-1.13-2.56-2.54-2.56-2.54,1.15-2.54,2.56,1.14,2.56,2.54,2.56Z" fill="CurrentColor" fill-rule="evenodd"/></g></svg></a>
+        <a href="https://www.instagram.com/_stygian.blue_/" target="_blank"><svg id="instagram" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32"><g id="instagram"><path d="m5.6,0h20.8c3.08,0,5.6,2.58,5.6,5.74v20.52c0,3.16-2.52,5.74-5.6,5.74H5.6c-3.08,0-5.6-2.58-5.6-5.74V5.74C0,2.58,2.52,0,5.6,0Zm17.4,10.29c0,.71-.58,1.28-1.29,1.28s-1.28-.57-1.28-1.28.57-1.29,1.28-1.29,1.29.58,1.29,1.29Zm-7,9.28c-1.97,0-3.57-1.6-3.57-3.57s1.6-3.57,3.57-3.57,3.57,1.6,3.57,3.57-1.6,3.57-3.57,3.57Zm0-9.06c-3.03,0-5.49,2.45-5.49,5.49s2.46,5.49,5.49,5.49,5.5-2.46,5.5-5.49-2.46-5.49-5.5-5.49Zm0-5.21c-2.9,0-3.27.01-4.41.06-1.14.06-1.92.24-2.6.5-.7.27-1.3.64-1.89,1.24-.6.59-.97,1.19-1.24,1.89-.26.68-.44,1.46-.5,2.6-.05,1.14-.06,1.5-.06,4.41s.01,3.27.06,4.41c.06,1.14.24,1.92.5,2.6.27.7.64,1.3,1.24,1.89.59.6,1.19.97,1.89,1.24.68.26,1.46.44,2.6.5,1.14.05,1.51.06,4.41.06s3.27-.01,4.41-.06c1.14-.06,1.92-.24,2.6-.5.7-.27,1.3-.64,1.9-1.24s.96-1.19,1.23-1.89c.26-.68.45-1.46.5-2.6s.06-1.5.06-4.41-.01-3.27-.06-4.41c-.05-1.14-.24-1.92-.5-2.6-.27-.7-.64-1.3-1.23-1.89-.6-.6-1.2-.97-1.9-1.24-.68-.26-1.46-.44-2.6-.5-1.14-.05-1.5-.06-4.41-.06Zm0,1.93c2.86,0,3.2.01,4.32.06,1.05.05,1.62.22,1.99.37.5.19.86.42,1.23.8.38.37.61.73.8,1.23.15.38.32.94.37,1.99.05,1.12.06,1.46.06,4.32s-.01,3.2-.06,4.33c-.05,1.04-.22,1.6-.37,1.98-.19.5-.42.86-.8,1.23-.37.38-.73.61-1.23.8-.37.15-.94.32-1.99.37-1.12.05-1.46.06-4.32.06s-3.19-.01-4.32-.06c-1.05-.05-1.61-.22-1.99-.37-.5-.19-.86-.42-1.23-.8-.37-.37-.61-.73-.8-1.23-.15-.38-.32-.94-.37-1.98-.05-1.13-.06-1.47-.06-4.33s.01-3.2.06-4.32c.05-1.05.22-1.61.37-1.99.19-.5.43-.86.8-1.23.37-.38.73-.61,1.23-.8.38-.15.94-.32,1.99-.37,1.13-.05,1.46-.06,4.32-.06Z" fill="currentcolor" fill-rule="evenodd"/></g></svg></a>
+        <a href="https://github.com/stygian-blue" target="_blank"><svg id="github" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32"><g id="github"><path d="m5.6,0h20.8c3.08,0,5.6,2.58,5.6,5.74v20.52c0,3.16-2.52,5.74-5.6,5.74H5.6c-3.08,0-5.6-2.58-5.6-5.74V5.74C0,2.58,2.52,0,5.6,0Zm7.19,27.65c-.01-.59-.01-1.49-.01-2.43-4.02.74-5.06-.98-5.38-1.88-.18-.46-.96-1.88-1.64-2.26-.56-.3-1.36-1.05-.02-1.07,1.26-.02,2.16,1.17,2.46,1.65,1.44,2.42,3.74,1.74,4.66,1.32.14-1.04.56-1.75,1.02-2.14-3.56-.4-7.28-1.78-7.28-7.91,0-1.73.62-3.17,1.64-4.3-.16-.39-.72-2.04.16-4.24,0,0,1.34-.42,4.4,1.64,1.28-.36,2.64-.54,4-.54s2.72.18,4,.54c3.06-2.08,4.4-1.64,4.4-1.64.88,2.2.32,3.85.16,4.24,1.02,1.13,1.64,2.54,1.64,4.3,0,6.15-3.74,7.51-7.3,7.91.58.5,1.08,1.46,1.08,2.96,0,1.64-.02,3.04-.02,3.85,0,0-7.97,0-7.97,0Z" fill="currentcolor" fill-rule="evenodd"/></g></svg></a>
+      </div>
   </header>
 
-  <hr class="divider">
-
-  <!-- Sobre Mim -->
-  <section id="sobre-mim">
-    <div class="about-photo"><img src="https://via.placeholder.com/250" alt="Foto Isabelle"></div>
-    <div class="about-text">
-      <h2>Sobre Mim</h2>
-      <p>Designer gráfica com experiência em impressão digital, pré-impressão e criação de peças gráficas. Formada em Artes Visuais e apaixonada por design funcional e estético.</p>
-    </div>
-  </section>
-
-  <!-- Experiência -->
-  <section id="experiencia-profissional">
-    <h2>Experiência Profissional</h2>
-    <div class="experience-grid">
-      <div class="card">
-        <h3>Gravadora de Chapas Júnior</h3>
-        <p><strong>Impress Gráfica | 2024 – Atual</strong></p>
-        <ul>
-          <li>Gravação de chapas offset</li>
-          <li>Preparação e finalização de arquivos</li>
-          <li>Criação de posts e peças gráficas</li>
-        </ul>
+  <main>
+    <!-- Sobre Mim -->
+    <section class="hero">
+      <img src="https://github.com/stygian-blue/stygian-blue.github.io/blob/main/images/challege.png?raw=true" alt="my-illustration">
+      <div class="hero-text">
+        <h1>Sobre Mim</h1>
+        <p>Atuar nas áreas de design gráfico, impressão digital ou pré-impressão, contribuindo com minha experiência técnica e criatividade no desenvolvimento de materiais impressos e digitais. Formada em Artes Visuais, com experiência em gravação de chapas offset, operação de impressoras digitais e criação de peças gráficas. Experiência em gestão de conteúdo visual para redes sociais.Habilidades técnicas, senso estético apurado e facilidade para trabalho em equipe.</p>
       </div>
-      <div class="card">
-        <h3>Assistente Administrativo / Designer</h3>
-        <p><strong>Lebazi Indústria | 2022 – 2024</strong></p>
-        <ul>
-          <li>Organização administrativa</li>
-          <li>Design de produtos e peças promocionais</li>
-        </ul>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Competências -->
-  <section id="competencias-tecnicas">
-    <h2>Competências Técnicas</h2>
-    <div class="skills-grid">
-      <div class="skill-card"><img src="https://raw.githubusercontent.com/stygian-blue/portifolio-images/effc02f4f2aabe7129938ed340b1239dc9883243/coreldraw%20icon.svg" alt="CorelDRAW"><span>CorelDRAW</span><div style="color:var(--accent)">★★★★★</div></div>
-      <div class="skill-card"><img src="https://raw.githubusercontent.com/stygian-blue/portifolio-images/main/photoshop.svg" alt="Photoshop"><span>Photoshop</span><div style="color:var(--accent)">★★★★☆</div></div>
-      <div class="skill-card"><img src="https://raw.githubusercontent.com/stygian-blue/portifolio-images/main/indesign.svg" alt="InDesign"><span>InDesign</span><div style="color:var(--accent)">★★★★★</div></div>
-    </div>
-  </section>
+    <!-- Experiência -->
+    <section class="experiencia-profissional">
+      <h2>Experiência Profissional</h2>
+      <div class="cards">
+        <div class="card">
+          <h3>Gravadora de chapas Júnior | Designer Gráfica</h3>
+          <h4>Gráfica e Editora Impress</h4>
+          <h5>2024-presente</h5>
+          <ul>
+            <li>Gravação de chapas offset conforme padrões técnicos;</li>
+            <li>Preparação e finalização de arquivos para impressão;</li>
+            <li>Criação de posts para redes sociais e peças gráficas.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Assistente Administrativo | Designer — 2024-2022</h3>
+          <h4>Lebazi Indústria e Comércio</h4>
+          <ul>
+            <li>Organização do escritório e rotina administrativa;</li>
+            <li>Design de produtos e criação de peças promocionais;</li>
+            <li>Criação e edição de catálogos de venda.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Professora de Desenho — 2020-2021</h3>
+          <ul>
+            <li>Comunicação com alunos e aplicação de atividades individuais;</li>
+            <li>Organização do espaço de aula;</li>
+            <li>Preparação de atividades individuas para cada aluno.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
 
-  <!-- Portfólio -->
-  <section id="portfolio">
-    <h2>Portfólio</h2>
-    <div class="portfolio-grid">
-      <div class="portfolio-item" data-title="Projeto 1" data-desc="Design de folheto promocional">
-        <img src="https://via.placeholder.com/400x300" alt="Projeto 1">
-        <span class="overlay">Projeto 1</span>
+    <!-- Competências -->
+    <section class="competencias-tecnicas">
+      <h2>Competências Técnicas</h2>
+      <div class="lista-competencias">
+        <div class="programa">
+          <div class="box-programa"><?xml version="1.0" encoding="UTF-8"?><svg id="coreldraw" xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 32 32"><g id="coreldraw"><path d="m10.26,0h21.74v21.74c0,5.64-4.62,10.26-10.26,10.26h-11.48c-5.64,0-10.26-4.62-10.26-10.26v-11.48C0,4.62,4.62,0,10.26,0Zm14.72,25.44c.01-.34,0-.96-.11-1.26-.08-.21-.22-.29-.49-.04-.26.25-.88.92-1.15,1.15-.21.2-.09.4-.02.43.43.15.78.18,1.25.18.43.01.51-.11.52-.46Zm-.46-2.32c.23-1.12-.18-2.49-.95-3.31-2.51-2.67-13.42-13.54-13.86-13.65-1.18-.27-3.89,3-4.21,3.85-.03.92.86,1.51,1.35,2.01l11.67,11.59c.36.34.58.68.99,1,.68.52,2.03.66,2.81.61.1-.01,2.12-1.96,2.2-2.1Z" fill="currentcolor" fill-rule="evenodd"/></g></svg></div>
+          <p>CorelDRAW</p>
+          <div class="stars">★★★★★</div>
+        </div>
+        <div class="programa">
+          <div class="box-programa"><?xml version="1.0" encoding="UTF-8"?><svg id="illustrator" xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 32 32"><g id="illustrator"><path d="m5.6,0h20.8c3.08,0,5.6,2.58,5.6,5.74v20.52c0,3.16-2.52,5.74-5.6,5.74H5.6c-3.08,0-5.6-2.58-5.6-5.74V5.74C0,2.58,2.52,0,5.6,0Zm5.7,16.34h3.36l-1.71-5.65-1.65,5.65Zm9.87-4.31c0-.34,0-.37.34-.37.74,0,1.94-.05,2.63.03l.02,10.52c0,.36.01.37-.35.37h-2.25c-.3,0-.39-.05-.39-.37,0,0,0-10.18,0-10.18Zm-14.23,10.49c-.54,0-.37-.23-.22-.66l.92-2.71c.51-1.52,3.09-8.84,3.36-9.94.08-.35.06-.8.07-1.07.61-.04,3.18-.06,3.71.02.23.4,1.02,2.9,1.26,3.58l3.11,8.98c.2.58.59,1.4.48,1.78-.65.04-2.42.05-3.03-.01l-.87-2.57c-.1-.3-.17-.75-.35-.81h-4.89c-.13.6-.38,1.27-.57,1.87-.6,1.92-.01,1.54-2.98,1.54Zm15.33-15.37c2.29-.64,2.83,2.82.89,3.31-2.28.57-2.98-2.73-.89-3.31Z" fill="currentcolor" fill-rule="evenodd"/></g></svg></div>
+          <p>Illustrator</p>
+          <div class="stars">★★★★★</div>
+        </div>
+        <div class="programa">
+          <div class="box-programa"><?xml version="1.0" encoding="UTF-8"?><svg id="photoshop" xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 32 32"><g id="photoshop"><path d="m5.6,0h20.8c3.08,0,5.6,2.58,5.6,5.74v20.52c0,3.16-2.52,5.74-5.6,5.74H5.6c-3.08,0-5.6-2.58-5.6-5.74V5.74C0,2.58,2.52,0,5.6,0Zm4.51,15.46c2.07.1,4.23-.07,4.26-2.31.04-2.34-2.18-2.4-4.26-2.29v4.6Zm8.64,6.72c-.11-.32-.05-1.62-.05-2.06-.01-.99.24-.49.94-.2.84.34,2.49.7,3.44.35,1.61-.59-.62-1.61-1.23-1.85-1.01-.4-1.95-.93-2.46-1.57-1.81-2.3-.05-6.23,5.46-5.15.79.16,1.07.15,1.06.93,0,.48.05,1.63-.04,1.98-.17.02-1.17-.54-2.75-.62-1.31-.17-2.2.69-1.19,1.35,1.55,1.01,3.3,1.02,4.19,2.62,1.07,1.97-.3,3.91-1.71,4.51-1.22.51-4.8.62-5.66-.29Zm-11.53.41c-.07-2.91-.02-7.57-.02-10.46v-2.63c0-1.56-.24-1.25,1.3-1.29,1.52-.04,3.45-.18,4.89.12,5.03,1.08,5.01,7.42,1.26,9.13-1.95.82-3.74.57-4.55.6l-.02,4.51c-.24.09-2.42.04-2.86.02Z" fill="currentcolor" fill-rule="evenodd"/></g></svg></div>
+          <p>Photoshop</p>
+          <div class="stars">★★★★★</div>
+        </div>
+        <div class="programa">
+          <div class="box-programa"><?xml version="1.0" encoding="UTF-8"?><svg id="indesign" xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 32 32"><g id="indesign"><path d="m5.6,0h20.8c3.08,0,5.6,2.58,5.6,5.74v20.52c0,3.16-2.52,5.74-5.6,5.74H5.6c-3.08,0-5.6-2.58-5.6-5.74V5.74C0,2.58,2.52,0,5.6,0Zm15.02,20.08l.02-6c-1.08-.46-3.84.16-3.88,2.94-.03,2.35,1.51,3.52,3.86,3.06Zm-11.91-11.87c.13-.02,2.72-.08,2.88.03-.05.02.12,13.14,0,14.38-.43.05-2.55.06-2.91-.02-.04-.77.01-14.19.03-14.39Zm11.93,3.25c0-.63-.08-4.13.05-4.42.4-.04,2.73-.05,2.84.02.19.17.08,1.48.08,1.77v11.2c.01.49.12,1.43.05,1.84-.5.37-1.99.7-2.75.82-1.13.16-2.26.17-3.34-.1-4.37-1.12-4.85-6.48-2.35-9.31.42-.49,1.32-1.13,2.16-1.44,1.06-.38,2.06-.44,3.26-.38Z" fill="currentcolor" fill-rule="evenodd"/></g></svg></div>
+          <p>InDesign</p>
+          <div class="stars">★★★★★</div>
+        </div>
+        <div class="programa">
+          <div class="box-programa"><?xml version="1.0" encoding="UTF-8"?><svg id="capcut" xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 32 32"><path d="m5.6,0h20.8c3.08,0,5.6,2.58,5.6,5.74v20.52c0,3.16-2.52,5.74-5.6,5.74H5.6c-3.08,0-5.6-2.58-5.6-5.74V5.74C0,2.58,2.52,0,5.6,0Zm2.81,10.95s-.03.08-.05.12c1.57.81,3.17,1.56,4.68,2.45,1.03.61,1.86.65,2.9.01,1.49-.92,3.1-1.65,4.65-2.47-.01-.04-.02-.07-.03-.11,0,0-12.15,0-12.15,0Zm-.09,10.07s.02.07.04.1h12.52c-2.12-1.11-4.08-2.15-6.04-3.18-.29-.15-.53-.05-.79.08-.8.42-1.62.83-2.42,1.25-1.11.58-2.21,1.16-3.31,1.75Zm2.77-5c-1.61-.84-3.05-1.61-4.52-2.33-.68-.32-1.02-.72-.94-1.51.07-.78,0-1.57.02-2.35.02-1.27.67-2.01,1.93-2.21.27-.05.55-.06.83-.06,3.94-.01,7.88-.01,11.82-.01,1.3,0,2.43.28,2.84,1.74.12.42.41.28.66.14.92-.48,1.84-.95,2.75-1.45.48-.26.63-.11.62.4-.01.7-.02,1.41.01,2.12.02.49-.16.78-.61,1.01-2.57,1.34-5.14,2.7-7.7,4.07-.23.12-.64.16-.61.46.02.27.4.34.64.47,2.55,1.33,5.1,2.67,7.66,3.99.44.22.64.5.62,1-.03.71-.02,1.41-.01,2.12.01.55-.18.68-.68.41-.88-.49-1.78-.94-2.67-1.43-.4-.22-.59-.2-.75.3-.32,1.02-1,1.53-2.09,1.53-4.37.02-8.74.02-13.11,0-1.37-.01-2.13-.83-2.15-2.2-.02-.86.02-1.72-.02-2.58-.02-.56.19-.89.68-1.13,1.31-.66,2.61-1.35,3.9-2.03.25-.12.49-.26.88-.47Z" fill="currentcolor" fill-rule="evenodd"/></svg></div>
+          <p>CapCut Desktop</p>
+          <div class="stars">★★★★★</div>
+        </div>
+        <div class="programa">
+          <div class="box-programa"><?xml version="1.0" encoding="UTF-8"?><svg id="figma" xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 32 32"><g id="figma"><path d="m19.74,12.26h-3.74v3.74c0,2.06,1.67,3.74,3.74,3.74s3.74-1.68,3.74-3.74-1.68-3.74-3.74-3.74c2.06,0,3.74-1.67,3.74-3.74s-1.68-3.74-3.74-3.74h-7.48c-2.06,0-3.74,1.68-3.74,3.74s1.68,3.74,3.74,3.74c-2.06,0-3.74,1.68-3.74,3.74s1.68,3.74,3.74,3.74c-2.06,0-3.74,1.67-3.74,3.74s1.68,3.74,3.74,3.74h0c2.07,0,3.74-1.68,3.74-3.74v-7.48c0-2.06,1.67-3.74,3.74-3.74ZM5.6,0h20.8c3.08,0,5.6,2.58,5.6,5.74v20.52c0,3.16-2.52,5.74-5.6,5.74H5.6c-3.08,0-5.6-2.58-5.6-5.74V5.74C0,2.58,2.52,0,5.6,0Z" fill="currentcolor" fill-rule="evenodd"/></g></svg></div>
+          <p>Figma</p>
+          <div class="stars">★★★★★</div>
+        </div>
+        <div class="programa">
+          <div class="box-programa"><?xml version="1.0" encoding="UTF-8"?><svg id="office" xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 32 32"><g id="office"><path d="m5.6,0h20.8c3.08,0,5.6,2.58,5.6,5.74v20.52c0,3.16-2.52,5.74-5.6,5.74H5.6c-3.08,0-5.6-2.58-5.6-5.74V5.74C0,2.58,2.52,0,5.6,0Zm19.4,24.82l-6.36,2-11.44-4.23,11.44,1.24v-15.25l-7.57,1.91v10.24l-4.07,1.83v-13.08l11.65-4.3,6.35,2v17.64Z" fill="currentcolor" fill-rule="evenodd"/></g></svg></div>
+          <p>Pacote Office</p>
+          <div class="stars">★★★★★</div>
+        </div>
       </div>
-      <div class="portfolio-item" data-title="Projeto 2" data-desc="Criação de post para Instagram">
-        <img src="https://via.placeholder.com/400x300" alt="Projeto 2">
-        <span class="overlay">Projeto 2</span>
-      </div>
-      <div class="portfolio-item" data-title="Projeto 3" data-desc="Layout de revista">
-        <img src="https://via.placeholder.com/400x300" alt="Projeto 3">
-        <span class="overlay">Projeto 3</span>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Lightbox -->
-  <div class="lightbox" id="lightbox">
-    <div class="lightbox-content">
-      <span class="lightbox-close">&times;</span>
-      <img src="" alt="" id="lightbox-img">
-      <h3 id="lightbox-title"></h3>
-      <p id="lightbox-desc"></p>
+    <!-- Galeria -->
+     <section class="gallery">
+      <h2>Galeria</h2>
+    <div class="gallery">
+  <img src="https://github.com/stygian-blue/stygian-blue.github.io/blob/main/portifolio-images/Agenda%202025%20mockup.jpg?raw=true" alt="capa da agenda 2025" data-title="Agenda da Gráfica 2025" data-desc="Agenda oficial da gráfica 2025, criada com foco no carro-chefe da empresa: o setor editorial. O conceito explora a ideia de livros como mundos paralelos, conectando criatividade e imaginação. A escolha da imagem e do esquema de cores reflete a identidade visual da gráfica, reforçando sua presença e personalidade no material.
+Programas utilizados: Adobe Photoshop para a edição e tratamento da imagem e mockup, CorelDRAW para o fechamento gráfico.">
+  <img src="https://github.com/stygian-blue/stygian-blue.github.io/blob/main/portifolio-images/Agenda%202026%20mockup%20modelo%202.jpg?raw=true" alt="capa da agenda 2026" data-title="Agenda da Gráfica 2026" data-desc="A agenda oficial da gráfica para 2026. Criada com arte vetorial geométrica em alta resolução, esta agenda transmite modernidade, força e personalidade. O leão, formado por polígonos coloridos em paleta CMYK, simboliza liderança e determinação, e é um símbolo muito estimado pela diretoria da empresa.
+Agenda oficial da gráfica 2025, criada com foco no carro-chefe da empresa: o setor editorial. O conceito explora a ideia de livros como mundos paralelos, conectando criatividade e imaginação. A escolha da imagem e do esquema de cores reflete a identidade visual da gráfica, reforçando sua presença e personalidade no material.
+Programas utilizados: CorelDRAW para arte vetorial e fechamento gráfico; Adobe Photoshop para o mockup;">
+  <img src="https://res.cloudinary.com/dw7jjvtt9/image/upload/v1758644614/agenda-2026-modelo-8_q54p3y.jpg" alt="modelo de agenda 2026" data-title="Agenda 2026 Modelo 1" data-desc="Desenvolvi este modelo a partir das estéticas como vaporwave, retro futurismo; explorando a estética com  técnicas de edição de imagem para criar esse conceito de mistura entre real/virtual.
+Programas utilizados:">
+  <img src="https://res.cloudinary.com/dw7jjvtt9/image/upload/v1758644609/agenda-2026-modelo-4_nljsla.jpg" alt="modelo de agenda" data-title="Agenda 2026 Modelo 2" data-desc="Apostei no estilo vintage, inspirado nos VHS dos anos 80, combinando com um design clean e frases de efeito. A proposta conecta nostalgia e modernidade, criando uma identidade visual única que conversa com o público e reforça a marca da gráfica.">
+  <img src="https://res.cloudinary.com/dw7jjvtt9/image/upload/v1758644608/agenda-2026-modelo-12_txwgpm.jpg" alt="modelo de agenda" data-title="Agenda 2026 Modelo 3" data-desc="Capa criada com a composição de livros arranjados e estilizados, remetendo diretamente ao universo editorial — um dos principais segmentos atendidos pela gráfica. A escolha visual reforça a conexão com o mercado de publicações, destacando tanto a organização quanto a estética do design editorial.">
+  <img src="https://res.cloudinary.com/dw7jjvtt9/image/upload/v1758644578/minha_agenda_com_deus_hloibb.jpg" alt="modelo de agenda para livraria cristã" data-title="Agenda para Livraria Cristã" data-desc="Capa desenvolvida para uma livraria cristã, inspirada na simbologia do leão. A composição explora cores intensas e iluminação dramática para transmitir um caráter sublime. Para agregar profundidade e textura ao design, incorporei um versículo bíblico amplamente conhecido, em harmonia com a força simbólica da imagem.">
+  <img src="https://res.cloudinary.com/dw7jjvtt9/image/upload/v1758646342/cartao_de_dia_dos_namorados_tndkus.jpg" alt="cartão de dia dos namorados" data-title="Cartão de Dia dos Namorados" data-desc="Cartão de Dia dos Namorados desenvolvido em pixel art feita à mão, trazendo um estilo nostálgico e criativo. A peça foi impressa em papel triplex, garantindo resistência e acabamento de qualidade. No verso, o design contempla um espaço exclusivo para dedicatória, permitindo personalização e tornando o cartão ainda mais especial para a ocasião.">
+  <img src="https://res.cloudinary.com/dw7jjvtt9/image/upload/v1758646762/Foto_21_segredos_da_mulher_confiante_zuhkbv.jpg" alt="post para redes sociais" data-title="Post para Instagram" data-desc="Post desenvolvido para Instagram com fotografia autoral, captada e editada por mim.">
+  <img src="https://res.cloudinary.com/dw7jjvtt9/image/upload/v1758646762/Foto_21_segredos_da_mulher_confiante_2_qjnumh.jpg" alt="post para instagram" data-title="Post para Instagram" data-desc="Post desenvolvido para Instagram com foco em evidenciar os diferentes acabamentos oferecidos pela gráfica. O conteúdo foi construído de forma didática e visualmente clara, destacando os detalhes técnicos de maneira acessível ao público e reforçando a qualidade dos serviços.">
+  <img src="https://res.cloudinary.com/dw7jjvtt9/image/upload/v1758647142/Mockup_Bible_goods_arca_de_noe_ym9vhz.jpg" alt="mockup bobbie goods bíblico" data-title="Livro de colorir Bible Goods" data-desc="Edição de livro de colorir inspirada na estética do ‘Bobbie Goods’. O projeto envolveu a adaptação e organização dos elementos gráficos, resultando em uma obra com traços lúdicos e criativos, pensada para proporcionar uma experiência leve e envolvente ao leitor.">
+  <img src="https://res.cloudinary.com/dw7jjvtt9/image/upload/v1758647142/Mockup_Bible_goods_arca_de_noe_open_rhjxhj.jpg" alt="mockup bobbie goods bíblico" data-title="Livro de Colorir Bible Goods" data-desc="Edição completa de livro de colorir com ilustrações inicialmente geradas por inteligência artificial. Para viabilizar a impressão com qualidade, todas as imagens foram cuidadosamente vetorizadas, preservando o estilo original. Além disso, realizei correções de lógica e anatomia nos desenhos, assegurando consistência visual e reforçando o caráter lúdico da obra.">
+  <img src="https://res.cloudinary.com/dw7jjvtt9/image/upload/v1758647143/Mockup_Bible_goods_milagres_de_jesus_iiwn9k.jpg" alt="mockup bobbie goods bíblico" data-title="Livro de Colorir Bible Goods" data-desc="Mockup dos livros de colorir Bible Goods">
     </div>
+    </section>
+
+    <!-- Lightbox -->
+<div id="lightbox" class="hidden">
+  <div class="lightbox-content">
+    <span class="close">&times;</span>
+    <img id="lightbox-img" src="">
+    <h2 id="lightbox-title"></h2>
+    <p id="lightbox-desc"></p>
   </div>
+</div>
 
-  <!-- Contato -->
-  <section id="contato">
-    <h2>Contato</h2>
-    <form action="#" method="post">
-      <label for="nome">Nome:</label>
-      <input type="text" id="nome" name="nome" placeholder="Seu nome">
+  </main>
 
-      <label for="email">Email:</label>
-      <input type="email" id="email" name="email" placeholder="Seu email">
-
-      <label for="mensagem">Mensagem:</label>
-      <textarea id="mensagem" name="mensagem" placeholder="Sua mensagem"></textarea>
-
-      <button type="submit">Enviar</button>
-    </form>
-  </section>
-
-  <!-- Rodapé -->
+  <!-- Footer -->
   <footer>
-    <p>© 2025 Isabelle Santos de Jesus | Todos os direitos reservados</p>
+    © 2025 Isabelle Santos de Jesus | Todos os direitos reservados
   </footer>
 
-  <script>
-    // Lightbox funcional
-    const lightbox = document.getElementById('lightbox');
-    const lbImg = document.getElementById('lightbox-img');
-    const lbTitle = document.getElementById('lightbox-title');
-    const lbDesc = document.getElementById('lightbox-desc');
-    const lbClose = document.querySelector('.lightbox-close');
+<script>
 
-    document.querySelectorAll('.portfolio-item').forEach(item=>{
-      item.addEventListener('click', ()=>{
-        lbImg.src = item.querySelector('img').src;
-        lbTitle.textContent = item.dataset.title;
-        lbDesc.textContent = item.dataset.desc;
-        lightbox.style.display = 'flex';
-      });
-    });
+const galleryImages = document.querySelectorAll(".gallery img");
+const lightbox = document.getElementById("lightbox");
+const lightboxImg = document.getElementById("lightbox-img");
+const lightboxTitle = document.getElementById("lightbox-title");
+const lightboxDesc = document.getElementById("lightbox-desc");
+const closeBtn = document.querySelector(".close");
 
-    lbClose.addEventListener('click', ()=>{ lightbox.style.display='none'; });
-    lightbox.addEventListener('click', e=>{ if(e.target===lightbox) lightbox.style.display='none'; });
-  </script>
+galleryImages.forEach(img => {
+  img.addEventListener("click", () => {
+    lightbox.classList.remove("hidden");
+    document.body.classList.add('locked');
+    lightboxImg.src = img.src;
+    lightboxTitle.textContent = img.dataset.title;
+    lightboxDesc.textContent = img.dataset.desc;
+  });
+});
+
+closeBtn.addEventListener("click", () => {
+  lightbox.classList.add("hidden");
+  document.body.classList.remove('locked');
+});
+
+lightbox.addEventListener("click", (e) => {
+  if (e.target === lightbox) {
+    lightbox.classList.add("hidden");
+  }
+});
+</script>
+
 </body>
 </html>
