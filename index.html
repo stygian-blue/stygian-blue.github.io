@@ -14,16 +14,16 @@
     }
 
     :root {
-      --base-color: #598392;
-      --secondary-color: #124559;
-      --paragraph-color: #01161E;
-      --off-white: #EFF6E0;
-      --tertiary-color: #AEC3B0;
+      --base-color: #77ACA2;
+      --secondary-color: #468189;
+      --paragraph-color: #031926;
+      --off-white: #F4E9CD;
+      --tertiary-color: #9DBEBB;
     }
 
     body {
       line-height: 1.6;
-      color: #9ec9ff;
+      color: var(--paragraph-color);
       background-color: var(--off-white);
     }
 
@@ -68,9 +68,9 @@ footer::before {
       justify-content: space-between;
       align-items: center;
       padding: 15px 40px;
-      background: rgba(247, 247, 247, 0.1); 
-      backdrop-filter: blur(40px);
-      -webkit-backdrop-filter: blur(40px);
+      background: rgba(244, 233, 205, 0.212); 
+      backdrop-filter: blur(30px);
+      -webkit-backdrop-filter: blur(30px);
       border-bottom: 1px solid rgba(255,255,255,0.3);
       z-index: 1000;
     }
@@ -79,6 +79,7 @@ footer::before {
       display: flex;
       align-items: center;
       gap: 15px;
+      color: var(--secondary-color);
     }
 
     .logo-box {
@@ -98,7 +99,7 @@ footer::before {
     .logo-text .name {
       font-weight: bold;
       font-size: 20px;
-      color: var(--base-color);
+      color: var(--secondary-color);
     }
 
     .logo-text .desc {
@@ -109,14 +110,14 @@ footer::before {
     .socials {
       display: flex;
       align-items: center;
-      color: var(--base-color);
+      color: var(--secondary-color);
       height: 40px;
       transition: tranform .15s ease;
       gap: 15px;
     }
 
     .socials a {
-      color: var(--base-color);
+      color: var(--secondary-color);
     }
 
     nav {
@@ -140,12 +141,12 @@ footer::before {
       left: 0;
       width: 0%;
       height: 2px;
-      background: #A0CFAC;
+      background: #ff0000;
       transition: width 0.3s;
     }
 
     nav a:hover {
-      color: #A0CFAC;
+      color: #ff0000b0;
     }
 
     nav a:hover::after {
@@ -195,7 +196,7 @@ footer::before {
 
     /* Green Section */
     .experiencia-profissional {
-      background: #A0CFAC;
+      background: var(--secondary-color);
       padding: 60px 40px;
       text-align: center;
     }
@@ -224,6 +225,15 @@ footer::before {
       position: relative;
       z-index: 1;
     }
+    
+    .card ul {
+      text-align: center;
+      margin-top: 15px;
+      padding-left: 20px;
+      padding-right: 20px;
+      list-style-position: inside;
+    }
+
     .card h3 {
       color: var(--base-color);
     }
@@ -245,15 +255,19 @@ footer::before {
     }
 
     .lista-competencias {
-      display: flex;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+      justify-items: center;
       justify-content: center;
-      gap: 15px;
+      gap: 20px;
       flex-wrap: wrap;
+      align-items: start;
     }
 
     .programa {
       text-align: center;
       transition: transform 0.3s;
+      width: 100%;
     }
 
     .programa:hover {
@@ -263,7 +277,7 @@ footer::before {
     .box-programa {
       width: 80px;
       height: 80px;
-      color: #9ec9ff;
+      color: var(--secondary-color);
       margin: auto;
       transition: background 0.3s;
     }
@@ -273,12 +287,12 @@ footer::before {
 max-width: 80%;
 }    
     .stars {
-      color: #909CAA;
+      color: var(--paragraph-color);
       font-size: 12px;
     }
 
     section.gallery {
-      background-color: #9ec9ff;
+      background-color: var(--tertiary-color);
       padding: 60px 40px;
       text-align: center;
     }
@@ -302,6 +316,7 @@ max-width: 80%;
       cursor: pointer;
       border-radius: 8px;
       transition: transform 0.3s;
+      object-fit: cover;
     }
 
     .gallery img:hover {
@@ -316,7 +331,7 @@ max-width: 80%;
   align-items: center;
   justify-content: center;
   overflow-y: auto;
-  z-index: 1000;
+  z-index: 1001;
 }
 
 #lightbox.hidden {
@@ -324,13 +339,14 @@ max-width: 80%;
 }
 
 .lightbox-content {
-  background: white;
+  background: var(--tertiary-color);
   padding: 20px;
   border-radius: 12px;
   max-width: 80%;
   margin: 2em auto;
   text-align: center;
   box-shadow: 0 5px 25px rgba(0,0,0,0.3);
+  position: relative;
 }
 
 .lightbox-content img {
@@ -354,11 +370,11 @@ max-width: 80%;
 
     /* Footer */
     footer {
-      background: #eee;
+      background: var(--base-color);
       padding: 15px 40px;
       text-align: left;
       font-size: 14px;
-      color: #444;
+      color: var(--paragraph-color);
     }
 
     /* Responsive */
@@ -391,7 +407,7 @@ max-width: 80%;
       </div>
     </div>
      <div class="socials">
-        <a href="https://www.linkedin.com/in/isabelle-santos-de-jesus-557446207/" target="_blank"><svg id="linkedin" xmlns="http://www.w3.org11/2000/svg" width="32" height="32" viewBox="0 0 32 32"><g id="linkedin"><path d="m5.6,0h20.8c3.08,0,5.6,2.58,5.6,5.74v20.52c0,3.16-2.52,5.74-5.6,5.74H5.6c-3.08,0-5.6-2.58-5.6-5.74V5.74C0,2.58,2.52,0,5.6,0Zm12.02,18.23c0-1.95.9-3.11,2.62-3.11,1.58,0,2.34,1.12,2.34,3.11v7.29h4.27v-8.79c0-3.72-2.1-5.51-5.05-5.51s-4.18,2.29-4.18,2.29v-1.87h-4.12v13.88h4.12s0-5.15,0-7.29Zm-11.17,7.29h4.3v-13.88h-4.3v13.88Zm2.13-15.7c1.41,0,2.54-1.15,2.54-2.56s-1.13-2.56-2.54-2.56-2.54,1.15-2.54,2.56,1.14,2.56,2.54,2.56Z" fill="CurrentColor" fill-rule="evenodd"/></g></svg></a>
+        <a href="https://www.linkedin.com/in/isabelle-santos-de-jesus-557446207/" target="_blank"><svg id="linkedin" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32"><g id="linkedin"><path d="m5.6,0h20.8c3.08,0,5.6,2.58,5.6,5.74v20.52c0,3.16-2.52,5.74-5.6,5.74H5.6c-3.08,0-5.6-2.58-5.6-5.74V5.74C0,2.58,2.52,0,5.6,0Zm12.02,18.23c0-1.95.9-3.11,2.62-3.11,1.58,0,2.34,1.12,2.34,3.11v7.29h4.27v-8.79c0-3.72-2.1-5.51-5.05-5.51s-4.18,2.29-4.18,2.29v-1.87h-4.12v13.88h4.12s0-5.15,0-7.29Zm-11.17,7.29h4.3v-13.88h-4.3v13.88Zm2.13-15.7c1.41,0,2.54-1.15,2.54-2.56s-1.13-2.56-2.54-2.56-2.54,1.15-2.54,2.56,1.14,2.56,2.54,2.56Z" fill="CurrentColor" fill-rule="evenodd"/></g></svg></a>
         <a href="https://www.instagram.com/_stygian.blue_/" target="_blank"><svg id="instagram" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32"><g id="instagram"><path d="m5.6,0h20.8c3.08,0,5.6,2.58,5.6,5.74v20.52c0,3.16-2.52,5.74-5.6,5.74H5.6c-3.08,0-5.6-2.58-5.6-5.74V5.74C0,2.58,2.52,0,5.6,0Zm17.4,10.29c0,.71-.58,1.28-1.29,1.28s-1.28-.57-1.28-1.28.57-1.29,1.28-1.29,1.29.58,1.29,1.29Zm-7,9.28c-1.97,0-3.57-1.6-3.57-3.57s1.6-3.57,3.57-3.57,3.57,1.6,3.57,3.57-1.6,3.57-3.57,3.57Zm0-9.06c-3.03,0-5.49,2.45-5.49,5.49s2.46,5.49,5.49,5.49,5.5-2.46,5.5-5.49-2.46-5.49-5.5-5.49Zm0-5.21c-2.9,0-3.27.01-4.41.06-1.14.06-1.92.24-2.6.5-.7.27-1.3.64-1.89,1.24-.6.59-.97,1.19-1.24,1.89-.26.68-.44,1.46-.5,2.6-.05,1.14-.06,1.5-.06,4.41s.01,3.27.06,4.41c.06,1.14.24,1.92.5,2.6.27.7.64,1.3,1.24,1.89.59.6,1.19.97,1.89,1.24.68.26,1.46.44,2.6.5,1.14.05,1.51.06,4.41.06s3.27-.01,4.41-.06c1.14-.06,1.92-.24,2.6-.5.7-.27,1.3-.64,1.9-1.24s.96-1.19,1.23-1.89c.26-.68.45-1.46.5-2.6s.06-1.5.06-4.41-.01-3.27-.06-4.41c-.05-1.14-.24-1.92-.5-2.6-.27-.7-.64-1.3-1.23-1.89-.6-.6-1.2-.97-1.9-1.24-.68-.26-1.46-.44-2.6-.5-1.14-.05-1.5-.06-4.41-.06Zm0,1.93c2.86,0,3.2.01,4.32.06,1.05.05,1.62.22,1.99.37.5.19.86.42,1.23.8.38.37.61.73.8,1.23.15.38.32.94.37,1.99.05,1.12.06,1.46.06,4.32s-.01,3.2-.06,4.33c-.05,1.04-.22,1.6-.37,1.98-.19.5-.42.86-.8,1.23-.37.38-.73.61-1.23.8-.37.15-.94.32-1.99.37-1.12.05-1.46.06-4.32.06s-3.19-.01-4.32-.06c-1.05-.05-1.61-.22-1.99-.37-.5-.19-.86-.42-1.23-.8-.37-.37-.61-.73-.8-1.23-.15-.38-.32-.94-.37-1.98-.05-1.13-.06-1.47-.06-4.33s.01-3.2.06-4.32c.05-1.05.22-1.61.37-1.99.19-.5.43-.86.8-1.23.37-.38.73-.61,1.23-.8.38-.15.94-.32,1.99-.37,1.13-.05,1.46-.06,4.32-.06Z" fill="currentcolor" fill-rule="evenodd"/></g></svg></a>
         <a href="https://github.com/stygian-blue" target="_blank"><svg id="github" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32"><g id="github"><path d="m5.6,0h20.8c3.08,0,5.6,2.58,5.6,5.74v20.52c0,3.16-2.52,5.74-5.6,5.74H5.6c-3.08,0-5.6-2.58-5.6-5.74V5.74C0,2.58,2.52,0,5.6,0Zm7.19,27.65c-.01-.59-.01-1.49-.01-2.43-4.02.74-5.06-.98-5.38-1.88-.18-.46-.96-1.88-1.64-2.26-.56-.3-1.36-1.05-.02-1.07,1.26-.02,2.16,1.17,2.46,1.65,1.44,2.42,3.74,1.74,4.66,1.32.14-1.04.56-1.75,1.02-2.14-3.56-.4-7.28-1.78-7.28-7.91,0-1.73.62-3.17,1.64-4.3-.16-.39-.72-2.04.16-4.24,0,0,1.34-.42,4.4,1.64,1.28-.36,2.64-.54,4-.54s2.72.18,4,.54c3.06-2.08,4.4-1.64,4.4-1.64.88,2.2.32,3.85.16,4.24,1.02,1.13,1.64,2.54,1.64,4.3,0,6.15-3.74,7.51-7.3,7.91.58.5,1.08,1.46,1.08,2.96,0,1.64-.02,3.04-.02,3.85,0,0-7.97,0-7.97,0Z" fill="currentcolor" fill-rule="evenodd"/></g></svg></a>
       </div>
@@ -403,7 +419,9 @@ max-width: 80%;
       <img src="https://github.com/stygian-blue/stygian-blue.github.io/blob/main/images/challege.png?raw=true" alt="my-illustration">
       <div class="hero-text">
         <h1>Sobre Mim</h1>
-        <p>Atuar nas áreas de design gráfico, impressão digital ou pré-impressão, contribuindo com minha experiência técnica e criatividade no desenvolvimento de materiais impressos e digitais. Formada em Artes Visuais, com experiência em gravação de chapas offset, operação de impressoras digitais e criação de peças gráficas. Experiência em gestão de conteúdo visual para redes sociais.Habilidades técnicas, senso estético apurado e facilidade para trabalho em equipe.</p>
+        <p>Olá! Sou Isabelle Santos de Jesus, designer gráfica e operadora de impressão digital com formação em Artes Visuais (UNOESTE) e experiência prática em pré-impressão, arte-final e produção gráfica. Meu trabalho une criatividade e precisão técnica para desenvolver peças visuais de alto impacto, sejam impressas ou digitais.
+Tenho domínio de ferramentas essenciais do mercado, como CorelDRAW, Photoshop, Illustrator, InDesign, Canva, Inkscape (vetorização), Clip Studio Paint e modelagem 3D com Rhino. Atuei na Impress Gráfica como gravadora de chapas offset e designer, realizando desde a preparação de arquivos (ajuste de sangria, fontes, resolução e cores) até a criação de materiais como cartões, flyers, banners e catálogos. Na Lebazi, expandi minha atuação para design de produtos e peças promocionais, além de rotinas administrativas. Também fui professora de desenho na EBAC, o que fortaleceu minha didática e comunicação.
+Busco oportunidades em design gráfico, pré-impressão e impressão digital onde possa contribuir com minha visão estética, conhecimento técnico e compromisso com a qualidade. Idiomas: inglês intermediário e japonês básico.</p>
       </div>
     </section>
 
@@ -415,11 +433,11 @@ max-width: 80%;
           <h3>Gravadora de chapas Júnior | Designer Gráfica</h3>
           <h4>Gráfica e Editora Impress</h4>
           <h5>2024-presente</h5>
-          <ul>
-            <li>Gravação de chapas offset conforme padrões técnicos;</li>
-            <li>Preparação e finalização de arquivos para impressão;</li>
-            <li>Criação de posts para redes sociais e peças gráficas.</li>
-          </ul>
+            <ul>
+                <li>Gravação de chapas offset conforme padrões técnicos;</li>
+                <li>Preparação e finalização de arquivos para impressão;</li>
+                <li>Criação de posts para redes sociais e peças gráficas.</li>
+            </ul>
         </div>
         <div class="card">
           <h3>Assistente Administrativo | Designer — 2024-2022</h3>
@@ -552,6 +570,14 @@ lightbox.addEventListener("click", (e) => {
     lightbox.classList.add("hidden");
   }
 });
+
+lightbox.addEventListener("keydown", (e) => {
+  if (e.key === "Escape" && !lightbox.classList.contains("hidden")) {
+    lightbox.classList.add("hidden");
+    document.body.classList.remove('locked');
+  }
+});
+
 </script>
 
 </body>
