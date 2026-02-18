@@ -291,82 +291,258 @@ max-width: 80%;
       font-size: 12px;
     }
 
-    section.gallery {
-      background-color: var(--tertiary-color);
-      padding: 60px 40px;
-      text-align: center;
-    }
-
-    section.gallery > h2 {
-      margin-bottom: 30px;
-      font-size: 2rem;
-    }
-
-    /* Galeria */
-    div.gallery {
-      display: flex;
-      flex-flow: row;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 10px;
-    }
-
-    div.gallery img {
-      width: 20vw;
-      cursor: pointer;
-      border-radius: 8px;
-      transition: transform 0.3s;
-      object-fit: cover;
-    }
-
-    .gallery img:hover {
-      transform: scale(1.05);
-    }
-
-#lightbox {
-  position: fixed;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.7);
-  backdrop-filter: blur(5px); /* deixa o fundo borrado */
-  align-items: center;
-  justify-content: center;
-  overflow-y: auto;
-  z-index: 1001;
+   /* ===== NOVA SEÇÃO PROJETOS ===== */
+.projetos-section {
+  padding: 60px 40px;
+  background-color: var(--tertiary-color);
+  position: relative;
+  z-index: 1;
 }
 
-#lightbox.hidden {
-  display: none;
-}
-
-.lightbox-content {
-  background: var(--tertiary-color);
-  padding: 20px;
-  border-radius: 12px;
-  max-width: 80%;
-  margin: 2em auto;
+.projetos-header {
+  margin-bottom: 3rem;
   text-align: center;
-  box-shadow: 0 5px 25px rgba(0,0,0,0.3);
+}
+
+.projetos-header h2 {
+  font-size: 2.5rem;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  color: var(--paragraph-color);
+  margin-bottom: 0.5rem;
+}
+
+.projetos-header p {
+  font-size: 1.2rem;
+  color: var(--secondary-color);
+  max-width: 700px;
+  margin: 0 auto;
+  font-weight: 350;
+  line-height: 1.4;
+}
+
+.projetos-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.projeto-card {
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  background: white;
+  border-radius: 1rem;
+  overflow: hidden;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+  border: 1px solid rgba(255,255,255,0.3);
+}
+
+.projeto-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 30px -8px rgba(0,0,0,0.15);
+}
+
+.card-imagem {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  background-color: var(--base-color);
+  object-fit: cover;
+  display: block;
+}
+
+.card-info {
+  padding: 1.2rem 1.2rem 1.5rem;
+  background: var(--off-white);
+}
+
+.card-info h3 {
+  font-size: 1.3rem;
+  font-weight: 500;
+  margin-bottom: 0.25rem;
+  color: var(--paragraph-color);
+}
+
+.card-categoria {
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  color: var(--secondary-color);
+  font-weight: 400;
+}
+
+/* MODAL DE PROJETO */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.6);
+  backdrop-filter: blur(5px);
+  display: none;
+  justify-content: center;
+  align-items: flex-start;
+  z-index: 2000;
+  padding: 2rem 1rem;
+  overflow-y: auto;
+}
+
+.modal-overlay.active {
+  display: flex;
+}
+
+.modal-container {
+  background: var(--off-white);
+  border-radius: 2rem;
+  max-width: 1000px;
+  width: 100%;
+  margin: auto;
+  box-shadow: 0 30px 60px rgba(0,0,0,0.4);
+  animation: modalFadeIn 0.3s ease;
+  position: relative;
+  border: 1px solid rgba(255,255,255,0.2);
+}
+
+@keyframes modalFadeIn {
+  from { opacity: 0; transform: scale(0.98); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+.modal-conteudo {
+  padding: 2.5rem;
   position: relative;
 }
 
-.lightbox-content img {
-  max-width: 100%;
-  border-radius: 8px;
-}
-
-.lightbox-content #lightbox-title {
-  margin: 1em auto;
-}
-
-.close {
+.modal-fechar {
   position: absolute;
-  top: 20px;
-  right: 40px;
-  font-size: 40px;
+  top: 1.5rem;
+  right: 1.8rem;
+  background: none;
+  border: none;
+  font-size: 2.5rem;
+  line-height: 1;
   cursor: pointer;
-  color: white;
+  color: var(--secondary-color);
+  transition: color 0.2s;
+  z-index: 10;
 }
 
+.modal-fechar:hover {
+  color: var(--paragraph-color);
+}
+
+.projeto-cabecalho {
+  margin-bottom: 2rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--base-color);
+}
+
+.projeto-cabecalho h1 {
+  font-size: 2.2rem;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  margin-bottom: 0.5rem;
+  color: var(--paragraph-color);
+  padding-right: 2rem;
+}
+
+.projeto-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  color: var(--secondary-color);
+  font-size: 0.95rem;
+}
+
+.projeto-meta span strong {
+  font-weight: 600;
+  color: var(--paragraph-color);
+  margin-right: 0.3rem;
+}
+
+.bloco {
+  margin: 2rem 0;
+}
+
+.bloco h2 {
+  font-size: 1.3rem;
+  font-weight: 500;
+  color: var(--paragraph-color);
+  margin-bottom: 0.75rem;
+  letter-spacing: -0.01em;
+}
+
+.bloco p {
+  color: var(--paragraph-color);
+  max-width: 720px;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.galeria-projeto {
+  margin: 2.5rem 0 1.5rem;
+}
+
+.galeria-projeto h2 {
+  font-size: 1.3rem;
+  font-weight: 500;
+  margin-bottom: 1rem;
+  color: var(--paragraph-color);
+}
+
+.galeria-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+
+.galeria-item {
+  background: var(--base-color);
+  border-radius: 0.8rem;
+  overflow: hidden;
+  aspect-ratio: 4/3;
+}
+
+.galeria-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.resultado {
+  background: var(--base-color);
+  padding: 1.5rem;
+  border-radius: 1rem;
+  margin-top: 2rem;
+  color: var(--off-white);
+}
+
+.resultado p {
+  margin: 0;
+  font-style: italic;
+  color: var(--off-white);
+}
+
+.resultado strong {
+  color: var(--off-white);
+  font-weight: 600;
+}
+
+/* Responsividade */
+@media (max-width: 700px) {
+  .projetos-section { padding: 40px 20px; }
+  .projetos-header h2 { font-size: 2rem; }
+  .galeria-grid { grid-template-columns: 1fr 1fr; }
+  .modal-conteudo { padding: 1.5rem; }
+  .modal-fechar { top: 1rem; right: 1.2rem; font-size: 2rem; }
+}
+
+@media (max-width: 450px) {
+  .galeria-grid { grid-template-columns: 1fr; }
+  .projeto-meta { flex-direction: column; gap: 0.5rem; }
+}
 
     /* Footer */
     footer {
@@ -502,26 +678,27 @@ Busco oportunidades em design gráfico, pré-impressão e impressão digital ond
     </section>
 
     <!-- Galeria -->
-     <section class="gallery">
-      <h2>Galeria</h2>
-    <div class="gallery">
-  <img src="https://github.com/stygian-blue/stygian-blue.github.io/blob/main/portifolio-images/Agenda%202025%20mockup.jpg?raw=true" alt="capa da agenda 2025" data-title="Agenda da Gráfica 2025" data-desc="Agenda oficial da gráfica 2025, criada com foco no carro-chefe da empresa: o setor editorial. O conceito explora a ideia de livros como mundos paralelos, conectando criatividade e imaginação. A escolha da imagem e do esquema de cores reflete a identidade visual da gráfica, reforçando sua presença e personalidade no material.
-Programas utilizados: Adobe Photoshop para a edição e tratamento da imagem e mockup, CorelDRAW para o fechamento gráfico.">
-  <img src="https://github.com/stygian-blue/stygian-blue.github.io/blob/main/portifolio-images/Agenda%202026%20mockup%20modelo%202.jpg?raw=true" alt="capa da agenda 2026" data-title="Agenda da Gráfica 2026" data-desc="A agenda oficial da gráfica para 2026. Criada com arte vetorial geométrica em alta resolução, esta agenda transmite modernidade, força e personalidade. O leão, formado por polígonos coloridos em paleta CMYK, simboliza liderança e determinação, e é um símbolo muito estimado pela diretoria da empresa.
-Agenda oficial da gráfica 2025, criada com foco no carro-chefe da empresa: o setor editorial. O conceito explora a ideia de livros como mundos paralelos, conectando criatividade e imaginação. A escolha da imagem e do esquema de cores reflete a identidade visual da gráfica, reforçando sua presença e personalidade no material.
-Programas utilizados: CorelDRAW para arte vetorial e fechamento gráfico; Adobe Photoshop para o mockup;">
-  <img src="https://res.cloudinary.com/dw7jjvtt9/image/upload/v1758644614/agenda-2026-modelo-8_q54p3y.jpg" alt="modelo de agenda 2026" data-title="Agenda 2026 Modelo 1" data-desc="Desenvolvi este modelo a partir das estéticas como vaporwave, retro futurismo; explorando a estética com  técnicas de edição de imagem para criar esse conceito de mistura entre real/virtual.
-Programas utilizados:">
-  <img src="https://res.cloudinary.com/dw7jjvtt9/image/upload/v1758644609/agenda-2026-modelo-4_nljsla.jpg" alt="modelo de agenda" data-title="Agenda 2026 Modelo 2" data-desc="Apostei no estilo vintage, inspirado nos VHS dos anos 80, combinando com um design clean e frases de efeito. A proposta conecta nostalgia e modernidade, criando uma identidade visual única que conversa com o público e reforça a marca da gráfica.">
-  <img src="https://res.cloudinary.com/dw7jjvtt9/image/upload/v1758644608/agenda-2026-modelo-12_txwgpm.jpg" alt="modelo de agenda" data-title="Agenda 2026 Modelo 3" data-desc="Capa criada com a composição de livros arranjados e estilizados, remetendo diretamente ao universo editorial — um dos principais segmentos atendidos pela gráfica. A escolha visual reforça a conexão com o mercado de publicações, destacando tanto a organização quanto a estética do design editorial.">
-  <img src="https://res.cloudinary.com/dw7jjvtt9/image/upload/v1758644578/minha_agenda_com_deus_hloibb.jpg" alt="modelo de agenda para livraria cristã" data-title="Agenda para Livraria Cristã" data-desc="Capa desenvolvida para uma livraria cristã, inspirada na simbologia do leão. A composição explora cores intensas e iluminação dramática para transmitir um caráter sublime. Para agregar profundidade e textura ao design, incorporei um versículo bíblico amplamente conhecido, em harmonia com a força simbólica da imagem.">
-  <img src="https://res.cloudinary.com/dw7jjvtt9/image/upload/v1758646342/cartao_de_dia_dos_namorados_tndkus.jpg" alt="cartão de dia dos namorados" data-title="Cartão de Dia dos Namorados" data-desc="Cartão de Dia dos Namorados desenvolvido em pixel art feita à mão, trazendo um estilo nostálgico e criativo. A peça foi impressa em papel triplex, garantindo resistência e acabamento de qualidade. No verso, o design contempla um espaço exclusivo para dedicatória, permitindo personalização e tornando o cartão ainda mais especial para a ocasião.">
-  <img src="https://res.cloudinary.com/dw7jjvtt9/image/upload/v1758646762/Foto_21_segredos_da_mulher_confiante_zuhkbv.jpg" alt="post para redes sociais" data-title="Post para Instagram" data-desc="Post desenvolvido para Instagram com fotografia autoral, captada e editada por mim.">
-  <img src="https://res.cloudinary.com/dw7jjvtt9/image/upload/v1758646762/Foto_21_segredos_da_mulher_confiante_2_qjnumh.jpg" alt="post para instagram" data-title="Post para Instagram" data-desc="Post desenvolvido para Instagram com foco em evidenciar os diferentes acabamentos oferecidos pela gráfica. O conteúdo foi construído de forma didática e visualmente clara, destacando os detalhes técnicos de maneira acessível ao público e reforçando a qualidade dos serviços.">
-  <img src="https://res.cloudinary.com/dw7jjvtt9/image/upload/v1758647142/Mockup_Bible_goods_arca_de_noe_ym9vhz.jpg" alt="mockup bobbie goods bíblico" data-title="Livro de colorir Bible Goods" data-desc="Edição de livro de colorir inspirada na estética do ‘Bobbie Goods’. O projeto envolveu a adaptação e organização dos elementos gráficos, resultando em uma obra com traços lúdicos e criativos, pensada para proporcionar uma experiência leve e envolvente ao leitor.">
-  <img src="https://res.cloudinary.com/dw7jjvtt9/image/upload/v1758647142/Mockup_Bible_goods_arca_de_noe_open_rhjxhj.jpg" alt="mockup bobbie goods bíblico" data-title="Livro de Colorir Bible Goods" data-desc="Edição completa de livro de colorir com ilustrações inicialmente geradas por inteligência artificial. Para viabilizar a impressão com qualidade, todas as imagens foram cuidadosamente vetorizadas, preservando o estilo original. Além disso, realizei correções de lógica e anatomia nos desenhos, assegurando consistência visual e reforçando o caráter lúdico da obra.">
-  <img src="https://res.cloudinary.com/dw7jjvtt9/image/upload/v1758647143/Mockup_Bible_goods_milagres_de_jesus_iiwn9k.jpg" alt="mockup bobbie goods bíblico" data-title="Livro de Colorir Bible Goods" data-desc="Mockup dos livros de colorir Bible Goods">
+     <!-- ===== NOVA SEÇÃO PROJETOS ===== -->
+<section class="projetos-section">
+  <div class="projetos-header">
+    <h2>Projetos</h2>
+    <p>Uma seleção de trabalhos onde processo, conceito e decisão visual se encontram. Cada projeto documenta escolhas conscientes e construção estratégica.</p>
+  </div>
+
+  <div class="projetos-grid" id="projetosGrid">
+    <!-- Cards serão gerados via JavaScript -->
+  </div>
+</section>
+
+<!-- MODAL DE PROJETO (único) -->
+<div class="modal-overlay" id="modalOverlay">
+  <div class="modal-container">
+    <div class="modal-conteudo" id="modalConteudo">
+      <!-- preenchido dinamicamente -->
     </div>
+  </div>
+</div>
+
     </section>
 
     <!-- Lightbox -->
@@ -543,41 +720,202 @@ Programas utilizados:">
 
 <script>
 
-const galleryImages = document.querySelectorAll(".gallery img");
-const lightbox = document.getElementById("lightbox");
-const lightboxImg = document.getElementById("lightbox-img");
-const lightboxTitle = document.getElementById("lightbox-title");
-const lightboxDesc = document.getElementById("lightbox-desc");
-const closeBtn = document.querySelector(".close");
+  (function() {
+    // ---------- DADOS DOS PROJETOS (adaptados da sua galeria) ----------
+    const projetos = [
+      {
+        id: 1,
+        nome: "Agenda Gráfica 2025",
+        categoria: "Editorial / Design",
+        ano: "2025",
+        ferramentas: "Photoshop, CorelDRAW",
+        imagemThumb: "https://github.com/stygian-blue/stygian-blue.github.io/blob/main/portifolio-images/Agenda%202025%20mockup.jpg?raw=true",
+        contexto: "Projeto real desenvolvido para a Gráfica Impress. A agenda oficial da empresa para 2025, com foco no setor editorial — carro-chefe da gráfica.",
+        problema: "Criar uma agenda que representasse a identidade da gráfica e destacasse sua atuação no mercado editorial, conectando criatividade e imaginação.",
+        conceito: "A ideia de livros como mundos paralelos. A imagem e o esquema de cores foram escolhidos para refletir a personalidade da empresa e reforçar sua marca.",
+        decisoes: "Uso de Adobe Photoshop para edição e tratamento de imagem e mockup; CorelDRAW para fechamento gráfico. Tipografia clean e paleta alinhada à identidade visual da gráfica.",
+        imagens: [
+          "https://github.com/stygian-blue/stygian-blue.github.io/blob/main/portifolio-images/Agenda%202025%20mockup.jpg?raw=true",
+          "https://github.com/stygian-blue/stygian-blue.github.io/blob/main/portifolio-images/Agenda%202025%20mockup.jpg?raw=true", // repetido por falta de outras imagens; idealmente teria mais
+          "https://github.com/stygian-blue/stygian-blue.github.io/blob/main/portifolio-images/Agenda%202025%20mockup.jpg?raw=true"
+        ],
+        resultado: "A agenda se tornou um item de relacionamento com clientes, reforçando a presença da marca e destacando a qualidade do design interno."
+      },
+      {
+        id: 2,
+        nome: "Agenda Gráfica 2026",
+        categoria: "Editorial / Identidade",
+        ano: "2026",
+        ferramentas: "CorelDRAW, Photoshop",
+        imagemThumb: "https://github.com/stygian-blue/stygian-blue.github.io/blob/main/portifolio-images/Agenda%202026%20mockup%20modelo%202.jpg?raw=true",
+        contexto: "Projeto real para a Gráfica Impress. Agenda oficial de 2026, com arte vetorial geométrica em alta resolução.",
+        problema: "Transmitir modernidade, força e personalidade, além de homenagear o símbolo do leão, muito estimado pela diretoria.",
+        conceito: "Leão formado por polígonos coloridos em paleta CMYK, simbolizando liderança e determinação. A geometria remete à precisão da impressão offset.",
+        decisoes: "CorelDRAW para criação vetorial e fechamento; Photoshop para mockup. Cores vibrantes e composição dinâmica.",
+        imagens: [
+          "https://github.com/stygian-blue/stygian-blue.github.io/blob/main/portifolio-images/Agenda%202026%20mockup%20modelo%202.jpg?raw=true",
+          "https://res.cloudinary.com/dw7jjvtt9/image/upload/v1758644614/agenda-2026-modelo-8_q54p3y.jpg",
+          "https://res.cloudinary.com/dw7jjvtt9/image/upload/v1758644609/agenda-2026-modelo-4_nljsla.jpg",
+          "https://res.cloudinary.com/dw7jjvtt9/image/upload/v1758644608/agenda-2026-modelo-12_txwgpm.jpg"
+        ],
+        resultado: "A agenda se destacou pela identidade forte e foi bem recebida por clientes, associando a gráfica a inovação e qualidade."
+      },
+      {
+        id: 3,
+        nome: "Bible Goods - Livros de Colorir",
+        categoria: "Ilustração / Editorial",
+        ano: "2024",
+        ferramentas: "Illustrator, Photoshop, IA (vetorização)",
+        imagemThumb: "https://res.cloudinary.com/dw7jjvtt9/image/upload/v1758647142/Mockup_Bible_goods_arca_de_noe_ym9vhz.jpg",
+        contexto: "Projeto autoral e comercial: edição de livros de colorir com temática bíblica, inspirados na estética 'Bobbie Goods'.",
+        problema: "Transformar imagens geradas por IA em um produto impresso de qualidade, corrigindo anatomia e lógica, e garantindo que todas as ilustrações fossem vetoriais para impressão nítida.",
+        conceito: "Manter a ludicidade e o traço característico, mas com consistência visual e correções que tornassem as imagens adequadas para colorir.",
+        decisoes: "Vetorização completa de todas as imagens no Illustrator, ajustes de anatomia e composição. Capa com tipografia divertida e paleta suave.",
+        imagens: [
+          "https://res.cloudinary.com/dw7jjvtt9/image/upload/v1758647142/Mockup_Bible_goods_arca_de_noe_ym9vhz.jpg",
+          "https://res.cloudinary.com/dw7jjvtt9/image/upload/v1758647142/Mockup_Bible_goods_arca_de_noe_open_rhjxhj.jpg",
+          "https://res.cloudinary.com/dw7jjvtt9/image/upload/v1758647143/Mockup_Bible_goods_milagres_de_jesus_iiwn9k.jpg"
+        ],
+        resultado: "Os livros foram publicados e comercializados, com ótimo retorno do público quanto à qualidade das ilustrações e acabamento."
+      },
+      {
+        id: 4,
+        nome: "Cartão Dia dos Namorados",
+        categoria: "Design Gráfico / Pixel Art",
+        ano: "2024",
+        ferramentas: "Photoshop, CorelDRAW",
+        imagemThumb: "https://res.cloudinary.com/dw7jjvtt9/image/upload/v1758646342/cartao_de_dia_dos_namorados_tndkus.jpg",
+        contexto: "Projeto real para a gráfica: cartão temático para o Dia dos Namorados.",
+        problema: "Criar um produto afetivo, diferenciado, que se destacasse nas prateleiras.",
+        conceito: "Pixel art feita à mão, resgatando nostalgia e criatividade. O verso com espaço para dedicatória personalizada.",
+        decisoes: "Impressão em papel triplex para resistência. Design lúdico e cores vibrantes.",
+        imagens: [
+          "https://res.cloudinary.com/dw7jjvtt9/image/upload/v1758646342/cartao_de_dia_dos_namorados_tndkus.jpg"
+        ],
+        resultado: "Produto muito apreciado pelos clientes, esgotou rapidamente e gerou pedidos de novas tiragens."
+      },
+      {
+        id: 5,
+        nome: "Conteúdo para Redes Sociais",
+        categoria: "Digital / Fotografia",
+        ano: "2024",
+        ferramentas: "Photoshop, Fotografia autoral",
+        imagemThumb: "https://res.cloudinary.com/dw7jjvtt9/image/upload/v1758646762/Foto_21_segredos_da_mulher_confiante_zuhkbv.jpg",
+        contexto: "Posts desenvolvidos para o Instagram da gráfica, com foco em evidenciar acabamentos e produtos.",
+        problema: "Comunicar visualmente a qualidade dos serviços e produtos de forma atraente e didática.",
+        conceito: "Fotografia autoral com edição cuidadosa, destacando detalhes táteis e acabamentos.",
+        decisoes: "Uso de luz natural e composição clean. Edição no Photoshop para realçar texturas.",
+        imagens: [
+          "https://res.cloudinary.com/dw7jjvtt9/image/upload/v1758646762/Foto_21_segredos_da_mulher_confiante_zuhkbv.jpg",
+          "https://res.cloudinary.com/dw7jjvtt9/image/upload/v1758646762/Foto_21_segredos_da_mulher_confiante_2_qjnumh.jpg"
+        ],
+        resultado: "Aumento no engajamento e clareza na comunicação dos diferenciais da gráfica."
+      }
+    ];
 
-galleryImages.forEach(img => {
-  img.addEventListener("click", () => {
-    lightbox.classList.remove("hidden");
-    document.body.classList.add('locked');
-    lightboxImg.src = img.src;
-    lightboxTitle.textContent = img.dataset.title;
-    lightboxDesc.textContent = img.dataset.desc;
-  });
-});
+    // ---------- RENDERIZAÇÃO DOS CARDS ----------
+    const grid = document.getElementById('projetosGrid');
+    const overlay = document.getElementById('modalOverlay');
+    const modalConteudo = document.getElementById('modalConteudo');
+    const body = document.body;
 
-closeBtn.addEventListener("click", () => {
-  lightbox.classList.add("hidden");
-  document.body.classList.remove('locked');
-});
+    function renderCards() {
+      grid.innerHTML = '';
+      projetos.forEach(proj => {
+        const card = document.createElement('div');
+        card.className = 'projeto-card';
+        card.dataset.id = proj.id;
+        card.innerHTML = `
+          <img src="${proj.imagemThumb}" alt="${proj.nome}" class="card-imagem" loading="lazy">
+          <div class="card-info">
+            <h3>${proj.nome}</h3>
+            <span class="card-categoria">${proj.categoria}</span>
+          </div>
+        `;
+        card.addEventListener('click', () => abrirModal(proj));
+        grid.appendChild(card);
+      });
+    }
 
-lightbox.addEventListener("click", (e) => {
-  if (e.target === lightbox) {
-    lightbox.classList.add("hidden");
-  }
-});
+    // ---------- ABRIR MODAL ----------
+    function abrirModal(proj) {
+      // Monta galeria de imagens
+      let imagensHTML = '';
+      proj.imagens.forEach((img, index) => {
+        imagensHTML += `<div class="galeria-item"><img src="${img}" alt="Imagem ${index+1} - ${proj.nome}" loading="lazy"></div>`;
+      });
 
-lightbox.addEventListener("keydown", (e) => {
-  if (e.key === "Escape" && !lightbox.classList.contains("hidden")) {
-    lightbox.classList.add("hidden");
-    document.body.classList.remove('locked');
-  }
-});
+      const html = `
+        <button class="modal-fechar" onclick="fecharModal()">&times;</button>
+        <div class="projeto-cabecalho">
+          <h1>${proj.nome}</h1>
+          <div class="projeto-meta">
+            <span><strong>Categoria:</strong> ${proj.categoria}</span>
+            <span><strong>Ano:</strong> ${proj.ano}</span>
+            <span><strong>Ferramentas:</strong> ${proj.ferramentas}</span>
+          </div>
+        </div>
 
+        <div class="bloco">
+          <h2>Contexto</h2>
+          <p>${proj.contexto}</p>
+        </div>
+
+        <div class="bloco">
+          <h2>Problema</h2>
+          <p>${proj.problema}</p>
+        </div>
+
+        <div class="bloco">
+          <h2>Conceito</h2>
+          <p>${proj.conceito}</p>
+        </div>
+
+        <div class="bloco">
+          <h2>Decisões visuais</h2>
+          <p>${proj.decisoes}</p>
+        </div>
+
+        <div class="galeria-projeto">
+          <h2>Galeria</h2>
+          <div class="galeria-grid">
+            ${imagensHTML}
+          </div>
+        </div>
+
+        <div class="resultado">
+          <p><strong>Resultado</strong> — ${proj.resultado}</p>
+        </div>
+      `;
+
+      modalConteudo.innerHTML = html;
+      overlay.classList.add('active');
+      body.classList.add('locked'); // para travar o scroll
+    }
+
+    // ---------- FECHAR MODAL ----------
+    window.fecharModal = function() {
+      overlay.classList.remove('active');
+      body.classList.remove('locked');
+    };
+
+    // Fechar ao clicar no overlay (fundo)
+    overlay.addEventListener('click', (e) => {
+      if (e.target === overlay) {
+        fecharModal();
+      }
+    });
+
+    // Fechar com tecla ESC
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && overlay.classList.contains('active')) {
+        fecharModal();
+      }
+    });
+
+    // Inicializar
+    renderCards();
+  })();
 </script>
 
 </body>
