@@ -482,6 +482,7 @@ max-width: 80%;
 
 .galeria-projeto {
   margin: 2.5rem 0 1.5rem;
+  position: relative;
 }
 
 .galeria-projeto h2 {
@@ -511,6 +512,17 @@ max-width: 80%;
   display: block;
 }
 
+.galeria-item-video {
+  background: var(--base-color);
+  border-radius: 0.8rem;
+  overflow: hidden;
+  line-height: 0;
+}
+
+.galeria-item-video video {
+  width: 100%;
+}
+    
 .resultado {
   background: var(--base-color);
   padding: 1.5rem;
@@ -869,7 +881,7 @@ Busco oportunidades em design gráfico, pré-impressão e impressão digital ond
       let imagensHTML = '';
       proj.imagens.forEach((img, index) => {
         if (img.match(/\.(mp4|webm|mov|ogg)$/i)) {
-          imagensHTML += `<div class="galeria-item"><video autoplay loop muted controls="false" src="${img}" alt="Imagem ${index+1} - ${proj.nome}" ></div>`;
+          imagensHTML += `<div class="galeria-item-video"><video autoplay loop muted src="${img}" alt="Imagem ${index+1} - ${proj.nome}" ></div>`;
         } else {
           imagensHTML += `<div class="galeria-item"><img src="${img}" alt="Imagem ${index+1} - ${proj.nome}" loading="lazy"></div>`;
         }
