@@ -868,7 +868,11 @@ Busco oportunidades em design gráfico, pré-impressão e impressão digital ond
       // Monta galeria de imagens
       let imagensHTML = '';
       proj.imagens.forEach((img, index) => {
-        imagensHTML += `<div class="galeria-item"><img src="${img}" alt="Imagem ${index+1} - ${proj.nome}" loading="lazy"></div>`;
+        if (img.match(/\.(mp4|webm|mov|ogg)$/i)) {
+          imagensHTML += `<div class="galeria-item"><video autoplay loop muted controls="false" src="${img}" alt="Imagem ${index+1} - ${proj.nome}" ></div>`;
+        } else {
+          imagensHTML += `<div class="galeria-item"><img src="${img}" alt="Imagem ${index+1} - ${proj.nome}" loading="lazy"></div>`;
+        }
       });
 
       const html = `
