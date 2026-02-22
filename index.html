@@ -494,21 +494,21 @@ max-width: 80%;
 
 .galeria-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   gap: 1rem;
 }
 
-.galeria-item {
+.galeria-item,
+.galeria-item-video {
   background: var(--base-color);
   border-radius: 0.8rem;
   overflow: hidden;
-  aspect-ratio: 4/3;
 }
 
-.galeria-item img {
+.galeria-item img,
+.galeria-item-video video {
   width: 100%;
-  height: 100%;
-  object-fit: cover;
+  height: auto;    
   display: block;
 }
 
