@@ -962,6 +962,11 @@
         }
       });
 
+    const context = proj.contexto ? `<div class="bloco"><h2>Contexto</h2><p>${proj.contexto}</p></div>` : '';
+    const problema = proj.problema ? `<div class="bloco"><h2>Problema</h2><p>${proj.problema}</p></div>` : '';
+    const conceito = proj.conceito ? `<div class="bloco"><h2>Conceito</h2><p>${proj.conceito}</p></div>` : '';
+    const decisoes = proj.decisoes ? `<div class="bloco"><h2>Decisões visuais</h2><p>${proj.decisoes}</p></div>` : '';
+    const resultado = proj.resultado ? `<div class="resultado"><p><strong>Resultado</strong> — ${proj.resultado || 'Não informado'}</p></div>` : '';
     const html = `
       <button class="modal-fechar" onclick="fecharModal()">&times;</button>
       <div class="projeto-cabecalho">
@@ -972,15 +977,15 @@
           <span><strong>Ferramentas:</strong> ${proj.ferramentas}</span>
         </div>
       </div>
-      <div class="bloco"><h2>Contexto</h2><p>${proj.contexto}</p></div>
-      <div class="bloco"><h2>Problema</h2><p>${proj.problema}</p></div>
-      <div class="bloco"><h2>Conceito</h2><p>${proj.conceito}</p></div>
-      <div class="bloco"><h2>Decisões visuais</h2><p>${proj.decisoes}</p></div>
+      ${context}  
+      ${problema}
+      ${conceito}
+      ${decisoes}
       <div class="galeria-projeto">
         <h2>Galeria</h2>
         <div class="galeria-grid">${imagensHTML}</div>
       </div>
-      <div class="resultado"><p><strong>Resultado</strong> — ${proj.resultado || 'Não informado'}</p></div>
+      ${resultado}
     `;
 
     modalConteudo.innerHTML = html;
