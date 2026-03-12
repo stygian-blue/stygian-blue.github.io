@@ -54,22 +54,6 @@
       },
       {
         id: 4,
-        nome: "Cartão Dia dos Namorados",
-        categoria: "Design Gráfico / Pixel Art",
-        ano: "2025",
-        ferramentas: "Photoshop, CorelDRAW",
-        imagemThumb: "https://res.cloudinary.com/dw7jjvtt9/image/upload/v1758646342/cartao_de_dia_dos_namorados_tndkus.jpg",
-        contexto: "Projeto real para a gráfica: cartão temático para o Dia dos Namorados.",
-        problema: "Criar um produto afetivo, diferenciado, que se destacasse nas prateleiras.",
-        conceito: "Pixel art feita à mão, resgatando nostalgia e criatividade. O verso com espaço para dedicatória personalizada.",
-        decisoes: "Impressão em papel triplex para resistência. Design lúdico e cores vibrantes.",
-        imagens: [
-          "https://res.cloudinary.com/dw7jjvtt9/image/upload/v1758646342/cartao_de_dia_dos_namorados_tndkus.jpg"
-        ],
-        resultado: "Produto muito apreciado pelos clientes, esgotou rapidamente e gerou pedidos de novas tiragens."
-      },
-      {
-        id: 5,
         nome: "Conteúdo para Redes Sociais - Imagens",
         categoria: "Redes Sociais / Fotografia / Edição",
         ano: "2025",
@@ -81,12 +65,16 @@
         decisoes: "Uso de luz natural e composição clean. Edição no Photoshop para realçar texturas.",
         imagens: [
           "https://res.cloudinary.com/dw7jjvtt9/image/upload/v1758646762/Foto_21_segredos_da_mulher_confiante_zuhkbv.jpg",
-          "https://res.cloudinary.com/dw7jjvtt9/image/upload/v1758646762/Foto_21_segredos_da_mulher_confiante_2_qjnumh.jpg"
+          "https://res.cloudinary.com/dw7jjvtt9/image/upload/v1758646762/Foto_21_segredos_da_mulher_confiante_2_qjnumh.jpg",
+          "https://res.cloudinary.com/dw7jjvtt9/image/upload/v1771597186/Mockup_entre_estrelas_e_silencios_cta_fdjn6q.jpg",
+          "https://res.cloudinary.com/dw7jjvtt9/image/upload/v1771597185/Mockup_entre_estrelas_e_silencios_z3ggsy.jpg",
+          "https://res.cloudinary.com/dw7jjvtt9/image/upload/v1773334231/maleta_educacional_mundo_bebe_2_dfmyju.jpg",
+          "https://res.cloudinary.com/dw7jjvtt9/image/upload/v1773334232/maleta_educacional_mundo_bebe_pzc1ye.jpg"  
         ],
         resultado: "Aumento no engajamento e clareza na comunicação dos diferenciais da gráfica."
       },
       {
-        id: 6,
+        id: 5,
         nome: "Conteúdo para Redes Sociais - Vídeos",
         categoria: "Fotografia / Motion Design / Edição",
         ano: "2024",
@@ -107,7 +95,7 @@
         resultado: "Os posts foram bem recebidos e foi notado um aumento na quantidade de compartilhamentos."
       },
       {
-        id: 7,
+        id: 6,
         nome: "Agenda Devocional",
         categoria: "Design Gráfico / Editorial",
         ano: "2025",
@@ -118,12 +106,18 @@
         conceito: "Prezar pela iconografia cristã com um design especifico que fizesse tanto o público feminino quanto o masculino se interessarem.",
         decisoes: "Utilizar um versículo bíblico marcante que se relacionasse com cada gênero, trazendo a delicadeza e motivos florais pra agenda feminina e uma iconografia que remonta a força e coragem para a masculina.  ",
         imagens: [
-          "https://res.cloudinary.com/dw7jjvtt9/image/upload/v1758646342/cartao_de_dia_dos_namorados_tndkus.jpg"
+          "https://res.cloudinary.com/dw7jjvtt9/image/upload/v1758646342/cartao_de_dia_dos_namorados_tndkus.jpg",
+          "https://res.cloudinary.com/dw7jjvtt9/image/upload/v1771530722/minha_agenda_com_deus_wlpofl.jpg",
+          "https://res.cloudinary.com/dw7jjvtt9/image/upload/v1771530719/minha_agenda_com_deus_feminina_uurya3.jpg",
+          "https://res.cloudinary.com/dw7jjvtt9/image/upload/v1771530719/agenda_frente_kp1vfw.jpg",
+          "https://res.cloudinary.com/dw7jjvtt9/image/upload/v1771530720/agenda_verso_nfczis.jpg",
+          "https://res.cloudinary.com/dw7jjvtt9/image/upload/v1771530718/agenda_feminina_frente_dtuk3i.jpg",
+          "https://res.cloudinary.com/dw7jjvtt9/image/upload/v1771530719/agenda_feminina_verso_jdtbaq.jpg"  
         ],
         resultado: "O cliente elogiou o design e produto foi muito bem recebido pelo público."
       },
       {
-        id: 8,
+        id: 7,
         nome: "Ilustrações",
         categoria: "Ilustração",
         ano: "2020-2025",
