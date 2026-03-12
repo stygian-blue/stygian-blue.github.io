@@ -6,13 +6,13 @@
         categoria: "Editorial / Design",
         ano: "2024",
         ferramentas: "Photoshop, CorelDRAW",
-        imagemThumb: "https://github.com/stygian-blue/stygian-blue.github.io/blob/main/portifolio-images/Agenda%202025%20mockup.jpg?raw=true",
+        imagemThumb: "https://res.cloudinary.com/dw7jjvtt9/image/upload/v1773336205/agenda-2025-modelo-1_grimn2.jpg",
         contexto: "Projeto real desenvolvido para a Gráfica Impress. A agenda oficial da empresa para 2025, com foco no setor editorial — carro-chefe da gráfica.",
         problema: "Criar uma agenda que representasse a identidade da gráfica e destacasse sua atuação no mercado editorial, conectando criatividade e imaginação.",
         conceito: "A ideia de livros como mundos paralelos. A imagem e o esquema de cores foram escolhidos para refletir a personalidade da empresa e reforçar sua marca.",
         decisoes: "Uso de Adobe Photoshop para edição e tratamento de imagem e mockup; CorelDRAW para fechamento gráfico. Tipografia clean e paleta alinhada à identidade visual da gráfica.",
         imagens: [
-          "https://github.com/stygian-blue/stygian-blue.github.io/blob/main/portifolio-images/Agenda%202025%20mockup.jpg?raw=true"
+          "https://res.cloudinary.com/dw7jjvtt9/image/upload/v1773336205/agenda-2025-modelo-1_grimn2.jpg"
           ],
         resultado: "A agenda se tornou um item de relacionamento com clientes, reforçando a presença da marca e destacando a qualidade do design interno."
       },
@@ -22,13 +22,13 @@
         categoria: "Editorial / Identidade",
         ano: "2026",
         ferramentas: "CorelDRAW, Photoshop",
-        imagemThumb: "https://github.com/stygian-blue/stygian-blue.github.io/blob/main/portifolio-images/Agenda%202026%20mockup%20modelo%202.jpg?raw=true",
+        imagemThumb: "https://res.cloudinary.com/dw7jjvtt9/image/upload/v1773336299/agenda-2026-modelo-2_v9pwo7.jpg",
         contexto: "Projeto real para a Gráfica Impress. Agenda oficial de 2026, com arte vetorial geométrica em alta resolução.",
         problema: "Transmitir modernidade, força e personalidade, além de homenagear o símbolo do leão, muito estimado pela diretoria.",
         conceito: "Leão formado por polígonos coloridos em paleta CMYK, simbolizando liderança e determinação. A escolha de cores, numa paleta multicolorida, também foi muito importante para destacar a qualidades das impressões.",
         decisoes: "CorelDRAW para criação vetorial e fechamento; Photoshop para mockup. Cores vibrantes e composição dinâmica.",
         imagens: [
-          "https://github.com/stygian-blue/stygian-blue.github.io/blob/main/portifolio-images/Agenda%202026%20mockup%20modelo%202.jpg?raw=true",
+          "https://res.cloudinary.com/dw7jjvtt9/image/upload/v1773336299/agenda-2026-modelo-2_v9pwo7.jpg",
           "https://res.cloudinary.com/dw7jjvtt9/image/upload/v1771607072/agenda-2026-oficial-foto_r7d8r7.jpg",
           "https://res.cloudinary.com/dw7jjvtt9/image/upload/v1771607071/agenda-2026-oficial-foto-2_uuu48t.jpg"
         ],
