@@ -27,7 +27,6 @@
       overflow: hidden;
     }
     section::before,
-    header::before,
     footer::before {
       content: "";
       position: absolute;
