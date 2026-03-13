@@ -106,7 +106,6 @@
         conceito: "Prezar pela iconografia cristã com um design especifico que fizesse tanto o público feminino quanto o masculino se interessarem.",
         decisoes: "Utilizar um versículo bíblico marcante que se relacionasse com cada gênero, trazendo a delicadeza e motivos florais pra agenda feminina e uma iconografia que remonta a força e coragem para a masculina.  ",
         imagens: [
-          "https://res.cloudinary.com/dw7jjvtt9/image/upload/v1758646342/cartao_de_dia_dos_namorados_tndkus.jpg",
           "https://res.cloudinary.com/dw7jjvtt9/image/upload/v1771530722/minha_agenda_com_deus_wlpofl.jpg",
           "https://res.cloudinary.com/dw7jjvtt9/image/upload/v1771530719/minha_agenda_com_deus_feminina_uurya3.jpg",
           "https://res.cloudinary.com/dw7jjvtt9/image/upload/v1771530719/agenda_frente_kp1vfw.jpg",
