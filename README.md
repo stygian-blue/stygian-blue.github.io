@@ -1,2 +1,2 @@
 # stygian-blue.github.io
-portfolio
+portfolio made with blood, sweat and tears
